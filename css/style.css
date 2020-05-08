@@ -1,0 +1,14 @@
+html *{
+  list-style:none;
+  margin:8px;
+  line-height:14px
+}
+
+body{
+  margin:14px
+}
+
+ul,ul a{
+  padding:0;
+  margin:0
+}

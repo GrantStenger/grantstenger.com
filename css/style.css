@@ -1,14 +1,51 @@
 html *{
   list-style:none;
-  margin:8px;
-  line-height:14px
 }
 
-body{
-  margin:14px
+body {
+  margin:14px;
 }
 
-ul,ul a{
+ul, ul a {
   padding:0;
-  margin:0
+  margin:0;
+}
+
+.topnav {
+  display:table;
+  width:100%;
+}
+
+.topnav-row {
+  display:table-row;
+}
+
+.nav-left {
+  display:table-cell;
+  text-align:left;
+  width:25%;
+}
+
+.nav-center {
+  display:table-cell;
+  text-align:center;
+  width:50%;
+}
+
+.nav-right {
+  display:table-cell;
+  text-align:right;
+  width:25%;
+}
+
+.center {
+  text-align: center;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.center li {
+  padding: 3px;
 }

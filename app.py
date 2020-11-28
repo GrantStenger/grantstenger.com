@@ -31,9 +31,9 @@ def essays():
 def papers():
     return render_template('papers.html')
 
-@app.route('/gifts')
-def gifts():
-    return render_template('gifts.html')
+@app.route('/gift-ideas')
+def gift_ideas():
+    return render_template('gift-ideas.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -35,5 +35,9 @@ def papers():
 def gift_ideas():
     return render_template('gift-ideas.html')
 
+@app.route('/nfts')
+def nfts():
+    return render_template('nfts.html')
+
 if __name__ == "__main__":
     app.run(debug=True)

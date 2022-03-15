@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <title>Foundation Models</title>
+{% endblock %}
+
+{% block body %}
+	<div class="topnav">
+		<div class="topnav-row">
+			<div class="nav-left">
+				<a href="{{ url_for('index') }}">Home</a> &nbsp;
+				<a href="{{ url_for('about') }}">About</a> &nbsp;
+				<b><a href="{{ url_for('lists') }}">Lists</a></b>
+			</div>
+			<div class="nav-center"></div>
+			<div class="nav-right">
+				<a href='https://twitter.com/grant_stenger'>Twitter</a> |
+				<a href='https://github.com/gstenger98'>GitHub</a> |
+				<a href='https://www.goodreads.com/grant-stenger'>Goodreads</a> |
+				<a href='https://www.linkedin.com/in/grant-stenger/'>LinkedIn</a> |
+				<a href='https://www.instagram.com/grant.stenger/'>Instagram</a>
+			</div>
+		</div>
+	</div>
+
+	<h1>Summary of "<a href='https://arxiv.org/pdf/2108.07258.pdf'>On the Opportunities and Risks of Foundation Models</a>"</h1>
+  <p>
+    This is my understanding of the aim and content of this report.
+  </p>
+  <p>
+    As ML develops, we’re relying more heavily on a few specific models which are deeply trained over weeks to months, dozens of terabytes of data, and billions of parameters.
+  </p>
+  <p>
+    It’s more effective to style transfer from these few models than train new ones, so as our dependency increases so does societal fragility.
+  </p>
+  <p>
+    They’re calling these general purpose, multi-model, task-agnostic models “foundation models” as they increasingly underpin most ML-based products.
+  </p>
+  <p>
+    The claim of this paper is that these widely used models should be rigorously tested and audited and that their social impact should be properly discussed.
+  </p>
+  <p>
+    They look specifically at the datasets selection, generation, and curation to identify areas bias could have been introduced. Ethical considerations and design decisions must be made *before* large models are trained and deployed rather than after, and this paper attempts to work through these considerations.
+  </p>
+  <p>
+    While AI research has typically had a strong open-source culture, many of these foundation models like GPT-3 are trained privately. The inaccessibility of well-funded AI companies’ models makes them hard to probe for bias. The authors offer Big Science projects like the Large Hadron Collider and the Hubble Telescope as examples of government funded projects as an analogy to potential public infrastructure AI projects which might help close the resource gap between privately trained and publicly trained models. They also offer volunteer computing as a crowdsourced solution as well.
+  </p>
+  <p>
+    They take an interdisciplinary approach in this report where authors with diverse academic backgrounds share their perspectives on how to proceed from here.
+  </p>
+{% endblock %}

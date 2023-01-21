@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Cedarville+Cursive&family=GFS+Didot&family=Uchen&display=swap');
+
+:root {
+  --bgColorDark: black;
+  --bgColorLight: white;
+  --primaryTextColorDark: white;
+  --primaryTextColorLight: black;
+  --secondaryTextColorDark: rgba(255, 255, 255, 0.6);
+  --secondaryTextColorLight: rgba(0, 0, 0, 0.6);
+  --bgColor: var(--bgColorLight);
+  --primaryTextColor: var(--primaryTextColorLight);
+  --secondaryTextColor: var(--secondaryTextColorLight);
+
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --bgColor: var(--bgColorDark);
+    --primaryTextColor: var(--primaryTextColorDark);
+    --secondaryTextColor: var(--secondaryTextColorDark);
+  }
+}
+
+body {
+  font-family: "Anonymous Pro";
+  background: var(--bgColor);
+  color: var(--primaryTextColor);
+}
+
+
+a {
+  color: var(--secondaryTextColor);
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  /* background-color: blue; */
+  padding: 0;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+li {
+  padding: 10px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+.app {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+figure {
+  padding: none;
+  margin: 0;
+  width: 100%;
+  height: clamp(200px, 20vh, 20vh);
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: center;
+}
+
+img.profile {
+  height: clamp(200px, 20vh, 20vh);
+  aspect-ratio: 1;
+}
+
+img.logo {
+  height: 18px;
+}
+
+h1 {
+  text-align: center;
+  /* background-color: beige; */
+  margin-block-start: 0.5em;
+  margin-block-end: 0.1em;
+}

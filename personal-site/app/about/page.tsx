@@ -132,7 +132,7 @@ export default function About() {
                                     <li>Advanced Mathematics</li>
                                 </ul>
                                 <p className="text-gray-300">
-                                    I'm passionate about leveraging technology to solve complex problems and create innovative solutions that shape the future of finance and beyond.
+                                    {"I'm passionate about leveraging technology to solve complex problems and create innovative solutions that shape the future of finance and beyond."}
                                 </p>
                             </CardContent>
                         </Card>

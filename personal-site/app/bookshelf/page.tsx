@@ -33,7 +33,13 @@ export default function Bookshelf() {
     )
 }
 
-function BookCard({ title, author, description }) {
+interface BookCardProps {
+    title: string;
+    author: string;
+    description: string;
+}
+
+function BookCard({ title, author, description }: BookCardProps) {
     return (
         <Card className="bg-gray-800 border-gray-700">
             <CardContent className="p-6">

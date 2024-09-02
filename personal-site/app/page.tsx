@@ -43,7 +43,14 @@ export default function Home() {
   )
 }
 
-function SocialLink({ href, icon, label, hoverColor }) {
+interface SocialLinkProps {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+  hoverColor: string;
+}
+
+function SocialLink({ href, icon, label, hoverColor }: SocialLinkProps) {
   return (
     <a
       href={href}

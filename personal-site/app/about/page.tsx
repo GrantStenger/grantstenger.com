@@ -14,10 +14,10 @@ export default function About() {
                     <CardContent className="p-6">
                         <h2 className="text-2xl font-bold mb-4 text-blue-400">Kinetic</h2>
                         <p className="text-gray-300 mb-4">
-                            I'm Grant Stenger, the Founder & CEO of Kinetic.
+                            {"I'm Grant Stenger, the Founder & CEO of Kinetic."}
                         </p>
                         <ul className="list-disc list-inside text-gray-300 mb-4">
-                            <li>Kinetic is a multi-chain dex aggregator suppoprting both fungible and non-fungible token trading.</li>
+                            <li>Kinetic is a multi-chain dex aggregator supporting both fungible and non-fungible token trading.</li>
                             <li>We raised $7.2m from great partners including Jump, Sequoia, SV Angel, Contrary, GBV, K5, dao5, Soma, BoxGroup, and Lux.</li>
                             <li>Built an elite team of world-class engineers from Stanford, MIT, Princeton, etc.</li>
                         </ul>
@@ -76,7 +76,7 @@ export default function About() {
                                     <ul className="list-disc list-inside text-gray-300 mt-2">
                                         <li>High dimensional stats for meta-model improvements</li>
                                         <li>ML pipeline for detecting malicious users</li>
-                                        <li>Fullstack work on Erasure's splash page (React + Node.js + GraphQL + Elixir)</li>
+                                        <li>{"Fullstack work on Erasure's splash page (React + Node.js + GraphQL + Elixir)"}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -102,7 +102,7 @@ export default function About() {
                                         <p className="text-gray-400">High School</p>
                                         <p className="text-gray-500">Hyderabad, Tanzania, Hiroshima</p>
                                         <p className="text-gray-300 mt-2">
-                                            Attended the world's first traveling high school, living and studying in multiple countries
+                                            {"Attended the world's first traveling high school, living and studying in multiple countries"}
                                         </p>
                                     </div>
                                     <div>
@@ -119,7 +119,7 @@ export default function About() {
 
                         <Card className="bg-gray-800 border-gray-700">
                             <CardContent className="p-6">
-                                <h2 className="text-2xl font-bold mb-4 text-blue-400">Skills & Interests</h2>
+                                <h2 className="text-2xl font-bold mb-4 text-blue-400">{"Skills & Interests"}</h2>
                                 <p className="text-gray-300 mb-4">
                                     My expertise spans across various fields:
                                 </p>
@@ -141,19 +141,19 @@ export default function About() {
 
                 <Card className="bg-gray-800 border-gray-700 mt-8">
                     <CardContent className="p-6">
-                        <h2 className="text-2xl font-bold mb-4 text-blue-400">Projects & Awards</h2>
+                        <h2 className="text-2xl font-bold mb-4 text-blue-400">{"Projects & Awards"}</h2>
                         <div className="space-y-6">
                             <div>
                                 <h3 className="text-xl font-semibold text-blue-300">Stanford TreeHacks Winner: Attentional Super Resolution GAN</h3>
                                 <p className="text-gray-400">Feb. 2019</p>
                                 <ul className="list-disc list-inside text-gray-300 mt-2">
-                                    <li>Best Computer Vision Prize & IBM's Favorite Health Hack</li>
+                                    <li>{"Best Computer Vision Prize & IBM's Favorite Health Hack"}</li>
                                     <li>Enhancing low resolution video feeds in real time with a novel GAN architecture</li>
                                 </ul>
                             </div>
                             <div>
                                 <h3 className="text-xl font-semibold text-blue-300">Silicon Valley Design Thinking Institute (Co-Founder)</h3>
-                                <p className="text-gray-400">Jun. 2019 – July 2020</p>
+                                <p className="text-gray-400">{"Jun. 2019 – July 2020"}</p>
                                 <p className="text-gray-300 mt-2">
                                     Teaching design thinking and product development frameworks.
                                 </p>
@@ -182,7 +182,7 @@ export default function About() {
                                 <h3 className="text-xl font-semibold text-blue-300">Stamps Scholarship</h3>
                                 <p className="text-gray-400">Stamps Foundation, Apr 2017</p>
                                 <p className="text-gray-300 mt-2">
-                                    USC's most competitive academic scholarship (5 awards per year).
+                                    {"USC's most competitive academic scholarship (5 awards per year)."}
                                 </p>
                                 <p className="text-gray-300 mt-2">Full-tuition scholarship plus access to a $20,000 enrichment fund over 4 years for study abroad, unpaid internships, summer research or other opportunities.</p>
                             </div>

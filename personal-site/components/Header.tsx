@@ -6,10 +6,10 @@ export function Header() {
             <nav className="container mx-auto flex justify-between items-center">
                 <Link href="/" className="text-2xl font-bold text-blue-400">GS</Link>
                 <div className="space-x-4">
-                    {['Home', 'About', 'Bookshelf', 'Essays'].map((item) => (
+                    {['About', 'Bookshelf', 'Essays'].map((item) => (
                         <Link
                             key={item}
-                            href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                            href={`/${item.toLowerCase()}`}
                             className="text-gray-300 hover:text-blue-400 transition-colors duration-200"
                         >
                             {item}

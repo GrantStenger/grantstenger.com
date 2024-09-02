@@ -14,22 +14,22 @@ export default function About() {
                     <CardContent className="p-6">
                         <h2 className="text-2xl font-bold mb-4 text-blue-400">Kinetic</h2>
                         <p className="text-gray-300 mb-4">
-                            I'm Grant Stenger, the Founder & CEO of Kinetic, a company shaping the future of exchange. At Kinetic, we're revolutionizing the exchange industry with innovative solutions and cutting-edge technology.
+                            I'm Grant Stenger, the Founder & CEO of Kinetic.
                         </p>
                         <ul className="list-disc list-inside text-gray-300 mb-4">
-                            <li>Successfully raised $7.2m from prominent investors including Jump, Sequoia, SV Angel, and more</li>
-                            <li>Developing next-generation exchange technology</li>
-                            <li>Building a team of top-tier engineers and finance professionals</li>
+                            <li>Kinetic is a multi-chain dex aggregator suppoprting both fungible and non-fungible token trading.</li>
+                            <li>We raised $7.2m from great partners including Jump, Sequoia, SV Angel, Contrary, GBV, K5, dao5, Soma, BoxGroup, and Lux.</li>
+                            <li>Built an elite team of world-class engineers from Stanford, MIT, Princeton, etc.</li>
                         </ul>
                         <p className="text-gray-300">
-                            Our mission at Kinetic is to create a more efficient, transparent, and accessible financial ecosystem for all participants.
+                            Our mission at Kinetic is to create a more efficient, transparent, and accessible financial ecosystem for all.
                         </p>
                     </CardContent>
                 </Card>
 
                 <div className="grid gap-8 md:grid-cols-2">
-                    <div className="space-y-8">
-                        <div className="bg-gray-800 border border-gray-700 rounded-lg p-6">
+                    <Card className="bg-gray-800 border-gray-700">
+                        <CardContent className="p-6">
                             <h2 className="text-2xl font-bold mb-4 text-blue-400">Experience</h2>
                             <div className="space-y-6">
                                 <div>
@@ -80,65 +80,121 @@ export default function About() {
                                     </ul>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </CardContent>
+                    </Card>
 
-                    <div className="bg-gray-800 border border-gray-700 rounded-lg p-6">
-                        <h2 className="text-2xl font-bold mb-4 text-blue-400">Education</h2>
-                        <p className="text-gray-300 mb-4">
-                            I attended the University of Southern California, pursuing a dual degree in Applied Mathematics and Computer Science. During my time there, I:
-                        </p>
-                        <ul className="list-disc list-inside text-gray-300 mb-4">
-                            <li>Received a full tuition merit scholarship (Stamps Scholarship)</li>
-                            <li>Took PhD level computer science and math courses</li>
-                            <li>Served as Vice President of USC's Center for AI in Society's undergraduate branch</li>
-                        </ul>
-                        <p className="text-gray-300 mb-4">
-                            Prior to USC, I attended THINK Global School, the world's first traveling high school, living and studying in Hyderabad, Tanzania, and Hiroshima.
-                        </p>
-                        <p className="text-gray-300">
-                            I've also been involved in numerous global service trips, including building homes in the Dominican Republic, schools in Kenya, and teaching English in India.
-                        </p>
+                    <div className="space-y-8">
+                        <Card className="bg-gray-800 border-gray-700">
+                            <CardContent className="p-6">
+                                <h2 className="text-2xl font-bold mb-4 text-blue-400">Education</h2>
+                                <div className="space-y-6">
+                                    <div>
+                                        <h3 className="text-xl font-semibold text-blue-300">University of Southern California</h3>
+                                        <p className="text-gray-400">B.S. Applied Mathematics, B.S. Computer Science</p>
+                                        <p className="text-gray-500">Los Angeles, CA</p>
+                                        <ul className="list-disc list-inside text-gray-300 mt-2">
+                                            <li>Full tuition merit scholarship</li>
+                                            <li>Started PhD level computer science and math courses as a sophomore</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-xl font-semibold text-blue-300">THINK Global School</h3>
+                                        <p className="text-gray-400">High School</p>
+                                        <p className="text-gray-500">Hyderabad, Tanzania, Hiroshima</p>
+                                        <p className="text-gray-300 mt-2">
+                                            Attended the world's first traveling high school, living and studying in multiple countries
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-xl font-semibold text-blue-300">Head-Royce School</h3>
+                                        <p className="text-gray-400">High School</p>
+                                        <p className="text-gray-500">Oakland, CA</p>
+                                        <p className="text-gray-300 mt-2">
+                                            Berkeley Math Circle, Student Council (8 years), East Bay Fencers Gym, AwesomeMath, AoPS
+                                        </p>
+                                    </div>
+                                </div>
+                            </CardContent>
+                        </Card>
+
+                        <Card className="bg-gray-800 border-gray-700">
+                            <CardContent className="p-6">
+                                <h2 className="text-2xl font-bold mb-4 text-blue-400">Skills & Interests</h2>
+                                <p className="text-gray-300 mb-4">
+                                    My expertise spans across various fields:
+                                </p>
+                                <ul className="list-disc list-inside text-gray-300 mb-4">
+                                    <li>Quantitative Finance</li>
+                                    <li>Artificial Intelligence and Machine Learning</li>
+                                    <li>Blockchain Technology</li>
+                                    <li>Entrepreneurship</li>
+                                    <li>Product Development</li>
+                                    <li>Advanced Mathematics</li>
+                                </ul>
+                                <p className="text-gray-300">
+                                    I'm passionate about leveraging technology to solve complex problems and create innovative solutions that shape the future of finance and beyond.
+                                </p>
+                            </CardContent>
+                        </Card>
                     </div>
                 </div>
 
                 <Card className="bg-gray-800 border-gray-700 mt-8">
                     <CardContent className="p-6">
-                        <h2 className="text-2xl font-bold mb-4 text-blue-400">Projects</h2>
-                        <ul className="list-disc list-inside text-gray-300 mb-4 space-y-4">
-                            <li>
-                                <span className="font-bold">Kinetic:</span> Founded and currently leading a company that's revolutionizing the exchange industry.
-                            </li>
-                            <li>
-                                <span className="font-bold">Silicon Valley Design Thinking Institute:</span> Established an institute to teach design thinking and product development methodologies.
-                            </li>
-                            <li>
-                                <span className="font-bold">AI Research at Midjourney:</span> Contributed to cutting-edge AI research in image generation.
-                            </li>
-                            <li>
-                                <span className="font-bold">Quantitative Trading Systems:</span> Developed sophisticated trading algorithms at Jane Street and QuantRes.
-                            </li>
-                        </ul>
-                    </CardContent>
-                </Card>
-
-                <Card className="bg-gray-800 border-gray-700 mt-8">
-                    <CardContent className="p-6">
-                        <h2 className="text-2xl font-bold mb-4 text-blue-400">Skills & Interests</h2>
-                        <p className="text-gray-300 mb-4">
-                            My expertise spans across various fields:
-                        </p>
-                        <ul className="list-disc list-inside text-gray-300 mb-4">
-                            <li>Quantitative Finance</li>
-                            <li>Artificial Intelligence and Machine Learning</li>
-                            <li>Blockchain Technology</li>
-                            <li>Entrepreneurship</li>
-                            <li>Product Development</li>
-                            <li>Advanced Mathematics</li>
-                        </ul>
-                        <p className="text-gray-300">
-                            I'm passionate about leveraging technology to solve complex problems and create innovative solutions that shape the future of finance and beyond.
-                        </p>
+                        <h2 className="text-2xl font-bold mb-4 text-blue-400">Projects & Awards</h2>
+                        <div className="space-y-6">
+                            <div>
+                                <h3 className="text-xl font-semibold text-blue-300">Stanford TreeHacks Winner: Attentional Super Resolution GAN</h3>
+                                <p className="text-gray-400">Feb. 2019</p>
+                                <ul className="list-disc list-inside text-gray-300 mt-2">
+                                    <li>Best Computer Vision Prize & IBM's Favorite Health Hack</li>
+                                    <li>Enhancing low resolution video feeds in real time with a novel GAN architecture</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-semibold text-blue-300">Silicon Valley Design Thinking Institute (Co-Founder)</h3>
+                                <p className="text-gray-400">Jun. 2019 – July 2020</p>
+                                <p className="text-gray-300 mt-2">
+                                    Teaching design thinking and product development frameworks.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-semibold text-blue-300">Optimization Research</h3>
+                                <p className="text-gray-400">Apr. 2019 – May 2020</p>
+                                <ul className="list-disc list-inside text-gray-300 mt-2">
+                                    <li>Asymptotic analysis of the multi-robot routing problem (Professor John Carlsson Ph.D.)</li>
+                                    <li>Provided an upper bound on the improvement in efficiency by combining unmanned robotic parcel distribution with traditional truck delivery</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-semibold text-blue-300">Ph.D. Courses</h3>
+                                <p className="text-gray-400">Aug. 2018 – May 2021</p>
+                                <p className="text-gray-300 mt-2">Youngest USC student to take Ph.D. level Computer Science courses</p>
+                                <ul className="list-disc list-inside text-gray-300 mt-2">
+                                    <li>Convex Optimization (CSCI 672)</li>
+                                    <li>Combinatorial Optimization (ISE 675)</li>
+                                    <li>Stochastic Calculus and Mathematical Finance (MATH 530)</li>
+                                    <li>Advanced Analysis of Algorithms (CSCI 670)</li>
+                                    <li>Others...</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-semibold text-blue-300">Stamps Scholarship</h3>
+                                <p className="text-gray-400">Stamps Foundation, Apr 2017</p>
+                                <p className="text-gray-300 mt-2">
+                                    USC's most competitive academic scholarship (5 awards per year).
+                                </p>
+                                <p className="text-gray-300 mt-2">Full-tuition scholarship plus access to a $20,000 enrichment fund over 4 years for study abroad, unpaid internships, summer research or other opportunities.</p>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-semibold text-blue-300">Best Delegate</h3>
+                                <p className="text-gray-400">Model United Nations, Mar 2014</p>
+                                <ul className="list-disc list-inside text-gray-300 mt-2">
+                                    <li>Best Delegate at a Model United Nations conference in Hyderabad</li>
+                                    <li>Honorable Mention at Yale MUN in Seoul</li>
+                                </ul>
+                            </div>
+                        </div>
                     </CardContent>
                 </Card>
             </main>

@@ -121,18 +121,18 @@ export default function About() {
                             <CardContent className="p-6">
                                 <h2 className="text-2xl font-bold mb-4 text-blue-400">{"Skills & Interests"}</h2>
                                 <p className="text-gray-300 mb-4">
-                                    My expertise spans across various fields:
+                                    I like Jupyter notebooks, primatology, poker theory, Coastal California, chess tactics, Speechify, and old books.
                                 </p>
-                                <ul className="list-disc list-inside text-gray-300 mb-4">
+                                {/* <ul className="list-disc list-inside text-gray-300 mb-4">
                                     <li>Quantitative Finance</li>
                                     <li>Artificial Intelligence and Machine Learning</li>
                                     <li>Blockchain Technology</li>
                                     <li>Entrepreneurship</li>
                                     <li>Product Development</li>
                                     <li>Advanced Mathematics</li>
-                                </ul>
+                                </ul> */}
                                 <p className="text-gray-300">
-                                    {"I'm passionate about leveraging technology to solve complex problems and create innovative solutions that shape the future of finance and beyond."}
+                                    {"Fluent in english and python."}
                                 </p>
                             </CardContent>
                         </Card>

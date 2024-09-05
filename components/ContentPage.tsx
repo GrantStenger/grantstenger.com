@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, ReactNode } from 'react'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { ContentCard } from '@/components/ContentCard'
@@ -15,7 +15,7 @@ interface ContentItem {
 }
 
 interface ContentPageProps {
-    title: string;
+    title: ReactNode;
     items: ContentItem[];
     searchPlaceholder: string;
 }

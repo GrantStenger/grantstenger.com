@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter, Anonymous_Pro } from 'next/font/google'
 import localFont from 'next/font/local'
+import type { Metadata } from 'next'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -69,9 +70,20 @@ const abcDiatype = localFont({
   variable: '--font-abc-diatype',
 })
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Grant Stenger',
   description: 'Personal website of Grant Stenger, Founder & CEO of Kinetic',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180' },
+    ],
+  },
+  manifest: '/site.webmanifest',
 }
 
 export default function RootLayout({
@@ -81,7 +93,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${anonymousPro.variable} ${abcDiatype.variable}`}>
-      <body className={`${abcDiatype.className} bg-black text-white min-h-screen flex flex-col`}>{children}</body>
+      <body className={`${abcDiatype.className} bg-black text-white min-h-screen flex flex-col`}>
+        {children}
+      </body>
     </html>
   )
 }

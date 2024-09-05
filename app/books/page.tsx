@@ -4,7 +4,7 @@ import { books } from '@/data/books'
 export default function Books() {
     return (
         <ContentPage
-            title="FAVORITE BOOKS"
+            title="BOOKS"
             items={books}
             searchPlaceholder="Search books..."
         />

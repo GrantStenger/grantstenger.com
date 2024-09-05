@@ -11,18 +11,8 @@ interface ContentCardProps {
 }
 
 export function ContentCard({ title, author, year, link, description }: ContentCardProps) {
-    const ContentWrapper = link ? Link : 'div';
-    const wrapperProps = link ? {
-        href: link,
-        target: "_blank",
-        rel: "noopener noreferrer",
-    } : {};
-
-    return (
-        <ContentWrapper
-            {...wrapperProps}
-            className="block group relative"
-        >
+    const content = (
+        <>
             <div className="absolute inset-0 bg-gradient-to-r from-gray-600 to-[#141414] rounded-[9px] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
             <div className="relative p-[1px] rounded-[9px]">
                 <Card className="bg-black group-hover:bg-[#141414] border-none transition-colors duration-200 rounded-lg">
@@ -49,6 +39,20 @@ export function ContentCard({ title, author, year, link, description }: ContentC
                     </CardContent>
                 </Card>
             </div>
-        </ContentWrapper>
-    )
+        </>
+    );
+
+    if (link) {
+        return (
+            <Link href={link} target="_blank" rel="noopener noreferrer" className="block group relative">
+                {content}
+            </Link>
+        );
+    }
+
+    return (
+        <div className="block group relative">
+            {content}
+        </div>
+    );
 }

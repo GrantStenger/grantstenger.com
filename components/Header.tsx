@@ -12,28 +12,31 @@ interface HeaderProps {
 export function Header({ className = '' }: HeaderProps) {
     const pathname = usePathname()
     const isHomePage = pathname === '/'
-    const [isMobile, setIsMobile] = useState(false)
+    const [isMounted, setIsMounted] = useState(false)
 
     useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 768) // Adjust this breakpoint as needed
-        }
-
-        handleResize() // Initial check
-        window.addEventListener('resize', handleResize)
-        return () => window.removeEventListener('resize', handleResize)
+        setIsMounted(true)
     }, [])
+
+    const renderHeaderText = () => {
+        if (!isMounted) {
+            return <span className="invisible">GRANT STENGER</span>
+        }
+        if (isHomePage) {
+            return <div className="invisible">GRANT STENGER</div>
+        }
+        return (
+            <Link href="/" className="text-white font-semibold">
+                <span className="hidden md:inline">GRANT STENGER</span>
+                <span className="inline md:hidden">GS</span>
+            </Link>
+        )
+    }
 
     return (
         <header className={`py-4 md:py-6 bg-black text-white ${className}`}>
             <nav className="flex justify-between items-center px-4 md:px-6 lg:px-12">
-                {!isHomePage ? (
-                    <Link href="/" className="text-white font-semibold">
-                        {isMobile ? 'GS' : 'GRANT STENGER'}
-                    </Link>
-                ) : (
-                    <div className="invisible">GRANT STENGER</div>
-                )}
+                {renderHeaderText()}
                 <div className="flex items-center">
                     <div className="flex space-x-4 md:space-x-6 mr-4 md:mr-6 lg:mr-12">
                         <Link href="/books" className="text-gray-400 hover:text-white transition-colors duration-200 underline text-sm md:text-base">BOOKS</Link>

@@ -35,9 +35,9 @@ export function Header({ className = '' }: HeaderProps) {
                     <div className="invisible">GRANT STENGER</div>
                 )}
                 <div className="flex items-center">
-                    <div className="hidden md:flex space-x-6 mr-6 lg:mr-12">
-                        <Link href="/books" className="text-gray-400 hover:text-white transition-colors duration-200 underline">BOOKS</Link>
-                        <Link href="/essays" className="text-gray-400 hover:text-white transition-colors duration-200 underline">ESSAYS</Link>
+                    <div className="flex space-x-4 md:space-x-6 mr-4 md:mr-6 lg:mr-12">
+                        <Link href="/books" className="text-gray-400 hover:text-white transition-colors duration-200 underline text-sm md:text-base">BOOKS</Link>
+                        <Link href="/essays" className="text-gray-400 hover:text-white transition-colors duration-200 underline text-sm md:text-base">ESSAYS</Link>
                     </div>
                     <div className="flex space-x-2 md:space-x-4">
                         <SocialLink href="https://twitter.com/GrantStenger" icon="/icons/twitter.svg" label="Twitter" />
@@ -60,7 +60,7 @@ interface SocialLinkProps {
 function SocialLink({ href, icon, label }: SocialLinkProps) {
     return (
         <Link href={href} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200">
-            <Image src={icon} alt={label} width={20} height={20} className="md:w-6 md:h-6" />
+            <Image src={icon} alt={label} width={20} height={20} className="w-5 h-5 md:w-6 md:h-6" />
             <span className="sr-only">{label}</span>
         </Link>
     )

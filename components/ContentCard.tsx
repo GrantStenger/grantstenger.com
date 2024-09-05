@@ -25,7 +25,7 @@ export function ContentCard({ title, author, year, link, description }: ContentC
                             {description && <p className="text-gray-400 mt-2">{description}</p>}
                         </div>
                         {link && (
-                            <div className="flex items-center text-gray-500 group-hover:text-white transition-colors duration-200 ml-4">
+                            <div className="hidden md:flex items-center text-gray-500 group-hover:text-white transition-colors duration-200 ml-4">
                                 <span className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">Read</span>
                                 <Image
                                     src="/icons/arrow.svg"

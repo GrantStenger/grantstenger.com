@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import { useState, useEffect } from 'react'
 
 interface HeaderProps {
     className?: string;
@@ -11,22 +12,34 @@ interface HeaderProps {
 export function Header({ className = '' }: HeaderProps) {
     const pathname = usePathname()
     const isHomePage = pathname === '/'
+    const [isMobile, setIsMobile] = useState(false)
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768) // Adjust this breakpoint as needed
+        }
+
+        handleResize() // Initial check
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
 
     return (
-        <header className={`py-6 bg-black text-white ${className}`}>
-            <nav className="flex justify-between items-center px-6 lg:px-12">
-                {!isHomePage && (
+        <header className={`py-4 md:py-6 bg-black text-white ${className}`}>
+            <nav className="flex justify-between items-center px-4 md:px-6 lg:px-12">
+                {!isHomePage ? (
                     <Link href="/" className="text-white font-semibold">
-                        GRANT STENGER
+                        {isMobile ? 'GS' : 'GRANT STENGER'}
                     </Link>
+                ) : (
+                    <div className="invisible">GRANT STENGER</div>
                 )}
-                {isHomePage && <div></div>}
                 <div className="flex items-center">
-                    <div className="space-x-6 mr-12">
+                    <div className="hidden md:flex space-x-6 mr-6 lg:mr-12">
                         <Link href="/books" className="text-gray-400 hover:text-white transition-colors duration-200 underline">BOOKS</Link>
                         <Link href="/essays" className="text-gray-400 hover:text-white transition-colors duration-200 underline">ESSAYS</Link>
                     </div>
-                    <div className="flex space-x-4">
+                    <div className="flex space-x-2 md:space-x-4">
                         <SocialLink href="https://twitter.com/GrantStenger" icon="/icons/twitter.svg" label="Twitter" />
                         <SocialLink href="https://github.com/GrantStenger" icon="/icons/github.svg" label="GitHub" />
                         <SocialLink href="https://www.instagram.com/grant.stenger/" icon="/icons/instagram.svg" label="Instagram" />
@@ -47,7 +60,7 @@ interface SocialLinkProps {
 function SocialLink({ href, icon, label }: SocialLinkProps) {
     return (
         <Link href={href} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200">
-            <Image src={icon} alt={label} width={24} height={24} />
+            <Image src={icon} alt={label} width={20} height={20} className="md:w-6 md:h-6" />
             <span className="sr-only">{label}</span>
         </Link>
     )

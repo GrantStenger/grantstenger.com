@@ -828,22 +828,10 @@ export const books = [
     link: "https://www.amazon.com/Anglo-Saxon-Chronicle-Translated-Translated-Old/dp/142093351X"
   },
   {
-    title: "The Alexiad",
-    author: "Anna Komnene",
-    description: "A history of the Byzantine Empire during the reign of Alexios I Komnenos, written by his daughter.",
-    link: "https://www.amazon.com/Alexiad-Penguin-Classics-Anna-Comnena/dp/0140455272"
-  },
-  {
     title: "The Muqaddimah",
     author: "Ibn Khaldun",
     description: "A foundational work in historiography and sociology, discussing the philosophy of history and civilization.",
     link: "https://www.amazon.com/Muqaddimah-Introduction-History-Classics-Library/dp/0691136573"
-  },
-  {
-    title: "The History of the World",
-    author: "Walter Raleigh",
-    description: "A comprehensive history of the world from creation to the Roman Empire, written by an English explorer and historian.",
-    link: "https://www.amazon.com/History-World-Walter-Raleigh/dp/1108025698"
   },
   {
     title: "The Decline and Fall of the Roman Empire",
@@ -856,12 +844,6 @@ export const books = [
     author: "Gomes Eanes de Zurara",
     description: "A historical account of Portuguese exploration and conquest in West Africa.",
     link: "https://www.amazon.com/Chronicle-Discovery-Conquest-Guinea-Transactions/dp/1108013146"
-  },
-  {
-    title: "The Rise and Fall of the Third Reich",
-    author: "William L. Shirer",
-    description: "A comprehensive history of Nazi Germany, from its rise to power to its ultimate defeat.",
-    link: "https://www.amazon.com/Rise-Fall-Third-Reich-History/dp/1451651686"
   },
   {
     title: "Weapons Systems and Political Stability: A History",
@@ -904,12 +886,6 @@ export const books = [
     author: "Montesquieu",
     description: "A foundational work in political theory, discussing the separation of powers and the nature of law.",
     link: "https://www.amazon.com/Spirit-Laws-Cambridge-Texts-Political/dp/0521369746"
-  },
-  {
-    title: "The Encyclopédie",
-    author: "Denis Diderot",
-    description: "An Enlightenment-era compendium of knowledge and ideas, promoting reason, science, and skepticism.",
-    link: "https://www.amazon.com/Encyclopedie-Denis-Diderot/dp/0226154111"
   },
   {
     title: "Critique of Pure Reason",
@@ -996,22 +972,10 @@ export const books = [
     link: "https://www.amazon.com/Morte-DArthur-Sir-Thomas-Malory/dp/0199537346"
   },
   {
-    title: "Gargantua and Pantagruel",
-    author: "François Rabelais",
-    description: "A series of five novels about the adventures of two giants, Gargantua and his son Pantagruel, filled with satire and humor.",
-    link: "https://www.amazon.com/Gargantua-Pantagruel-Penguin-Classics-Francois/dp/0140445501"
-  },
-  {
     title: "The Faerie Queene",
     author: "Edmund Spenser",
     description: "An epic poem celebrating the virtues of the chivalric order and allegorically representing the Tudor dynasty.",
     link: "https://www.amazon.com/Faerie-Queene-Edmund-Spenser/dp/0199537214"
-  },
-  {
-    title: "Tristram Shandy",
-    author: "Laurence Sterne",
-    description: "A novel that employs a unique narrative style to tell the story of Tristram Shandy's life and opinions.",
-    link: "https://www.amazon.com/Life-Opinions-Tristram-Shandy-Gentleman/dp/0141439777"
   },
   {
     title: "Eugene Onegin",
@@ -1032,12 +996,6 @@ export const books = [
     link: "https://www.amazon.com/Madame-Bovary-Gustave-Flaubert/dp/0140449124"
   },
   {
-    title: "War and Peace",
-    author: "Leo Tolstoy",
-    description: "An epic novel that interweaves the lives of several families during the Napoleonic Wars.",
-    link: "https://www.amazon.com/War-Peace-Leo-Tolstoy/dp/0140447938"
-  },
-  {
     title: "Les Misérables",
     author: "Victor Hugo",
     description: "A novel that explores the struggles of ex-convict Jean Valjean and others in post-revolutionary France.",
@@ -1054,12 +1012,6 @@ export const books = [
     author: "Henry James",
     description: "A novel about an American woman who travels to Europe and faces complex choices about her freedom and relationships.",
     link: "https://www.amazon.com/Portrait-Lady-Penguin-Classics/dp/0141441265"
-  },
-  {
-    title: "Three Sisters",
-    author: "Anton Chekhov",
-    description: "A play that explores the lives of three sisters living in a provincial Russian town and their dreams of returning to Moscow.",
-    link: "https://www.amazon.com/Three-Sisters-Oxford-Worlds-Classics/dp/0199536692"
   },
   {
     title: "Ulysses",
@@ -1338,7 +1290,7 @@ export const books = [
     link: "https://www.amazon.com/Great-Stagnation-Low-Hanging-Eventually-Expanded/dp/0520279655"
   },
   {
-    title: "Energy: A Beginner’s Guide",
+    title: "Energy: A Beginner's Guide",
     author: "Vaclav Smil",
     description: "An introduction to the science of energy, covering its history, types, and the role it plays in human civilization.",
     link: "https://www.amazon.com/Energy-Beginners-Guide-Oneworld-Smil/dp/1786071338"
@@ -1566,40 +1518,10 @@ export const books = [
     link: "https://www.amazon.com/Faust-First-Part-Johann-Goethe/dp/0140449019"
   },
   {
-    title: "Pride and Prejudice",
-    author: "Jane Austen",
-    description: "A novel of manners that critiques the British class system through the romantic entanglements of Elizabeth Bennet and Mr. Darcy.",
-    link: "https://www.amazon.com/Pride-Prejudice-Jane-Austen/dp/0141040343"
-  },
-  {
     title: "Frankenstein",
     author: "Mary Shelley",
     description: "A novel about a scientist who creates a sentient creature, exploring themes of ambition, humanity, and the consequences of playing God.",
     link: "https://www.amazon.com/Frankenstein-Mary-Shelley/dp/0141439475"
-  },
-  {
-    title: "The Hunchback of Notre-Dame",
-    author: "Victor Hugo",
-    description: "A novel set in medieval Paris, focusing on the tragic life of Quasimodo, the deformed bell-ringer of Notre-Dame Cathedral.",
-    link: "https://www.amazon.com/Hunchback-Notre-Dame-Victor-Hugo/dp/0140443533"
-  },
-  {
-    title: "Jane Eyre",
-    author: "Charlotte Brontë",
-    description: "A novel following the life of Jane Eyre, an orphan who becomes a governess and falls in love with her mysterious employer.",
-    link: "https://www.amazon.com/Jane-Eyre-Charlotte-Bronte/dp/0141441141"
-  },
-  {
-    title: "Wuthering Heights",
-    author: "Emily Brontë",
-    description: "A gothic novel exploring the intense, often destructive relationship between Heathcliff and Catherine Earnshaw.",
-    link: "https://www.amazon.com/Wuthering-Heights-Emily-Bronte/dp/0141439556"
-  },
-  {
-    title: "The Scarlet Letter",
-    author: "Nathaniel Hawthorne",
-    description: "A novel set in Puritan New England, focusing on the themes of sin, guilt, and redemption through the story of Hester Prynne.",
-    link: "https://www.amazon.com/Scarlet-Letter-Nathaniel-Hawthorne/dp/0142437263"
   },
   {
     title: "David Copperfield",

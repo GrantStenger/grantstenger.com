@@ -2608,5 +2608,11 @@ export const essays = [
         "author": "Jim Waldo",
         "year": 2003,
         "link": "https://www.artima.com/weblogs/viewpost.jsp?thread=24807"
+    },
+    {
+        "title": "Political Authority (Autorité Politique)",
+        "author": "Denis Diderot",
+        "year": 1751,
+        "link": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2732/Diderot_EncyclopedicLiberty1642_LF.pdf"
     }
 ]

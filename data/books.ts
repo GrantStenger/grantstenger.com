@@ -2040,12 +2040,6 @@ export const books = [
     link: "https://www.amazon.com/Social-Contract-Jean-Jacques-Rousseau/dp/0140442014"
   },
   {
-    title: "The Communist Manifesto",
-    author: "Friedrich Engels and Karl Marx",
-    description: "A political pamphlet advocating for the overthrow of capitalist systems and the establishment of a classless society.",
-    link: "https://www.amazon.com/Communist-Manifesto-Karl-Marx/dp/0717802418"
-  },
-  {
     title: "Walden; or, Life in the Woods",
     author: "Henry David Thoreau",
     description: "A reflection on simple living and self-sufficiency, based on Thoreau's experience living in a cabin near Walden Pond.",

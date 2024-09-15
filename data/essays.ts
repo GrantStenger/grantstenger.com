@@ -2614,5 +2614,11 @@ export const essays = [
         "author": "Denis Diderot",
         "year": 1751,
         "link": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2732/Diderot_EncyclopedicLiberty1642_LF.pdf"
+    },
+    {
+        "title": "How to Succeed in Mrbeast Production",
+        "author": "Jimmy Donaldson",
+        "year": 2024,
+        "link": "https://drive.google.com/file/d/1YaG9xpu-WQKBPUi8yQ4HaDYQLUSa7Y3J/view"
     }
 ]

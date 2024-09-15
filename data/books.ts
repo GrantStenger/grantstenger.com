@@ -1044,22 +1044,10 @@ export const books = [
     link: "https://www.amazon.com/Sound-Fury-William-Faulkner/dp/0679732241"
   },
   {
-    title: "Lolita",
-    author: "Vladimir Nabokov",
-    description: "A controversial novel about a man's obsession with a young girl, exploring themes of manipulation and obsession.",
-    link: "https://www.amazon.com/Lolita-Vladimir-Nabokov/dp/0679723161"
-  },
-  {
     title: "The Name of the Rose",
     author: "Umberto Eco",
     description: "A historical mystery novel set in a 14th-century monastery, involving a series of murders and a secretive library.",
     link: "https://www.amazon.com/Name-Rose-Umberto-Eco/dp/0544176561"
-  },
-  {
-    title: "Infinite Jest",
-    author: "David Foster Wallace",
-    description: "A complex novel that explores addiction, entertainment, and society in a dystopian future.",
-    link: "https://www.amazon.com/Infinite-Jest-David-Foster-Wallace/dp/0316066524"
   },
   {
     title: "Elements",

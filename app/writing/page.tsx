@@ -81,10 +81,22 @@ export default function WritingPage() {
   });
 
   const memoizedMarkdownComponents = useMemo<Components>(() => ({
-    h1: ({ children, ...props }) => <h1 id={children?.toString().toLowerCase().replace(/\s/g, '-')} className="text-3xl md:text-4xl font-bold mt-12 mb-6 text-white" {...props}>{children}</h1>,
-    h2: ({ children, ...props }) => <h2 id={children?.toString().toLowerCase().replace(/\s/g, '-')} className="text-2xl md:text-3xl font-semibold mt-10 mb-5 text-white" {...props}>{children}</h2>,
-    h3: ({ children, ...props }) => <h3 id={children?.toString().toLowerCase().replace(/\s/g, '-')} className="text-xl md:text-2xl font-medium mt-8 mb-4 text-white" {...props}>{children}</h3>,
-    p: ({ children, ...props }) => <p className="mb-6 text-base md:text-lg" {...props}>{children}</p>,
+    h1: ({ children, ...props }) => <h1 id={children?.toString().toLowerCase().replace(/\s/g, '-')} className="text-2xl md:text-3xl lg:text-4xl font-bold mt-12 mb-6 text-white" {...props}>{children}</h1>,
+    h2: ({ children, ...props }) => <h2 id={children?.toString().toLowerCase().replace(/\s/g, '-')} className="text-xl md:text-2xl lg:text-3xl font-semibold mt-10 mb-5 text-white" {...props}>{children}</h2>,
+    h3: ({ children, ...props }) => <h3 id={children?.toString().toLowerCase().replace(/\s/g, '-')} className="text-lg md:text-xl lg:text-2xl font-medium mt-8 mb-4 text-white" {...props}>{children}</h3>,
+    p: ({ children, ...props }) => {
+      const childrenArray = React.Children.toArray(children);
+      const textContent = childrenArray.filter(child => typeof child === 'string').join('').trim();
+      if (textContent === '') {
+        return <>{childrenArray.map((child, index) => {
+          if (React.isValidElement(child) && child.type === 'img') {
+            return <React.Fragment key={index}>{child}</React.Fragment>;
+          }
+          return null;
+        })}</>;
+      }
+      return <p className="mb-6 text-base md:text-lg" {...props}>{children}</p>;
+    },
     img: ({ src, alt, ...props }) => {
       if (typeof src !== 'string') {
         return null;
@@ -93,9 +105,12 @@ export default function WritingPage() {
       const imageProps = getImageProps(src, alt);
       
       return (
-        <div className="relative w-full h-[600px] mx-auto my-8">
-          <Image {...imageProps} />
-        </div>
+        <figure className="my-8">
+          <div className="relative w-full h-[600px]">
+            <Image {...imageProps} />
+          </div>
+          {alt && <figcaption className="text-center text-sm mt-2 text-gray-400">{alt}</figcaption>}
+        </figure>
       );
     },
     a: ({ children, ...props }) => <a className="text-gray-300 hover:text-white underline transition-colors duration-200" {...props}>{children}</a>,
@@ -119,12 +134,22 @@ export default function WritingPage() {
         className="fixed top-0 left-0 right-0 z-50 h-1"
       />
       <main className="flex-grow px-4 py-16">
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-[60rem] mx-auto"> {/* Custom width between max-w-4xl and max-w-5xl */}
           <div className="absolute inset-0 bg-gradient-to-r from-gray-600 to-[#141414] rounded-lg"></div>
           <div className="relative p-[1px] rounded-lg">
             <article ref={articleRef} className="p-8 bg-[#141414] rounded-lg">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white leading-tight">
-                {prisonersDilemmaContent.title}
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-white leading-tight">
+                {prisonersDilemmaContent.title.split(': ').map((part, index) => (
+                  <React.Fragment key={index}>
+                    {index > 0 && (
+                      <>
+                        <span>:</span>
+                        <br />
+                      </>
+                    )}
+                    <span>{part}</span>
+                  </React.Fragment>
+                ))}
               </h1>
               <TableOfContents content={prisonersDilemmaContent.content} />
               <ReactMarkdown

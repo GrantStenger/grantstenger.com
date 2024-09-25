@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
+import React, { useRef, useMemo } from 'react'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import ReactMarkdown from 'react-markdown'
@@ -12,9 +12,9 @@ import 'katex/dist/katex.min.css'
 import { prisonersDilemmaContent } from '../../data/prisonersDilemmaContent'
 import Link from 'next/link'
 import Image, { ImageProps } from 'next/image'
-import { Progress } from '../../components/ui/progress'
 import { Button } from '../../components/ui/button'
 import { ArrowUp } from 'lucide-react'
+import { ProgressBar } from '../../components/ProgressBar'
 
 const TableOfContents: React.FC<{ content: string }> = React.memo(({ content }) => {
   const headings = useMemo(() => content.match(/^#{1,3} .+$/gm) || [], [content])
@@ -48,28 +48,11 @@ interface CodeProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 export default function WritingPage() {
-  const [readingProgress, setReadingProgress] = useState(0)
-  const [showScrollTop, setShowScrollTop] = useState(false)
   const articleRef = useRef<HTMLElement>(null)
 
-  const handleScroll = useCallback(() => {
-    if (articleRef.current) {
-      const totalHeight = articleRef.current.clientHeight - window.innerHeight
-      const windowScrollTop = window.scrollY || document.documentElement.scrollTop
-      const scrolled = (windowScrollTop / totalHeight) * 100
-      setReadingProgress(scrolled)
-      setShowScrollTop(windowScrollTop > 300)
-    }
-  }, [])
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [handleScroll])
-
-  const scrollToTop = useCallback(() => {
+  const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [])
+  }
 
   const getImageProps = (src: string, alt: string | undefined): ImageProps => ({
     src,
@@ -129,12 +112,9 @@ export default function WritingPage() {
   return (
     <div className="flex flex-col min-h-screen bg-black text-white">
       <Header />
-      <Progress 
-        value={readingProgress} 
-        className="fixed top-0 left-0 right-0 z-50 h-1"
-      />
+      <ProgressBar targetRef={articleRef} />
       <main className="flex-grow px-4 py-16">
-        <div className="relative max-w-[60rem] mx-auto"> {/* Custom width between max-w-4xl and max-w-5xl */}
+        <div className="relative max-w-[60rem] mx-auto">
           <div className="absolute inset-0 bg-gradient-to-r from-gray-600 to-[#141414] rounded-lg"></div>
           <div className="relative p-[1px] rounded-lg">
             <article ref={articleRef} className="p-8 bg-[#141414] rounded-lg">
@@ -165,14 +145,12 @@ export default function WritingPage() {
         </div>
       </main>
       <Footer />
-      {showScrollTop && (
-        <Button
-          className="fixed bottom-8 right-8 p-2 bg-white hover:bg-gray-200 text-black rounded-full shadow-lg transition-all duration-300"
-          onClick={scrollToTop}
-        >
-          <ArrowUp size={24} />
-        </Button>
-      )}
+      <Button
+        className="fixed bottom-8 right-8 p-2 bg-white hover:bg-gray-200 text-black rounded-full shadow-lg transition-all duration-300 opacity-0 hover:opacity-100 focus:opacity-100"
+        onClick={scrollToTop}
+      >
+        <ArrowUp size={24} />
+      </Button>
     </div>
   )
 }

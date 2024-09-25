@@ -1,9 +1,9 @@
 'use client'
 
 import { useState, useEffect, ReactNode } from 'react'
-import { Header } from '@/components/Header'
-import { Footer } from '@/components/Footer'
-import { ContentCard } from '@/components/ContentCard'
+import { Header } from 'components/Header'
+import { Footer } from 'components/Footer'
+import { ContentCard } from 'components/ContentCard'
 import Image from 'next/image'
 
 interface ContentItem {

@@ -1,5 +1,5 @@
-import { ContentPage } from '@/components/ContentPage'
-import { essays } from '@/data/essays'
+import { ContentPage } from '../../components/ContentPage'
+import { essays } from '../../data/essays'
 
 export default function Essays() {
     return (

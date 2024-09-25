@@ -1,5 +1,5 @@
-import { ContentPage } from '@/components/ContentPage'
-import { books } from '@/data/books'
+import { ContentPage } from '../../components/ContentPage'
+import { books } from '../../data/books'
 
 export default function Books() {
     return (

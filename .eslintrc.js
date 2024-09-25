@@ -20,6 +20,8 @@ module.exports = {
   rules: {
     ...tsPlugin.configs.recommended.rules,
     '@next/next/no-duplicate-head': 'error',
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unused-vars": "warn"
   },
   ignorePatterns: ['node_modules/**', '.next/**', 'out/**'],
 };

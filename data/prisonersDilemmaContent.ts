@@ -824,6 +824,6 @@ A broader conclusion of this analysis is to always consider higher-level depende
 
 For those who remain compelled by the original argument that, "still, if you know your opponent is going to cooperate, you're better off defecting to serve no time instead of 1 year", I might share some of my ideas on why I suspect that the recursive expected utility maximization decision algorithm that I present is superior in a follow-up essay. But for now, I'll just say that while the Causal Decision Theorists are stuck in their (defect, defect) "rational" Nash equilibria, my coconspirators and I will be faithfully cooperating and walking free into the warm sun of Pareto Optimality.
 
-***Acknowledgements:** Thank you Alok Singh, Baran Cimen, Keegan McNamara, and Paul Schmidt-Engelbertz for reading through the draft and providing helpful guidance.*
+***Acknowledgements:** Thank you Alok Singh, Baran Cimen, Keegan McNamara, Jackson Stenger, and Paul Schmidt-Engelbertz for reading through the draft and providing helpful guidance.*
 `
 };

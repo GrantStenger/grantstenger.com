@@ -58,7 +58,7 @@ This site is deployed using [Vercel](https://vercel.com/), which provides automa
 
 ## Contact
 
-For any inquiries or feedback, please reach out to me:
+If you have any questions or feedback, feel free to reach out to me:
 
 - Twitter: [@GrantStenger](https://x.com/GrantStenger)
 - LinkedIn: [Grant Stenger](https://www.linkedin.com/in/grant-stenger/)

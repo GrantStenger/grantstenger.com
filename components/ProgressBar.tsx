@@ -34,7 +34,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({ targetRef }) => {
     window.addEventListener('scroll', handleScroll, { passive: true })
     window.addEventListener('resize', updateProgress, { passive: true })
 
-    updateProgress() // Initial call to set the initial progress
+    updateProgress()
 
     return () => {
       window.removeEventListener('scroll', handleScroll)

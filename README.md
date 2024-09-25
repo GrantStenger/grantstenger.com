@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# grantstenger.com
+
+This is my personal website, [grantstenger.com](https://grantstenger.com). This site serves as a platform to showcase my writing and interests.
+
+## Project Overview
+
+### Key Features
+
+- **Writing**: My own long-form writing, e.g. [The Case for Cooperation in the Prisoner's Dilemma](https://www.grantstenger.com/writing).
+- **Books Page**: A curated list of my favorite books.
+- **Essays Page**: A curated list of my favorite essays/papers/articles.
+- **Search Functionality**: Search through my essays and books.
+- **Interactive Reading Progress**: A progress bar that shows the reader's position in long articles.
+- **Responsive Design**: Optimized for various screen sizes and devices.
+- **Mathematics Typesetting Support**: Renders mathematical equations using KaTeX.
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/): React framework for server-side rendering and static site generation
+- [React](https://reactjs.org/): JavaScript library for building user interfaces
+- [TypeScript](https://www.typescriptlang.org/): Typed superset of JavaScript
+- [Tailwind CSS](https://tailwindcss.com/): Utility-first CSS framework
+- [ReactMarkdown](https://github.com/remarkjs/react-markdown): Markdown parser and renderer for React
+- [KaTeX](https://katex.org/): Fast math typesetting library for the web
 
 ## Getting Started
 
-First, run the development server:
+To run this project locally, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository:
+   ```
+   git clone https://github.com/GrantStenger/grantstenger.com.git
+   cd grantstenger.com
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+   ```
+   yarn install
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+   ```
+   yarn dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to view the site.
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `app/`: Contains the main pages and components of the site
+- `components/`: Reusable React components
+- `data/`: Static content and data files
+- `public/`: Static assets like images and icons
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+This site is deployed using [Vercel](https://vercel.com/), which provides automatic deployments on push to the main branch.
 
-## Deploy on Vercel
+## Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+For any inquiries or feedback, please reach out to me:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Twitter: [@GrantStenger](https://x.com/GrantStenger)
+- LinkedIn: [Grant Stenger](https://www.linkedin.com/in/grant-stenger/)

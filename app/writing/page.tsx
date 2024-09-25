@@ -69,16 +69,27 @@ export default function WritingPage() {
     h3: ({ children, ...props }) => <h3 id={children?.toString().toLowerCase().replace(/\s/g, '-')} className="text-lg md:text-xl lg:text-2xl font-medium mt-8 mb-4 text-white" {...props}>{children}</h3>,
     p: ({ children, ...props }) => {
       const childrenArray = React.Children.toArray(children);
-      const textContent = childrenArray.filter(child => typeof child === 'string').join('').trim();
-      if (textContent === '') {
-        return <>{childrenArray.map((child, index) => {
-          if (React.isValidElement(child) && child.type === 'img') {
-            return <React.Fragment key={index}>{child}</React.Fragment>;
-          }
-          return null;
-        })}</>;
+      const hasNonEmptyContent = childrenArray.some(child => {
+        if (typeof child === 'string') {
+          return child.trim() !== '';
+        }
+        return React.isValidElement(child);
+      });
+
+      if (!hasNonEmptyContent) {
+        return <p className="mb-6 text-base md:text-lg" {...props}>&nbsp;</p>;
       }
-      return <p className="mb-6 text-base md:text-lg" {...props}>{children}</p>;
+
+      return (
+        <p className="mb-6 text-base md:text-lg last:mb-0" {...props}>
+          {childrenArray.map((child, index) => {
+            if (React.isValidElement(child) && child.type === 'img') {
+              return <React.Fragment key={index}>{child}</React.Fragment>;
+            }
+            return child;
+          })}
+        </p>
+      );
     },
     img: ({ src, alt, ...props }) => {
       if (typeof src !== 'string') {

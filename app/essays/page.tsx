@@ -7,6 +7,7 @@ export default function Essays() {
             title={<>FAVORITE<br />ESSAYS</>}
             items={essays}
             searchPlaceholder="Search essays..."
+            baseUrl="/essays"
         />
     )
 }

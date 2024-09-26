@@ -7,6 +7,7 @@ export default function Books() {
             title="FAVORITE BOOKS"
             items={books}
             searchPlaceholder="Search books..."
+            baseUrl="/books"
         />
     )
 }

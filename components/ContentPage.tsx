@@ -1,24 +1,28 @@
 'use client'
 
-import { useState, useEffect, ReactNode, useRef } from 'react'
-import { Header } from 'components/Header'
-import { Footer } from 'components/Footer'
-import { ContentCard } from 'components/ContentCard'
-import { ProgressBar } from 'components/ProgressBar'
+import { useState, useEffect, ReactNode } from 'react'
+import { Header } from './Header'
+import { Footer } from './Footer'
+import { ContentCard } from './ContentCard'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface ContentItem {
     title: string;
-    author: string;
+    author?: string; // Make author optional
     description?: string;
     year?: number;
     link?: string;
+    slug?: string;
+    content?: string; // Add content as an optional property
 }
 
 interface ContentPageProps {
     title: ReactNode;
     items: ContentItem[];
     searchPlaceholder: string;
+    baseUrl: string;
+    defaultAuthor?: string; // Add a default author prop
 }
 
 function shuffleArray<T>(array: T[]): T[] {
@@ -30,10 +34,9 @@ function shuffleArray<T>(array: T[]): T[] {
     return shuffled;
 }
 
-export function ContentPage({ title, items, searchPlaceholder }: ContentPageProps) {
+export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultAuthor }: ContentPageProps) {
     const [searchTerm, setSearchTerm] = useState('')
     const [randomizedItems, setRandomizedItems] = useState<ContentItem[]>([])
-    const contentRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         setRandomizedItems(shuffleArray(items));
@@ -41,15 +44,14 @@ export function ContentPage({ title, items, searchPlaceholder }: ContentPageProp
 
     const filteredItems = randomizedItems.filter(item =>
         item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.author.toLowerCase().includes(searchTerm.toLowerCase())
+        (item.author || defaultAuthor || '').toLowerCase().includes(searchTerm.toLowerCase())
     )
 
     return (
         <div className="flex flex-col min-h-screen bg-black text-white">
             <Header className="sticky top-0 z-10" />
-            <ProgressBar targetRef={contentRef} />
 
-            <div ref={contentRef} className="flex-grow flex flex-col lg:flex-row">
+            <div className="flex-grow flex flex-col lg:flex-row">
                 <div className="lg:w-1/3 xl:w-1/4 px-6 lg:px-12 py-4 lg:fixed lg:top-24 lg:bottom-0 lg:left-0 lg:overflow-y-auto">
                     <h1 className="text-5xl lg:text-6xl font-bold mb-8">{title}</h1>
                     <div className="relative w-full max-w-sm">
@@ -77,7 +79,9 @@ export function ContentPage({ title, items, searchPlaceholder }: ContentPageProp
                 <main className="lg:w-2/3 xl:w-3/4 lg:ml-[33.333%] xl:ml-[25%] px-6 lg:px-12 py-4">
                     <div className="space-y-4">
                         {filteredItems.map((item, index) => (
-                            <ContentCard key={`${item.title}-${index}`} {...item} />
+                            <Link href={`${baseUrl}/${item.slug || ''}`} key={`${item.title}-${index}`}>
+                                <ContentCard {...item} author={item.author || defaultAuthor} />
+                            </Link>
                         ))}
                     </div>
                 </main>

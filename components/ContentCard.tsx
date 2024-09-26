@@ -4,7 +4,7 @@ import { Card, CardContent } from "components/ui/card"
 
 interface ContentCardProps {
     title: string;
-    author: string;
+    author?: string;
     year?: number;
     link?: string;
     description?: string;
@@ -19,9 +19,11 @@ export function ContentCard({ title, author, year, link, description }: ContentC
                     <CardContent className="p-4 flex items-center justify-between">
                         <div className="flex-grow">
                             <h3 className="text-xl font-semibold text-white group-hover:text-gray-300 transition-colors duration-200">{title}</h3>
-                            <p className="text-gray-500 mt-1">
-                                {author}{year ? `, ${year}` : ''}
-                            </p>
+                            {(author || year) && (
+                                <p className="text-gray-500 mt-1">
+                                    {author}{author && year ? ', ' : ''}{year}
+                                </p>
+                            )}
                             {description && <p className="text-gray-400 mt-2">{description}</p>}
                         </div>
                         {link && (

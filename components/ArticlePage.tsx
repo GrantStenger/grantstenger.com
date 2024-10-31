@@ -36,6 +36,10 @@ const TableOfContents: React.FC<{ content: string }> = React.memo(({ content }) 
       }, [] as string[]);
     }, [content])
   
+    if (headings.length === 0) {
+      return null;
+    }
+  
     return (
       <nav className="toc mb-12 p-6 bg-[#141414] rounded-lg">
         <h2 className="text-2xl font-bold mb-4 text-white">Table of Contents</h2>

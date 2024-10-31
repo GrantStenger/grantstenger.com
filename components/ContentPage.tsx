@@ -12,8 +12,8 @@ interface ContentItem {
     author?: string; // Make author optional
     description?: string;
     year?: number;
-    link?: string;
-    slug?: string;
+    link?: string;    // External URL
+    slug?: string;    // Internal routing
     content?: string; // Add content as an optional property
 }
 
@@ -78,11 +78,22 @@ export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultA
                 </div>
                 <main className="lg:w-2/3 xl:w-3/4 lg:ml-[33.333%] xl:ml-[25%] px-6 lg:px-12 py-4">
                     <div className="space-y-4">
-                        {filteredItems.map((item, index) => (
-                            <Link href={`${baseUrl}/${item.slug || ''}`} key={`${item.title}-${index}`}>
-                                <ContentCard {...item} author={item.author || defaultAuthor} />
-                            </Link>
-                        ))}
+                        {filteredItems.map((item, index) => {
+                            // Determine if this is an internal or external link
+                            const href = item.slug 
+                                ? `${baseUrl}/${item.slug}`  // Internal routing
+                                : item.link;                  // External URL
+                            
+                            return (
+                                <ContentCard 
+                                    key={`${item.title}-${index}`}
+                                    {...item} 
+                                    author={item.author || defaultAuthor}
+                                    href={href}
+                                    isExternal={!item.slug}
+                                />
+                            );
+                        })}
                     </div>
                 </main>
             </div>

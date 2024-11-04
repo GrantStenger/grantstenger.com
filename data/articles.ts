@@ -3,7 +3,7 @@ export const articles = [
       title: "A Case for Cooperation: Dependence in the Prisoner's Dilemma",
       description: "An exploration of the famous game theory problem.",
       slug: "prisoners-dilemma",
-      author: "Grant Stenger (2024)",
+      author: "Grant Stenger (Sept 2024)",
       content: `
 *"The man who is cheerful and merry has always a good reason for being so,—the fact, namely, that he is so." The Wisdom of Life, Schopenhauer (1851)*
 
@@ -832,7 +832,7 @@ For those who remain compelled by the original argument that, "still, if you kno
       title: "Optimizing Portfolio Weights for Maximum CRRA Utility: An Independent Binary Asset Model",
       description: "We derive a closed form solution for the optimal portfolio weights which maximize an agent's CRRA utility over wealth.",
       slug: "binary-asset-portfolio-optimization",
-      author: "Grant Stenger (2024)",
+      author: "Grant Stenger (April 2024)",
       content: `## Summary
 
 This article explores the optimization of portfolio weights to maximize a Constant Relative Risk Aversion (CRRA) utility function over an agent's wealth. We use classic stochastic calculus techniques to model price processes as Geometric Brownian Motion (GBM). We find our solution is, in fact, an extension of the famous Merton Share. 
@@ -960,7 +960,10 @@ $$E[U(W_{t+dt})] = \\frac{W_t^{1-\\gamma} \\left(1 + (1 - \\gamma)(\\lambda_A \\
 
 
 Now, because we're in a dual-asset model where the weights sum to 100%, $\\lambda_B$ is determined to be $1-\\lambda_A$. We can subsitute this into the expression above which gives us:
-$$E[U(W_{t+dt})] = \\frac{W_t^{1-\\gamma} \\left[1 + (1 - \\gamma)(\\lambda_A \\mu_A + (1-\\lambda_A) \\mu_B)dt + \\frac{(1 - \\gamma)(-\\gamma)}{2} (\\lambda_A^2 \\sigma_A^2 + (1-\\lambda_A)^2 \\sigma_B^2)dt\\right] - 1}{1-\\gamma}$$
+
+$$
+E[U(W_{t+dt})] = \\frac{W_t^{1-\\gamma} \\left[1 + (1 - \\gamma)(\\lambda_A \\mu_A + (1-\\lambda_A) \\mu_B)dt + \\frac{(1 - \\gamma)(-\\gamma)}{2} (\\lambda_A^2 \\sigma_A^2 + (1-\\lambda_A)^2 \\sigma_B^2)dt\\right] - 1}{1-\\gamma}
+$$
 
 
 ---
@@ -1024,7 +1027,7 @@ While all models are lossy, I take issue with the idea of a risk-free rate. In p
       title: "Category Creep",
       description: "Using words wrong is bad.",
       slug: "category-creep",
-      author: "Grant Stenger (2024)",
+      author: "Grant Stenger (Oct 2024)",
       content: `
 *TL;DR: I've noticed a tendency to expand definitions too broadly, which dilutes their clarity and utility. I make the case that effective language, in my eyes, requires precise boundaries that slice concepts into hierarchical, mutually exclusive, and collectively exhaustive categories, preserving clear distinctions. By respecting these boundaries, we avoid what I call “category creep” and enhance language's ability to facilitate clear communication and thought.*
 
@@ -1041,6 +1044,629 @@ To illustrate why precise boundaries are essential, consider the value of dividi
 I've noticed a cognitive failure mode where someone, swinging too freely through analogies, overly word-associates themselves into incorrect conclusions. This became clear to me while listening to a recent debate between Richard Dawkins and Jordan Peterson, wherein Dawkins accused Peterson of being “drunk on signs”. The common structure of this failure mode goes something like this: Thing 1 is like thing 2, thing 2 shares qualities with thing 3, and so the person concludes that thing 1 must also share properties with thing 3—or worse, that thing 1 *is* thing 3. In Peterson's case, he claimed that because a dragon is (the imagistic equivalent of) a predator, and because a lion is a (type of) predator, that therefore a lion is a dragon. The disagreement came from Peterson's interpretation of “is” as a loose conceptual equivalence, baffling Dawkins because a lion is not *actually* a dragon. The issue is that “is” here is overloaded, creating ambiguity by blurring metaphor with literal truth. Under Peterson's fuzzy analogistic logic, a lion is like a type of dragon in a figurative sense, but to Dawkins a lion isn't literally the same as a dragon. In this case, in my eyes, Peterson suffers from “category creep” as his overly-metaphorical reasoning flattens important distinctions, reducing “lion” and “dragon” to interchangeable terms. Words, after all, are conceptual boundaries—and when the boundaries get stretched too far, their overlaps reduce their usefulness as categorical distinctions. Though boundaries always have both an inside and an outside, when we think of words as conceptual boundaries, we often focus far more on describing what lies inside the boundary than what lies outside. While lions and dragons have similarities, lions do not fly, lions do not breathe fire, and lions are not mythological. Sometimes, it's just as helpful—if not essential—to clearly define what a word is not. 
 
 Overextending categories—like labeling sports fandoms as religions or lions as dragons—dilutes the specificity and utility of language. This in my eyes is a common and under-discussed cognitive failure mode. In the spirit of this discussion, a label we can assign to this sort of semantic overreach could be “**category creep**”. Ultimately, we as a culture continue to refine linguistic boundaries, and the ideal of pursuing hierarchical MECE categories through precise definitions would help facilitate more accurate communication and thought. 
+      `
+    }, {
+      title: "Optimizing Portfolio Weights for Maximum CRRA Utility: An Independent Three-Asset Model",
+      description: "Deriving the optimal portfolio weights for a three-asset risky model.",
+      slug: "three-asset-model",
+      author: "Grant Stenger (March 2024)",
+      content: `
+***Summary**: In the previous essay, we explored how to derive the optimal allocations under an independent binary asset model where the two stocks follow geometric Brownian motion processes. In this current essay we extend the analysis to three assets and then to an n-asset model.*
+
+
+**Model Definition**
+We have three assets $A$, $B$, and $C$ whose price processes follow GBM processeses with parameters $(\\mu_A, \\sigma_A)$, $(\\mu_B, \\sigma_B)$, and $(\\mu_C, \\sigma_C)$, respectively. We allocate our wealth $W$ between $A$, $B$, and $C$ in proportion $\\lambda_A$, $\\lambda_B$, and $\\lambda_C$, respectively, such that $\\lambda_A + \\lambda_B + \\lambda_C = 1$. We again maintain a Constant Relative Risk Aversion (CRRA) utility function $U(W) = \\frac{W^{1-\\gamma} - 1}{1 - \\gamma}$ where $W_t$ is our wealth at time $t$ and $\\gamma$ is our relative risk aversion parameter.
+
+
+**Deriving Our Expected Utility Function**
+
+We intend to find the portfolio allocation $[\\lambda_A, \\lambda_B, \\lambda_C]$ which maximizes the expected utility of our wealth in the next period, that is:
+$$\\underset{\\lambda_A, \\lambda_B, \\lambda_C}{\\max} \\, E[U(W_{t+dt})].$$
+
+
+After incorporating our CRRA utility function, we see $E[U(W_{t+dt})] = E\\left[\\frac{(W_t + dW_t)^{1-\\gamma} - 1}{1-\\gamma}\\right]$.
+
+
+We can now define our wealth dynamic $dW_t$ as evolving according to the chosen portfolio weights $\\lambda_A$, $\\lambda_B$, and $\\lambda_C$.
+
+$$dW_t = \\lambda_A W_t \\frac{dS_{A,t}}{S_{A,t}} + \\lambda_B W_t \\frac{dS_{B,t}}{S_{B,t}} + \\lambda_C W_t \\frac{dS_{C,t}}{S_{C,t}}.$$
+
+
+Similarly, we note that each stock's price follows a GBM, defined by the stochastic differential equations (SDEs)
+$$
+\\begin{align*}
+dS_{A,t} &= \\mu_A S_{A,t} \\, dt + \\sigma_A S_{A,t} \\, dN_{A,t} \\\\
+dS_{B,t} &= \\mu_B S_{B,t} \\, dt + \\sigma_B S_{B,t} \\, dN_{B,t} \\\\
+dS_{C,t} &= \\mu_C S_{C,t} \\, dt + \\sigma_C S_{C,t} \\, dN_{C,t},
+\\end{align*}
+$$
+where $N_{i,t}$ is our notion for Wiener process on asset $i$ at time $t$. 
+
+
+Substituting all three individual asset processes into our wealth SDE yields
+
+$$
+dW_t = 
+\\lambda_A \\frac{W_t}{S_{A,t}} (\\mu_A S_{A,t} \\, dt + \\sigma_A S_{A,t} \\, dN_{A,t}) + 
+\\lambda_B \\frac{W_t}{S_{B,t}} (\\mu_B S_{B,t} \\, dt + \\sigma_B S_{B,t} \\, dN_{B,t}) +
+\\lambda_C \\frac{W_t}{S_{C,t}} (\\mu_C S_{C,t} \\, dt + \\sigma_C S_{C,t} \\, dN_{C,t}),
+$$
+
+which we can simplify to
+
+$$
+dW_t = 
+\\lambda_A (\\mu_A W_t \\, dt + \\sigma_A W_t \\, dN_{A,t}) + 
+\\lambda_B (\\mu_B W_t \\, dt + \\sigma_B W_t \\, dN_{B,t}) + 
+\\lambda_C (\\mu_C W_t \\, dt + \\sigma_C W_t \\, dN_{C,t}),
+$$
+
+and then to
+
+$$
+dW_t = W_t \\left[ 
+\\lambda_A (\\mu_A \\, dt + \\sigma_A \\, dN_{A,t}) + \\lambda_B (\\mu_B \\, dt + \\sigma_B \\, dN_{B,t}) +
+\\lambda_C (\\mu_C \\, dt + \\sigma_C \\, dN_{C,t})
+\\right].
+$$
+
+Now we can substitute this into our expected utility equation:
+
+$$
+E[U(W_{t+dt})] = 
+E\\left[
+    \\frac
+    {(W_t + W_t (
+        \\lambda_A (\\mu_A dt + \\sigma_A dN_{A,t}) + 
+        \\lambda_B (\\mu_B dt + \\sigma_B dN_{B,t}) + 
+        \\lambda_C (\\mu_C dt + \\sigma_C dN_{C,t}) + 
+        ))^{1-\\gamma}-1}
+    {1-\\gamma}
+\\right]
+$$
+
+
+From here, we begin the process of simplifying this expectation to:
+
+$$
+\\frac
+{E\\left[(W_t + W_t (
+    \\lambda_A (\\mu_A dt + \\sigma_A dN_{A,t}) + 
+    \\lambda_B (\\mu_B dt + \\sigma_B dN_{B,t}) +
+    \\lambda_C (\\mu_C dt + \\sigma_C dN_{C,t})
+    ))^{1-\\gamma}\\right] - 1}
+{1-\\gamma}.
+$$
+
+Then we can pull the $W_t^{1-\\gamma}$ out of the expectation yielding
+
+$$
+\\frac
+{W_t^{1-\\gamma} E\\left[\\left(1 + 
+    \\lambda_A (\\mu_A dt + \\sigma_A dN_{A,t}) + 
+    \\lambda_B (\\mu_B dt + \\sigma_B dN_{B,t}) +
+    \\lambda_B (\\mu_C dt + \\sigma_B dN_{C,t})
+    \\right)^{1-\\gamma}\\right] - 1}
+{1-\\gamma}.
+$$
+
+
+We now consider the second-order Taylor series expansion of $E[(1 + x)^{1-\\gamma}]$ around 1 because we know $x$ will be very small since we're dealing with an infinitesimally small time increment $dt$. In this case, $x=
+\\lambda_A (\\mu_A dt + \\sigma_A dN_{A,t}) + 
+\\lambda_B (\\mu_B dt + \\sigma_B dN_{B,t}) +
+\\lambda_C (\\mu_C dt + \\sigma_C dN_{C,t})$.
+
+
+We remember that the Taylor series of a function $f(x)$ around a point $a$ is given by
+
+$$f(x) = f(a) + f'(a)(x - a) + \\frac{f''(a)}{2!}(x - a)^2 + \\ldots$$
+
+and we are careful to make sure to include the second order term which includes our volatility parameters.
+
+This implies that $E[(1 + x)^{1-\\gamma}] \\approx 1 + (1 - \\gamma)E[x] + \\frac{(1 - \\gamma)(-\\gamma)}{2} E[x^2]$.
+
+
+
+Using $x=
+\\lambda_A (\\mu_A dt + \\sigma_A dN_{A,t}) + 
+\\lambda_B (\\mu_B dt + \\sigma_B dN_{B,t}) +
+\\lambda_C (\\mu_C dt + \\sigma_C dN_{C,t})$, we see that $E[x] = (\\lambda_A \\mu_A + \\lambda_B \\mu_B + \\lambda_C \\mu_C)dt$ because $E[dN_{i,t}]=0$.
+
+
+Furthermore, to solve for $E[x^2]$, we substitute in $x$ which gives us
+$$
+E[x^2] = E[(
+\\lambda_A (\\mu_A dt + \\sigma_A dN_{A,t}) + 
+\\lambda_B (\\mu_B dt + \\sigma_B dN_{B,t}) +
+\\lambda_C (\\mu_C dt + \\sigma_C dN_{C,t})
+)^2].
+$$
+
+
+Though it seems a bit unwieldy, we can simplify the expression $E\\left[\\left(\\lambda_A (\\mu_A dt + \\sigma_A dN_{A,t}) + \\lambda_B (\\mu_B dt + \\sigma_B dN_{B,t}) + \\lambda_C (\\mu_C dt + \\sigma_C dN_{C,t})\\right)^2\\right]$, we need to first expand the square and use the properties of Wiener processes, notably that $E[dN_{i,t}] = 0$ and $E[dN_{i,t}^2] = dt$.
+
+Expanding the square gives:
+
+$$
+\\begin{align*}
+&\\lambda_A^2 (\\mu_A dt + \\sigma_A dN_{A,t})^2 + \\lambda_B^2 (\\mu_B dt + \\sigma_B dN_{B,t})^2 + \\lambda_C^2 (\\mu_C dt + \\sigma_C dN_{C,t})^2 \\\\
+&+ 2 \\lambda_A \\lambda_B (\\mu_A dt + \\sigma_A dN_{A,t})(\\mu_B dt + \\sigma_B dN_{B,t}) \\\\
+&+ 2 \\lambda_A \\lambda_C (\\mu_A dt + \\sigma_A dN_{A,t})(\\mu_C dt + \\sigma_C dN_{C,t}) \\\\
+&+ 2 \\lambda_B \\lambda_C (\\mu_B dt + \\sigma_B dN_{B,t})(\\mu_C dt + \\sigma_C dN_{C,t})
+\\end{align*}
+$$
+
+We can now simplify each term by considering the properties of $dN_{i,t}$ noted before:
+
+For terms like $\\lambda_A^2 (\\mu_A dt + \\sigma_A dN_{A,t})^2$, the expansion will give $\\lambda_A^2 \\mu_A^2 dt^2 + 2 \\lambda_A^2 \\mu_A \\sigma_A dt dN_{A,t} + \\lambda_A^2 \\sigma_A^2 dN_{A,t}^2$. When taking the expected value of this, the $dt dN_{A,t}$ term disappears, and $dN_{A,t}^2$ becomes $dt$, leaving $\\lambda_A^2 \\sigma_A^2 dt$.
+
+When taking the expected value of this, the $dt \, dN_{A,t}$ term disappears, and $dN_{A,t}^2$ becomes $dt$, leaving $\\lambda_A^2 \\sigma_A^2 dt$.
+
+The cross terms like $2 \\lambda_A \\lambda_B (\\mu_A dt + \\sigma_A dN_{A,t})(\\mu_B dt + \\sigma_B dN_{B,t})$ expand out to 
+
+$$2 \\lambda_A \\lambda_B \\mu_A \\mu_B dt^2 + 2 \\lambda_A \\lambda_B \\mu_A \\sigma_B dt \\, dN_{B,t} + 2 \\lambda_A \\lambda_B \\sigma_A \\mu_B dt \\, dN_{A,t} + 2 \\lambda_A \\lambda_B \\sigma_A \\sigma_B dN_{A,t} \\, dN_{B,t}.$$
+Each term in this expression goes to zero because $E[dt^2]=0$ and $E[N_{i,t}]=0$. 
+
+After applying these simplifications, the expected value expression becomes:
+
+$$E
+\\left[\\left(
+    \\lambda_A (\\mu_A dt + \\sigma_A dN_{A,t}) +
+    \\lambda_B (\\mu_B dt + \\sigma_B dN_{B,t}) +
+    \\lambda_C (\\mu_C dt + \\sigma_C dN_{C,t})
+    \\right)^2\\right] = 
+(\\lambda_A^2 \\sigma_A^2 + 
+\\lambda_B^2 \\sigma_B^2 + 
+\\lambda_C^2 \\sigma_C^2)dt.
+$$
+
+
+
+Returning back to the earlier expectation we've been trying to solve with these new results in hand, we see that 
+
+$$
+E[(1 + x)^{1-\\gamma}] = 1 + (1 - \\gamma)(
+\\lambda_A \\mu_A +
+\\lambda_B \\mu_B +
+\\lambda_C \\mu_C
+)dt + \\frac{(1 - \\gamma)(-\\gamma)}{2} (
+\\lambda_A^2 \\sigma_A^2 dt + 
+\\lambda_B^2 \\sigma_B^2 dt + 
+\\lambda_C^2 \\sigma_C^2 dt
+).
+$$
+
+
+This means we can now write our full expected utility maximization equation as: 
+
+$$
+E[U(W_{t+dt})] = \\frac{W_t^{1-\\gamma} \\left[1 + (1 - \\gamma)(
+\\lambda_A \\mu_A + 
+\\lambda_B \\mu_B +
+\\lambda_C \\mu_C
+)dt + \\frac{(1 - \\gamma)(-\\gamma)}{2} (
+\\lambda_A^2 \\sigma_A^2 + 
+\\lambda_B^2 \\sigma_B^2 +
+\\lambda_C^2 \\sigma_C^2
+)dt\\right] - 1}{1-\\gamma}
+$$
+
+
+We make one final adjustment by including our $\\lambda_A + \\lambda_B + \\lambda_C = 1$ constraint to reduce a degree of freedom our model. 
+
+
+
+We first substitute $\\lambda_C = 1 - \\lambda_A - \\lambda_B$ into the linear term $\\lambda_A \\mu_A + \\lambda_B \\mu_B + \\lambda_C \\mu_C = \\lambda_A \\mu_A + \\lambda_B \\mu_B + (1 - \\lambda_A - \\lambda_B) \\mu_C = \\lambda_A (\\mu_A - \\mu_C) + \\lambda_B (\\mu_B - \\mu_C) + \\mu_C$. This also makes intuitive sense because initially the expression was the sum of all of our allocation percentages times the average return of those investments which is the expected return of our portfolio. The final expression is the same expected return of our portfolio, except we can conceptualize this as 100% of our portfolio returning $\\mu_C$, and then for each non-$C$ asset we compute how much more or less we'd make on that fraction of our portfolio against a $C$-based benchmark. 
+
+Now we need to handle the quadratic term, $\\lambda_A^2 \\sigma_A^2 + \\lambda_B^2 \\sigma_B^2 + \\lambda_C^2 \\sigma_C^2$. We substitute out $\\lambda_C$ which yields $\\lambda_A^2 \\sigma_A^2 + \\lambda_B^2 \\sigma_B^2 + (1 - \\lambda_A - \\lambda_B)^2 \\sigma_C^2$. We note that generally $(1 - \\sum_{i=1}^{n} x_i)^2 = 1 - 2 \\sum_{i=1}^{n} x_i + 2 \\sum_{1 \\leq i < j \\leq n} x_ix_j + \\sum_{i=1}^{n} x_i^2$, this generalization will help us when we extend to the n-asset framework, but we can use it in our three-asset model too. 
+
+
+
+
+Now we expand and simplify the quadratic term for $\\lambda_C$:
+
+$$
+= \\lambda_A^2 \\sigma_A^2 + \\lambda_B^2 \\sigma_B^2 + (
+    1 - 
+    2\\lambda_A - 
+    2\\lambda_B + 
+    2\\lambda_A\\lambda_B + 
+    \\lambda_A^2 + 
+    \\lambda_B^2
+) \\sigma_C^2
+$$
+
+$$
+= \\lambda_A^2 \\sigma_A^2 + 
+\\lambda_B^2 \\sigma_B^2 +
+\\sigma_C^2 - 
+2\\lambda_A \\sigma_C^2 - 
+2\\lambda_B \\sigma_C^2 + 
+2\\lambda_A\\lambda_B \\sigma_C^2 + 
+\\lambda_A^2 \\sigma_C^2 + 
+\\lambda_B^2 \\sigma_C^2
+$$
+
+$$
+= \\lambda_A^2 (\\sigma_A^2 + \\sigma_C^2) + 
+\\lambda_B^2 (\\sigma_B^2 + \\sigma_C^2) + 
+2\\lambda_A\\lambda_B \\sigma_C^2 - 
+2\\lambda_A \\sigma_C^2 - 
+2\\lambda_B \\sigma_C^2 +
+\\sigma_C^2
+$$
+
+
+We can now substitute these simplified expressions back into the original equation:
+
+$$
+\\frac{W_t^{1-\\gamma} \\left( 1 + (1 - \\gamma) \\left( \\lambda_A (\\mu_A - \\mu_C) + \\lambda_B (\\mu_B - \\mu_C) + \\mu_C\\right)dt + \\frac{(1 - \\gamma)(-\\gamma)}{2} \\left(
+    \\lambda_A^2 (\\sigma_A^2 + \\sigma_C^2) + 
+    \\lambda_B^2 (\\sigma_B^2 + \\sigma_C^2) + 
+    2\\lambda_A\\lambda_B \\sigma_C^2 - 
+    2\\lambda_A \\sigma_C^2 - 
+    2\\lambda_B \\sigma_C^2 + 
+    \\sigma_C^2
+\\right)dt \\right) - 1}{1-\\gamma}
+$$
+
+
+This expression for our expected marginal utility incorporates all of the constraints of our model now that $\\lambda_C$ has been eliminated and replaced by solely $\\lambda_A$ and $\\lambda_B$, which crucially reduces a degree of freedome from our model and allows the matrix inversion technique which follows to succeed. 
+
+
+
+
+**Optimizing Portfolio Weights to Maximize Expected Utility (Take Three)**
+
+
+We know that the maximium of $E[U(W_{t+dt})]$ w.r.t. our $\\lambda_i$s will have a tangent plane with zero gradient in the $\\lambda_A$ and $\\lambda_B$ directions. That is, $\\frac{dE[U(W_{t+dt})]}{d\\lambda_i}=0$ for $i \\in \\{1,2\\}$. From this we will get a system of equations which we can then solve to get our optimal portfolio allocations. We start by solving for $\\frac{d}{d\\lambda_A}E[U(W_{t+dt})]$.
+
+$$
+\\frac{d}{d\\lambda_A} E[U(W_{t+dt})] = 
+\\frac{d}{d\\lambda_A}
+\\left(
+    \\frac{
+        W_t^{1-\\gamma} 
+        \\left( 
+            1 + (1 - \\gamma) 
+            \\left( 
+                \\lambda_A (\\mu_A - \\mu_C) + 
+                \\lambda_B (\\mu_B - \\mu_C) + 
+                \\mu_C
+            \\right)dt + 
+            \\frac{(1 - \\gamma)(-\\gamma)}{2} 
+            \\left(
+                \\lambda_A^2 (\\sigma_A^2 + \\sigma_C^2) + 
+                \\lambda_B^2 (\\sigma_B^2 + \\sigma_C^2) + 
+                2\\lambda_A\\lambda_B \\sigma_C^2 - 
+                2\\lambda_A \\sigma_C^2 - 
+                2\\lambda_B \\sigma_C^2 + 
+                \\sigma_C^2
+            \\right)dt 
+        \\right) - 1
+    }{
+        1-\\gamma
+    }
+\\right)
+$$
+
+
+
+
+$$
+= \\frac{W_t^{1-\\gamma}}{1-\\gamma}
+\\frac{d}{d\\lambda_A}
+\\left( 
+    1 + (1 - \\gamma) 
+    \\left( 
+        \\lambda_A (\\mu_A - \\mu_C) + 
+        \\lambda_B (\\mu_B - \\mu_C) + 
+        \\mu_C
+    \\right)dt + 
+    \\frac{(1 - \\gamma)(-\\gamma)}{2} 
+    \\left(
+        \\lambda_A^2 (\\sigma_A^2 + \\sigma_C^2) + 
+        \\lambda_B^2 (\\sigma_B^2 + \\sigma_C^2) + 
+        2\\lambda_A\\lambda_B \\sigma_C^2 - 
+        2\\lambda_A \\sigma_C^2 - 
+        2\\lambda_B \\sigma_C^2 + 
+        \\sigma_C^2
+    \\right)dt 
+\\right)
+$$
+
+
+$$
+= \\frac{W_t^{1-\\gamma}}{1-\\gamma}
+\\frac{d}{d\\lambda_A}
+\\left( 
+    (1 - \\gamma) 
+    \\left( 
+        \\lambda_A (\\mu_A - \\mu_C) + 
+        \\lambda_B (\\mu_B - \\mu_C) + 
+        \\mu_C
+    \\right)dt
+\\right) + \\frac{d}{d\\lambda_A}
+\\left(
+    \\frac{(1 - \\gamma)(-\\gamma)}{2} 
+    \\left(
+        \\lambda_A^2 (\\sigma_A^2 + \\sigma_C^2) + 
+        \\lambda_B^2 (\\sigma_B^2 + \\sigma_C^2) + 
+        2\\lambda_A\\lambda_B \\sigma_C^2 - 
+        2\\lambda_A \\sigma_C^2 - 
+        2\\lambda_B \\sigma_C^2 + 
+        \\sigma_C^2
+    \\right)dt 
+\\right)
+$$
+
+
+$$
+= W_t^{1-\\gamma}
+\\frac{d}{d\\lambda_A}
+\\left( 
+    \\left( 
+        \\lambda_A (\\mu_A - \\mu_C) + 
+        \\lambda_B (\\mu_B - \\mu_C) + 
+        \\mu_C
+    \\right)dt
+\\right) - 
+\\frac{W_t^{1-\\gamma} \\gamma}{2} 
+\\frac{d}{d\\lambda_A}
+\\left(
+    \\left(
+        \\lambda_A^2 (\\sigma_A^2 + \\sigma_C^2) + 
+        \\lambda_B^2 (\\sigma_B^2 + \\sigma_C^2) + 
+        2\\lambda_A\\lambda_B \\sigma_C^2 - 
+        2\\lambda_A \\sigma_C^2 - 
+        2\\lambda_B \\sigma_C^2 + 
+        \\sigma_C^2
+    \\right)dt 
+\\right)
+$$
+
+
+
+$$
+= W_t^{1-\\gamma}
+\\left(
+    \\frac{d}{d\\lambda_A} (\\lambda_A (\\mu_A - \\mu_C) dt) + 
+    \\frac{d}{d\\lambda_A} (\\lambda_B (\\mu_B - \\mu_C) dt) + 
+    \\frac{d}{d\\lambda_A} (\\mu_C dt) 
+\\right) - 
+\\frac{W_t^{1-\\gamma} \\gamma}{2} 
+\\left(
+        \\frac{d}{d\\lambda_A} (\\lambda_A^2 (\\sigma_A^2 + \\sigma_C^2) dt) + 
+        \\frac{d}{d\\lambda_A} (\\lambda_B^2 (\\sigma_B^2 + \\sigma_C^2) dt) + 
+        \\frac{d}{d\\lambda_A} (2\\lambda_A\\lambda_B \\sigma_C^2 dt) - 
+        \\frac{d}{d\\lambda_A} (2\\lambda_A \\sigma_C^2 dt) - 
+        \\frac{d}{d\\lambda_A} (2\\lambda_B \\sigma_C^2 dt) + 
+        \\frac{d}{d\\lambda_A} (\\sigma_C^2 dt)
+\\right)
+$$
+
+
+
+
+$$
+= W_t^{1-\\gamma}
+\\left(
+    (\\mu_A - \\mu_C) dt + 
+    \\frac{d \\lambda_B}{d\\lambda_A} (\\mu_B - \\mu_C) dt
+\\right) - 
+\\frac{W_t^{1-\\gamma} \\gamma}{2} 
+\\left(
+        2 \\lambda_A (\\sigma_A^2 + \\sigma_C^2) dt + 
+        2 \\lambda_B (\\sigma_B^2 + \\sigma_C^2) \\frac{d \\lambda_B}{d\\lambda_A} dt + 
+        2 \\sigma_C^2 (\\lambda_A \\frac{d \\lambda_B}{d\\lambda_A} + \\lambda_B) dt - 
+        2 \\sigma_C^2 dt - 
+        2 \\sigma_C^2 \\frac{d\\lambda_B}{d\\lambda_A} dt 
+\\right)
+$$
+
+
+$$
+= W_t^{1-\\gamma} dt
+\\left(
+    (\\mu_A - \\mu_C) + 
+    \\frac{d \\lambda_B}{d\\lambda_A} (\\mu_B - \\mu_C) - 
+    \\gamma \\lambda_A (\\sigma_A^2 + \\sigma_C^2) - 
+    \\gamma \\lambda_B (\\sigma_B^2 + \\sigma_C^2) \\frac{d \\lambda_B}{d\\lambda_A} -
+    \\gamma \\sigma_C^2 \\lambda_A \\frac{d \\lambda_B}{d\\lambda_A} -
+    \\gamma \\sigma_C^2 \\lambda_B + 
+    \\gamma \\sigma_C^2 +
+    \\gamma \\sigma_C^2 \\frac{d\\lambda_B}{d\\lambda_A} 
+\\right)
+$$
+
+
+$$
+= W_t^{1-\\gamma} dt \\left( \\mu_A - \\mu_C - \\gamma \\lambda_A (\\sigma_A^2 + \\sigma_C^2) - \\gamma \\sigma_C^2 \\lambda_B + \\gamma \\sigma_C^2 + \\frac{d \\lambda_B}{d\\lambda_A} \\left(\\mu_B - \\mu_C - \\gamma \\lambda_B (\\sigma_B^2 + \\sigma_C^2) - \\gamma \\sigma_C^2 \\lambda_A + \\gamma \\sigma_C^2\\right) \\right)
+$$
+
+
+We can apply a symmetry argument to find $\\frac{dE[U]}{d\\lambda_B}$ because $\\lambda_B$ can be interchanged with $\\lambda_A$ without changing $E[U]$. Setting each of these partial derivative to equal zero gives us the system of equations we're looking for.
+
+
+$$
+\\frac{dE[U]}{d\\lambda_A} = W_t^{1-\\gamma} dt 
+\\left( 
+    \\mu_A - \\mu_C - 
+    \\gamma \\lambda_A (\\sigma_A^2 + \\sigma_C^2) - 
+    \\gamma \\sigma_C^2 \\lambda_B + 
+    \\gamma \\sigma_C^2 + 
+    \\frac{d \\lambda_B}{d\\lambda_A} 
+    \\left(
+        \\mu_B - \\mu_C - 
+        \\gamma \\lambda_B (\\sigma_B^2 + \\sigma_C^2) - 
+        \\gamma \\sigma_C^2 \\lambda_A + 
+        \\gamma \\sigma_C^2
+    \\right) 
+\\right) = 0
+$$
+
+$$
+\\frac{dE[U]}{d\\lambda_B} = W_t^{1-\\gamma} dt 
+\\left( 
+    \\mu_B - \\mu_C - 
+    \\gamma \\lambda_B (\\sigma_B^2 + \\sigma_C^2) - 
+    \\gamma \\sigma_C^2 \\lambda_A + 
+    \\gamma \\sigma_C^2 + 
+    \\frac{d \\lambda_A}{d\\lambda_B} 
+    \\left(
+        \\mu_A - \\mu_C - 
+        \\gamma \\lambda_A (\\sigma_A^2 + \\sigma_C^2) - 
+        \\gamma \\sigma_C^2 \\lambda_B + 
+        \\gamma \\sigma_C^2
+    \\right) 
+\\right) = 0
+$$
+
+
+$$\\gamma \\lambda_A (\\sigma_A^2 + \\sigma_C^2) + 
+\\gamma \\sigma_C^2 \\lambda_B - 
+\\gamma \\sigma_C^2 +
+\\frac{d \\lambda_B}{d\\lambda_A} 
+\\left( 
+    \\gamma \\lambda_B (\\sigma_B^2 + \\sigma_C^2) + 
+    \\gamma \\sigma_C^2 \\lambda_A - 
+    \\gamma \\sigma_C^2
+\\right) 
+= \\mu_A - \\mu_C +
+\\frac{d \\lambda_B}{d\\lambda_A} 
+\\left(
+    \\mu_B - \\mu_C
+\\right) 
+$$
+
+
+
+
+
+We now do some simplification. 
+
+
+After cancelling out $W_t^{1-\\gamma} dt$ from both sides of the equation, the rearranged form becomes:
+
+
+$$
+-\\gamma \\lambda_A (\\sigma_A^2 + \\sigma_C^2) - 
+\\gamma \\sigma_C^2 \\lambda_B + 
+\\frac{d \\lambda_B}{d\\lambda_A} 
+  \\left( 
+    - \\gamma \\lambda_B (\\sigma_B^2 + \\sigma_C^2) 
+    - \\gamma \\sigma_C^2 \\lambda_A 
+  \\right) = 
+\\mu_A - \\mu_C + 
+\\gamma \\sigma_C^2 + 
+\\frac{d \\lambda_B}{d\\lambda_A} 
+(\\mu_B - \\mu_C + \\gamma \\sigma_C^2)
+$$
+
+
+$$
+-\\gamma \\lambda_B (\\sigma_B^2 + \\sigma_C^2) - 
+\\gamma \\sigma_C^2 \\lambda_A + 
+\\frac{d \\lambda_A}{d\\lambda_B} 
+  \\left( 
+    - \\gamma \\lambda_A (\\sigma_A^2 + \\sigma_C^2) 
+    - \\gamma \\sigma_C^2 \\lambda_B 
+  \\right) = 
+\\mu_B - \\mu_C + 
+\\gamma \\sigma_C^2 + 
+\\frac{d \\lambda_A}{d\\lambda_B} 
+(\\mu_A - \\mu_C + \\gamma \\sigma_C^2
+$$
+
+
+
+I think the answer might be:
+
+
+
+$$
+\\lambda_A = \\frac{-\\gamma \\sigma_B^2 \\sigma_C^2 - \\mu_A \\sigma_B^2 - \\mu_A \\sigma_C^2 + \\mu_B \\sigma_C^2 + \\mu_C \\sigma_B^2}{\\gamma \\sigma_A^2 \\sigma_B^2 + \\gamma \\sigma_A^2 \\sigma_C^2 + \\gamma \\sigma_B^2 \\sigma_C^2}
+$$
+
+$$
+\\lambda_B = \\frac{-\\gamma \\sigma_A^2 \\sigma_C^2 + \\mu_A \\sigma_C^2 - \\mu_B \\sigma_A^2 - \\mu_B \\sigma_C^2 + \\mu_C \\sigma_A^2}{\\gamma \\sigma_A^2 \\sigma_B^2 + \\gamma \\sigma_A^2 \\sigma_C^2 + \\gamma \\sigma_B^2 \\sigma_C^2}
+$$
+
+
+Simplifying:
+
+$$
+\\lambda_A = 
+\\frac{ 
+    \\sigma_B^2 (\\mu_C - \\mu_A) + 
+    \\sigma_C^2 (\\mu_B - \\mu_A) -
+    \\gamma \\sigma_B^2 \\sigma_C^2
+}{ \\gamma (
+    \\sigma_A^2 \\sigma_B^2 + 
+    \\sigma_A^2 \\sigma_C^2 + 
+    \\sigma_B^2 \\sigma_C^2
+)}
+$$
+
+$$
+\\lambda_B = 
+\\frac{ 
+    \\sigma_C^2 (\\mu_A - \\mu_B) + 
+    \\sigma_A^2 (\\mu_C - \\mu_B) -
+    \\gamma \\sigma_A^2 \\sigma_C^2
+}{ \\gamma (
+    \\sigma_A^2 \\sigma_B^2 + 
+    \\sigma_A^2 \\sigma_C^2 + 
+    \\sigma_B^2 \\sigma_C^2
+)}
+$$
+
+
+$$
+\\lambda_C = 
+\\frac{ 
+    \\sigma_A^2 (\\mu_B - \\mu_C) + 
+    \\sigma_B^2 (\\mu_A - \\mu_C) -
+    \\gamma \\sigma_A^2 \\sigma_B^2
+}{ \\gamma (
+    \\sigma_A^2 \\sigma_B^2 + 
+    \\sigma_A^2 \\sigma_C^2 + 
+    \\sigma_B^2 \\sigma_C^2
+)}
+$$
+
+
+
+Let's solve for the partial derivatives.
+
+$$
+\\frac{d \\lambda_B}{d\\lambda_A} = 
+\\frac{
+    \\mu_A - 
+    \\mu_C +
+    \\gamma \\lambda_A (\\sigma_A^2 + \\sigma_C^2) +
+    \\gamma \\sigma_C^2 (1 +\\lambda_B)
+}{
+    \\mu_B - 
+    \\mu_C -
+    \\gamma \\lambda_B (\\sigma_B^2 + \\sigma_C^2) + 
+    \\gamma \\sigma_C^2 (1 - \\lambda_A)
+}
+$$
+
+$$
+\\frac{d \\lambda_A}{d\\lambda_B} = 
+\\frac{
+    \\mu_B - 
+    \\mu_C + 
+    \\gamma \\lambda_B (\\sigma_B^2 + \\sigma_C^2) + 
+    \\gamma \\sigma_C^2 (1 + \\lambda_A)
+}{ 
+    \\mu_A - \\mu_C -
+    \\gamma \\lambda_A (\\sigma_A^2 + \\sigma_C^2) + 
+    \\gamma \\sigma_C^2 (1 - \\lambda_B)
+}
+$$
       `
     }
     // Add more articles as needed

@@ -1051,7 +1051,7 @@ Overextending categories—like labeling sports fandoms as religions or lions as
       slug: "three-asset-model",
       author: "Grant Stenger (March 2024)",
       content: `
-***Summary**: In the previous essay, we explored how to derive the optimal allocations under an independent binary asset model where the two stocks follow geometric Brownian motion processes. In this current essay we extend the analysis to three assets and then to an n-asset model.*
+***Summary**: In the [previous essay](/writing/binary-asset-portfolio-optimization), we explored how to derive the optimal allocations under an independent binary asset model where the two stocks follow geometric Brownian motion processes. In this current essay we extend the analysis to three assets and then to an n-asset model.*
 
 
 **Model Definition**
@@ -1667,6 +1667,168 @@ $$
     \\gamma \\sigma_C^2 (1 - \\lambda_B)
 }
 $$
+      `
+    },
+    {
+      title: "Beyond Cash: Extending Our Binary Asset Model Via Risky Numeraire",
+      description: "What if we denominate our wealth in terms of a risky asset?",
+      slug: "numeraire",
+      author: "Grant Stenger (Nov 2024)",
+      content: `
+In my previous essay, "[Optimizing Portfolio Weights for Maximum CRRA Utility: An Independent Binary Asset Model](/writing/binary-asset-portfolio-optimization)", I made the case that there may be no such thing as a risk-free asset. In the case of treasuries, the typical example of the risk-free asset, the holder is exposed to inflation risks, dollar fluctuations, interest rate changes, and other factors. Given this, I constructed a model for the optimal allocation between two risky assets. 
+
+Every investor has their own basket of goods under which they estimate changes in their real purchasing power.[^1] This subjective basket is not exactly cash, which was the motivation for the first essay. But what if it were somehow a known tradable asset? Or even more simply, perhaps an investor wants to denominate their returns in ETH, SPY, or some known liquid asset. Does our previous analysis still hold if we change the currency units? In this essay, I examine the case where, instead of using cash as a base for both assets $A$ and $B$, we designate asset $A$ as the numeraire, expressing asset $B$ in terms of $A$.
+
+Let us begin with the optimal allocations derived from the previous cash-denominated model:
+
+$$
+\\lambda_A = \\frac{\\mu_A - \\mu_B + \\gamma \\sigma_B^2}{\\gamma (\\sigma_A^2 + \\sigma_B^2)}, \\quad \\lambda_B = \\frac{\\mu_B - \\mu_A + \\gamma \\sigma_A^2}{\\gamma (\\sigma_A^2 + \\sigma_B^2)}.
+$$
+
+Both assets $A$ and $B$ are initially denominated in cash. We now shift our perspective by setting asset $A$ as the numeraire, effectively redefining all quantities in relation to $A$. This transition moves us from a cash-denominated framework to one in which asset $A$ is the central reference point.
+
+
+**Key Definitions in the $A$-Denominated Model:**
+- $S_{B/A}$: Price of asset $B$ relative to $A$.
+- $S_{A/A}$: Price of asset $A$ relative to itself.
+- $\\mu_{B/A}$, $\\sigma_{B/A}$: Drift and volatility of $B$ with respect to $A$.
+- $\\lambda_{A/A}$, $\\lambda_{B/A}$: Portfolio weights for $A$ and $B$ in the $A$-denominated framework.
+- $W_{A,t}$: Wealth expressed in terms of $A$.
+- $dW_{A,t}$: Wealth dynamics in terms of $A$.
+
+We start by solving for the simplest expressions.
+
+$S_{A/A}$ is the price of asset $A$ relative to itself, so  $S_{A/A} = \\frac{S_{A/A}}{S_{A/A}} = 1$.
+
+Since $S_{A/A} = 1$, its drift and volatility are zero: $\\mu_{A/A} = 0$, $\\sigma_{A/A} = 0$.
+
+The price of $B$ in terms of $A$ is given by $S_{B/A} = \\frac{S_B}{S_A}$.
+
+In this model, the drift and volatility of $B$ relative to $A$ are defined as:
+$$
+\\mu_{B/A} = \\mu_B - \\mu_A, \\quad \\sigma_{B/A} = \\sqrt{\\sigma_A^2 + \\sigma_B^2}.
+$$
+
+
+The transition from the cash-denominated optimal $B$ allocation, $\\lambda_B = \\frac{\\mu_B - \\mu_A + \\gamma \\sigma_A^2}{\\gamma (\\sigma_A^2 + \\sigma_B^2)}$, to the $A$-denominated model can be achieved by the following transformations:
+
+Replace the cash-denominated drift difference $\\mu_B - \\mu_A$ with $\\mu_{B/A}$:
+
+$$
+\\frac{\\mu_B - \\mu_A + \\gamma \\sigma_A^2}{\\gamma (\\sigma_A^2 + \\sigma_B^2)} = \\frac{\\mu_{B/A} + \\gamma \\sigma_A^2}{\\gamma (\\sigma_A^2 + \\sigma_B^2)}
+$$
+
+
+Next, replace the combined variance $\\sigma_A^2 + \\sigma_B^2$ with $\\sigma_{B/A}^2$:
+ 
+$$
+\\frac{\\mu_{B/A} + \\gamma \\sigma_A^2}{\\gamma (\\sigma_A^2 + \\sigma_B^2)} = \\frac{\\mu_{B/A} + \\gamma \\sigma_A^2}{\\gamma \\sigma_{B/A}^2}
+$$
+
+
+Finally, note that the numeraire asset $A/A$ has zero drift and zero volatility: $\\mu_{A/A} = 0$ and $\\sigma_{A/A} = 0$:
+
+$$
+\\frac{\\mu_{B/A} + \\gamma \\sigma_A^2}{\\gamma \\sigma_{B/A}^2} = \\frac{\\mu_{B/A}}{\\gamma \\sigma_{B/A}^2}
+$$
+
+
+Thus, the optimal weight for $B$ in the $A$-denominated framework becomes:
+
+$$
+\\lambda_{B/A} = \\frac{\\mu_{B/A}}{\\gamma \\sigma_{B/A}^2}
+$$
+
+The derivation above is perfectly legitamate, though if we don't want to take as axiom the results of my previous essay, we can start again from scratch.
+
+
+
+**Fully Deriving the Optimal Portfolio Weights in the $A$-Denominated Model**
+
+We start with maximizing our expected CRRA utility as before:
+
+$$
+\\underset{\\lambda_{B/A}}{\\max} \\, E\\left[U(W_{A,t+dt})\\right] = E\\left[\\frac{(W_{A,t} + dW_{A,t})^{1-\\gamma} - 1}{1 - \\gamma}\\right]
+$$
+
+
+We note that in the $A$-denominated model the only risky asset is $B/A$, so the wealth dynamics are driven solely by $B/A$. The optimization problem simplifies to maximizing expected utility with respect to $\\lambda_{B/A}$.
+
+Since $S_{A/A} = 1$, asset $A$ contributes no differential to wealth dynamics in $A$-terms. Thus, wealth dynamics in this $A$-denominated framework are driven solely by $B/A$:
+
+$$
+dW_{A,t} = \\lambda_{B/A} W_{A,t} \\frac{dS_{B/A,t}}{S_{B/A,t}},
+$$
+
+$$
+dW_{A,t} = \\lambda_{B/A} W_{A,t} \\left( \\mu_{B/A} \\, dt + \\sigma_{B/A} \\, dN_t \\right).
+$$
+
+We now substitute this wealth dynamic term into our expected utility calculation:
+$$
+\\underset{\\lambda_{B/A}}{\\max} \\, E\\left[U(W_{A,t+dt})\\right] = E\\left[\\frac{(W_{A,t} + \\lambda_{B/A} W_{A,t} ( \\mu_{B/A} \\, dt + \\sigma_{B/A} \\, dN_t ))^{1-\\gamma} - 1}{1 - \\gamma}\\right].
+$$
+
+
+Applying a second-order Taylor expansion to $E\\left[(1 + x)^{1 - \\gamma}\\right]$ where $x = \\lambda_{B/A} \\left( \\mu_{B/A} \\, dt + \\sigma_{B/A} \\, dN_t \\right)$, we get:
+
+$$
+E\\left[(1 + x)^{1 - \\gamma}\\right] \\approx 1 + (1 - \\gamma) E[x] + \\frac{(1 - \\gamma)(-\\gamma)}{2} E[x^2].
+$$
+
+$$E[x] = \\lambda_{B/A} \\mu_{B/A} dt$$
+
+$$E[x^2] = \\lambda_{B/A}^2 \\sigma_{B/A}^2 dt$$
+
+We now simplify our expected utility expression:
+
+$$
+E[U(W_{A,t+dt})] \\approx \\frac{W_{A,t}^{1 - \\gamma} \\left(1 + (1 - \\gamma) \\lambda_{B/A} \\mu_{B/A} dt + \\frac{(1 - \\gamma)(-\\gamma)}{2} \\lambda_{B/A}^2 \\sigma_{B/A}^2 dt \\right) - 1}{1 - \\gamma}.
+$$
+
+
+Now we differentiate the bracketed term with respect to $\\lambda_{B/A}$ and set the derivative to zero:
+
+$$
+\\frac{d}{d\\lambda_{B/A}} \\left[ (1 - \\gamma) \\lambda_{B/A} \\mu_{B/A} dt - \\frac{\\gamma (1 - \\gamma)}{2} \\lambda_{B/A}^2 \\sigma_{B/A}^2 dt \\right] = 0.
+$$
+
+Simplify:
+
+$$
+(1 - \\gamma) \\mu_{B/A} dt - \\gamma (1 - \\gamma) \\lambda_{B/A} \\sigma_{B/A}^2 dt = 0.
+$$
+
+Divide both sides by $(1 - \\gamma) dt$:
+
+$$
+\\mu_{B/A} - \\gamma \\lambda_{B/A} \\sigma_{B/A}^2 = 0.
+$$
+
+Thus, the optimal weight for $B/A$ is
+
+$$
+\\lambda_{B/A} = \\frac{\\mu_{B/A}}{\\gamma \\sigma_{B/A}^2}
+$$
+
+And the optimal weight for $A/A$ is:
+
+$$
+\\lambda_{A/A} = 1 - \\lambda_{B/A} = 1 - \\frac{\\mu_{B/A}}{\\gamma \\sigma_{B/A}^2}
+$$
+
+**Conclusion:**
+
+We can now express the optimal weights in the $A$-denominated model directly in terms of $\\mu_{B/A}$ and $\\sigma_{B/A}^2$.
+
+$$
+\\lambda_{B/A} = \\frac{\\mu_{B/A}}{\\gamma \\sigma_{B/A}^2}, \\quad \\lambda_{A/A} = 1 - \\lambda_{B/A}.
+$$
+
+Thus, after transforming the cash-denominated model's optimal weights to the $A$-denominated model's optimal weights, we see that we've derived the famous Merton share.
+
+
+[^1]: I am skeptical of standard national CPI measures, as discussed in Chapter 5 of Keynes' *Treatise on Money*. I think exact CPI calculation seems like a fundamentally futile task, though it's nuanced so I haven't made up my mind yet.
       `
     }
     // Add more articles as needed

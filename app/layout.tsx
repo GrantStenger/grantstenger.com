@@ -1,6 +1,7 @@
 import './globals.css'
 import localFont from 'next/font/local'
 import type { Metadata } from 'next'
+import { Analytics } from "@vercel/analytics/react"
 
 const abcDiatype = localFont({
   src: [
@@ -77,6 +78,7 @@ export default function RootLayout({
     <html lang="en" className={abcDiatype.variable}>
       <body className={`${abcDiatype.className} bg-black text-white min-h-screen flex flex-col`}>
         {children}
+        <Analytics />
       </body>
     </html>
   )

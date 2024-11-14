@@ -2620,5 +2620,17 @@ export const essays = [
         "author": "Jimmy Donaldson",
         "year": 2024,
         "link": "https://drive.google.com/file/d/1YaG9xpu-WQKBPUi8yQ4HaDYQLUSa7Y3J/view"
+    },
+    {
+        "title": "Trapped Priors As A Basic Problem Of Rationality",
+        "author": "Scott Alexander",
+        "year": 2021,
+        "link": "https://www.astralcodexten.com/p/trapped-priors-as-a-basic-problem"
+    },
+    {
+        "title": "Randomness and Mathematical Proof",
+        "author": "Gregory J. Chaitin",
+        "year": 1975,
+        "link": "https://www.jstor.org/stable/24949798"
     }
 ]

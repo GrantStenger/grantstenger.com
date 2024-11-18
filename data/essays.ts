@@ -2632,5 +2632,23 @@ export const essays = [
         "author": "Gregory J. Chaitin",
         "year": 1975,
         "link": "https://www.jstor.org/stable/24949798"
+    }, 
+    {
+        "title": "On Climbing the Stat Arb (CEX/DEX) Leaderboard, Comparative Advantage and Careers, and My Future in Crypto",
+        "author": "Daniel D. McKinnon",
+        "year": 2024,
+        "link": "https://www.ddmckinnon.com/2024/01/25/on-climbing-the-stat-arb-cex-dex-leaderboard-comparative-advantage-and-careers-and-my-future-in-crypto/"
+    },
+    {
+        "title": "All is Fair in Arb and MEV on Avalanche C-Chain",
+        "author": "Daniel D. McKinnon",
+        "year": 2022,
+        "link": "https://www.ddmckinnon.com/2022/11/27/all-is-fair-in-arb-and-mev-on-avalanche-c-chain/"
+    },
+    {
+        "title": "You and Your Research",
+        "author": "Richard Hamming",
+        "year": 1986,
+        "link": "https://www.cs.virginia.edu/~robins/YouAndYourResearch.html"
     }
 ]

@@ -792,22 +792,10 @@ export const books = [
     link: "https://www.amazon.com/History-Rome-Livy/dp/0140448098"
   },
   {
-    title: "The Jewish War and Antiquities of the Jews",
-    author: "Flavius Josephus",
-    description: "A history of the Jewish people and their conflicts with the Roman Empire.",
-    link: "https://www.amazon.com/Jewish-Antiquities-Flavius-Josephus/dp/067499051X"
-  },
-  {
     title: "The Annals and The Histories",
     author: "Tacitus",
     description: "A detailed account of the Roman Empire from the death of Augustus to the First Jewish–Roman War.",
     link: "https://www.amazon.com/Annals-Histories-Oxford-Worlds-Classics/dp/019282421X"
-  },
-  {
-    title: "The Book of Han",
-    author: "Ban Gu",
-    description: "An official history of the Western Han dynasty, covering political, economic, and cultural developments.",
-    link: "https://www.amazon.com/Book-Han-Ban-Gu/dp/0520212643"
   },
   {
     title: "The History of the Franks",

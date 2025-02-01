@@ -8,6 +8,10 @@ export const aphorisms = [
         "author": "Henry David Thoreau"
     },
     {
+        "title": "Be guided by beauty. It can be the way a company runs, or the way an experiment comes out, or the way a theorem comes out, but there's a sense of beauty when something is working well, almost an aesthetic to it.",
+        "author": "Jim Simons"
+    },
+    {
         "title": "Whatever is rightly done, however humble, is noble.",
         "author": "Sir Frederick Henry Royce"
     },
@@ -16,16 +20,16 @@ export const aphorisms = [
         "author": "Johann Wolfgang von Goethe"
     },
     {
-        "title": "Be guided by beauty. It can be the way a company runs, or the way an experiment comes out, or the way a theorem comes out, but there's a sense of beauty when something is working well, almost an aesthetic to it.",
-        "author": "Jim Simons"
+        "title": "A creative man is motivated by the desire to achieve, not by the desire to beat others.",
+        "author": "Ayn Rand"
     },
     {
         "title": "Make mistakes of ambition, not mistakes of sloth.",
         "author": "Machiavelli"
     },
     {
-        "title": "It's not that I'm smart. It's that I just stay with problems longer.",
-        "author": "Albert Einstein"
+        "title": "I cannot remember the books I've read any more than the meals I have eaten; even so, they have made me.",
+        "author": "Ralph Waldo Emerson"
     },
     {
         "title": "It ain't what you don't know that gets you into trouble. It's what you know for sure that just ain't so.",
@@ -34,6 +38,10 @@ export const aphorisms = [
     {
         "title": "The difference between being successful is not a lack of strength, not a lack of knowledge, person and others but rather, a lack of will.",
         "author": "Vince Lombardi"
+    },
+    {
+        "title": "It's not that I'm smart. It's that I just stay with problems longer.",
+        "author": "Albert Einstein"
     },
     {
         "title": "Seek freedom and become captive of your desires. Seek discipline and find your liberty.",
@@ -252,11 +260,7 @@ export const aphorisms = [
         "author": "Bertrand Russell"
     },
     {
-        "title": "A creative man is motivated by the desire to achieve, not by the desire to beat others.",
-        "author": "Ayn Rand"
-    },
-    {
-        "title": "Don't allow everyone who crosses your path to change your direction",
+        "title": "Don't allow everyone who crosses your path to change your direction.",
         "author": "Unknown"
     },
     {
@@ -354,10 +358,6 @@ export const aphorisms = [
     {
         "title": "Curb your desire—don't set your heart on so many things and you will get what you need.",
         "author": "Epictetus"
-    },
-    {
-        "title": "Conquer or Die",
-        "author": "Unknown"
     },
     {
         "title": "These individuals have riches just as we say that we \"have a fever\" when really the fever has us.",
@@ -470,10 +470,6 @@ export const aphorisms = [
     {
         "title": "All men dream, but not equally. Those who dream by night in the dusty recesses of their minds, wake in the day to find that it was vanity: but the dreamers of the day are dangerous men, for they may act on their dreams with open eyes, to make them possible.",
         "author": "T. E. Lawrence"
-    },
-    {
-        "title": "I cannot remember the books I've read any more than the meals I have eaten; even so, they have made me.",
-        "author": "Ralph Waldo Emerson"
     },
     {
         "title": "In the midst of winter, I found there was, within me, an invincible summer. And that makes me happy. For it says that no matter how hard the world pushes against me, within me, there's something stronger – something better, pushing right back.",

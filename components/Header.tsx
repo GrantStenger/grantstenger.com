@@ -40,6 +40,7 @@ export function Header({ className = '' }: HeaderProps) {
                     <div className="flex space-x-4 md:space-x-6 mr-4 md:mr-6 lg:mr-12">
                         <Link href="/books" className="text-gray-400 hover:text-white transition-colors duration-200 underline text-sm md:text-base">BOOKS</Link>
                         <Link href="/essays" className="text-gray-400 hover:text-white transition-colors duration-200 underline text-sm md:text-base">ESSAYS</Link>
+                        <Link href="/aphorisms" className="text-gray-400 hover:text-white transition-colors duration-200 underline text-sm md:text-base">APHORISMS</Link>
                         <Link href="/writing" className="text-gray-400 hover:text-white transition-colors duration-200 underline text-sm md:text-base">WRITING</Link>
                     </div>
                     <div className="flex space-x-2 md:space-x-4">

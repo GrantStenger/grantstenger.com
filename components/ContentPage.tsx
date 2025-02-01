@@ -23,6 +23,7 @@ interface ContentPageProps {
     searchPlaceholder: string;
     baseUrl: string;
     defaultAuthor?: string; // Add a default author prop
+    shuffle?: boolean; // Add shuffle prop
 }
 
 function shuffleArray<T>(array: T[]): T[] {
@@ -34,13 +35,13 @@ function shuffleArray<T>(array: T[]): T[] {
     return shuffled;
 }
 
-export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultAuthor }: ContentPageProps) {
+export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultAuthor, shuffle = true }: ContentPageProps) {
     const [searchTerm, setSearchTerm] = useState('')
     const [randomizedItems, setRandomizedItems] = useState<ContentItem[]>([])
 
     useEffect(() => {
-        setRandomizedItems(shuffleArray(items));
-    }, [items]);
+        setRandomizedItems(shuffle ? shuffleArray(items) : items);
+    }, [items, shuffle]);
 
     const filteredItems = randomizedItems.filter(item =>
         item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||

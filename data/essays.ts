@@ -2650,5 +2650,11 @@ export const essays = [
         "author": "Richard Hamming",
         "year": 1986,
         "link": "https://www.cs.virginia.edu/~robins/YouAndYourResearch.html"
+    },
+    {
+        "title": "The Random Walk Between a Reflecting and an Absorbing Barrier",
+        "author": "B. Weesakul",
+        "year": 1961,
+        "link": "https://www.jstor.org/stable/2237837"
     }
 ]

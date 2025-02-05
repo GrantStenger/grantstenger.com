@@ -24,6 +24,10 @@ export const aphorisms = [
         "author": "Ayn Rand"
     },
     {
+        "title": "Perfection is attained not when there is nothing left to add, but when there is nothing left to remove.",
+        "author": "Antoine de Saint-Exupery"
+    },
+    {
         "title": "Make mistakes of ambition, not mistakes of sloth.",
         "author": "Machiavelli"
     },
@@ -78,6 +82,10 @@ export const aphorisms = [
     {
         "title": "The world is a very malleable place. If you know what you want, and you go for it with maximum energy and drive and passion, the world will often reconfigure itself around you much more quickly and easily than you would think.",
         "author": "Marc Andreessen"
+    },
+    {
+        "title": "Time is the most valuable thing a man can spend.",
+        "author": "Theophrastus"
     },
     {
         "title": "Everything can be taken from man but one thing: the last of the human freedoms—to choose one's attitude in any given set of circumstances, to choose one's own way.",

@@ -6,6 +6,7 @@ import { Footer } from './Footer'
 import { ContentCard } from './ContentCard'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Input } from './ui/input'  // Make sure this import is correct
 
 interface ContentItem {
     title: string;
@@ -15,6 +16,7 @@ interface ContentItem {
     link?: string;    // External URL
     slug?: string;    // Internal routing
     content?: string; // Add content as an optional property
+    pdfUrl?: string;  // Add this to support PDF URLs
 }
 
 interface ContentPageProps {
@@ -35,8 +37,8 @@ function shuffleArray<T>(array: T[]): T[] {
     return shuffled;
 }
 
-export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultAuthor, shuffle = true }: ContentPageProps) {
-    const [searchTerm, setSearchTerm] = useState('')
+export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultAuthor, shuffle = false }: ContentPageProps) {
+    const [searchQuery, setSearchQuery] = useState('')
     const [randomizedItems, setRandomizedItems] = useState<ContentItem[]>([])
 
     useEffect(() => {
@@ -44,8 +46,8 @@ export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultA
     }, [items, shuffle]);
 
     const filteredItems = randomizedItems.filter(item =>
-        item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (item.author || defaultAuthor || '').toLowerCase().includes(searchTerm.toLowerCase())
+        item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (item.author || defaultAuthor || '').toLowerCase().includes(searchQuery.toLowerCase())
     )
 
     return (
@@ -70,8 +72,8 @@ export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultA
                                     type="text"
                                     placeholder={searchPlaceholder}
                                     className="w-full py-2 pl-10 pr-4 bg-[#141414] text-white rounded-md focus:outline-none focus:ring-0 placeholder-gray-400"
-                                    value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
                                 />
                             </div>
                         </div>
@@ -80,18 +82,29 @@ export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultA
                 <main className="lg:w-2/3 xl:w-3/4 lg:ml-[33.333%] xl:ml-[25%] px-6 lg:px-12 py-4">
                     <div className="space-y-4">
                         {filteredItems.map((item, index) => {
-                            // Determine if this is an internal or external link
-                            const href = item.slug 
-                                ? `${baseUrl}/${item.slug}`  // Internal routing
-                                : item.link;                  // External URL
+                            // Determine the correct href for the item
+                            let href;
+                            
+                            if (item.link) {
+                                // External link takes precedence
+                                href = item.link;
+                            } else if (item.pdfUrl) {
+                                // For PDF items, link directly to the PDF
+                                href = item.pdfUrl;
+                            } else if (item.slug) {
+                                // For regular articles, use the slug
+                                href = `${baseUrl}/${item.slug}`;
+                            }
                             
                             return (
                                 <ContentCard 
                                     key={`${item.title}-${index}`}
-                                    {...item} 
+                                    title={item.title}
                                     author={item.author || defaultAuthor}
+                                    year={item.year}
                                     href={href}
-                                    isExternal={!item.slug}
+                                    isExternal={!!item.link}
+                                    description={item.description}
                                 />
                             );
                         })}

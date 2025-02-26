@@ -1590,12 +1590,6 @@ export const books = [
     link: "https://www.amazon.com/Streetcar-Named-Desire-Tennessee-Williams/dp/0811216020"
   },
   {
-    title: "Walden Two",
-    author: "B. F. Skinner",
-    description: "A novel about a fictional utopian community based on behavioral engineering and the principles of positive reinforcement.",
-    link: "https://www.amazon.com/Walden-Two-B-F-Skinner/dp/0872207781"
-  },
-  {
     title: "1984",
     author: "George Orwell",
     description: "A dystopian novel depicting a totalitarian regime that uses surveillance, censorship, and psychological manipulation to maintain power.",

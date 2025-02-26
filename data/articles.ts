@@ -1,6 +1,3 @@
-import pokerModelContent from './articles/von_neumann_poker.tex'
-
-
 export const articles = [
     {
       title: "A Case for Cooperation: Dependence in the Prisoner's Dilemma",
@@ -1838,8 +1835,7 @@ Thus, after transforming the cash-denominated model's optimal weights to the $A$
       title: "Bayes-Nash Equilibrium in a One-Street No-Limit Von Neumann Poker Model",
       description: "A mathematical analysis of optimal betting strategies in a simplified poker model",
       author: "Grant Stenger (Feb 2025)",
-      slug: "von_neumann_poker.pdf",
-      content: pokerModelContent,  
+      slug: "von_neumann_poker.pdf", 
       tags: ["Mathematics", "Game Theory", "Poker"],
       contentType: "latex",
     },

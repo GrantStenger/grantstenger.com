@@ -72,8 +72,8 @@ interface CodeProps extends React.HTMLAttributes<HTMLElement> {
 
 interface ArticlePageProps {
   title: string;
-  content: string;
-  contentType?: 'markdown' | 'latex';
+  content: string | React.ReactNode;
+  contentType?: 'markdown' | 'latex' | 'jsx';
 }
 
 export default function ArticlePage({ title, content, contentType = 'markdown' }: ArticlePageProps) {
@@ -150,9 +150,24 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
   }), [])
 
   const processedContent = useMemo(() => {
-    if (contentType === 'latex') {
+    if (contentType === 'latex' && typeof content === 'string') {
       try {
-        let processed = content
+        // Helper function for processing aligned content - using a const function expression
+        const processAlignedContent = (alignContent: string): string => {
+          const lines = alignContent.trim().split('\n');
+          const trimmedLines: string[] = [];
+          
+          for (let i = 0; i < lines.length; i++) {
+            const trimmedLine = lines[i].trim();
+            if (trimmedLine) {
+              trimmedLines.push(trimmedLine);
+            }
+          }
+          
+          return trimmedLines.join(' \\\\ ');
+        };
+        
+        return content
           .replace(/\\documentclass.*?\\begin{document}/s, '') // Remove preamble
           .replace(/\\end{document}.*$/, '') // Remove end
           .replace(/\\maketitle/, '') // Remove title command
@@ -163,13 +178,8 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
           
           // Handle math environments first
           .replace(/\\begin{align\*}(.*?)\\end{align\*}/gs, 
-            (_, content) => {
-              const alignedContent = content
-                .trim()
-                .split('\n')
-                .map(line => line.trim())
-                .filter(line => line)
-                .join(' \\\\ ');
+            (match: string, content: string): string => {
+              const alignedContent = processAlignedContent(content);
               return katex.renderToString(alignedContent, {
                 displayMode: true,
                 throwOnError: false,
@@ -179,13 +189,8 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
             })
           
           .replace(/\\begin{aligned}(.*?)\\end{aligned}/gs,
-            (_, content) => {
-              const alignedContent = content
-                .trim()
-                .split('\n')
-                .map(line => line.trim())
-                .filter(line => line)
-                .join(' \\\\ ');
+            (match: string, content: string): string => {
+              const alignedContent = processAlignedContent(content);
               return katex.renderToString(alignedContent, {
                 displayMode: true,
                 throwOnError: false,
@@ -198,7 +203,7 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
           .replace(/\\paragraph{([^}]*)}/, '<p class="font-semibold mt-4">$1</p>')
           
           // Handle display math
-          .replace(/\\\[([\s\S]*?)\\\]/g, (_, math) => 
+          .replace(/\\\[([\s\S]*?)\\\]/g, (_: string, math: string) => 
             katex.renderToString(math.trim(), {
               displayMode: true,
               throwOnError: false,
@@ -208,7 +213,7 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
           )
           
           // Handle inline math
-          .replace(/\$([^$]+)\$/g, (_, math) => 
+          .replace(/\$([^$]+)\$/g, (_: string, math: string) => 
             katex.renderToString(math.trim(), {
               displayMode: false,
               throwOnError: false,
@@ -239,21 +244,21 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
           
           // Convert environments with proper indentation and bullets
           .replace(/\\begin{itemize}([\s\S]*?)\\end{itemize}/gs, 
-            function processItemize(match, content, offset, string, depth = 0) {
+            function processItemize(match: string, content: string, offset: number, string: string, depth = 0) {
               const items = content
                 .split('\\item')
-                .filter(item => item.trim())
-                .map(item => {
+                .filter((item: string) => item.trim())
+                .map((item: string) => {
                   // Process nested itemize environments recursively
                   let processedItem = item.trim();
                   if (processedItem.includes('\\begin{itemize}')) {
                     processedItem = processedItem.replace(
                       /\\begin{itemize}([\s\S]*?)\\end{itemize}/g,
-                      (m, c) => processItemize(m, c, 0, '', depth + 1)
+                      (m: string, c: string) => processItemize(m, c, 0, '', depth + 1)
                     );
                   }
                   // Process any math within the item
-                  processedItem = processedItem.replace(/\$([^$]+)\$/g, (_, math) => 
+                  processedItem = processedItem.replace(/\$([^$]+)\$/g, (_: string, math: string) => 
                     katex.renderToString(math.trim(), {
                       displayMode: false,
                       throwOnError: false,
@@ -278,14 +283,14 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
             })
           
           .replace(/\\begin{enumerate}([\s\S]*?)\\end{enumerate}/gs, 
-            (_, content) => {
+            (_: string, content: string) => {
               const items = content
                 .split('\\item')
-                .filter(item => item.trim())
-                .map((item, index) => {
+                .filter((item: string) => item.trim())
+                .map((item: string, index: number) => {
                   const processedItem = item
                     .trim()
-                    .replace(/\$([^$]+)\$/g, (_, math) => 
+                    .replace(/\$([^$]+)\$/g, (_: string, math: string) => 
                       katex.renderToString(math.trim(), {
                         displayMode: false,
                         throwOnError: false,
@@ -301,14 +306,14 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
           
           // Handle bibliography
           .replace(/\\begin{thebibliography}{.*?}([\s\S]*?)\\end{thebibliography}/g, 
-            (_, content) => {
+            (_: string, content: string) => {
               const bibItems = content.split('\\bibitem');
               return `
                 <h2 class="text-2xl md:text-3xl font-bold mt-12 mb-6 text-white">References</h2>
                 <div class="space-y-4">
                   ${bibItems
                     .slice(1)
-                    .map(item => {
+                    .map((item: string) => {
                       const cleanedItem = item
                         .replace(/^{([^}]*)}/, '')
                         .replace(/\\emph{([^}]*)}/g, '<em>$1</em>')
@@ -350,14 +355,12 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
           .replace(/(?<!>)\s*$/gm, '</p>')
           .replace(/\s{2,}/g, ' ')
           .replace(/\n{3,}/g, '\n\n');
-
-        return processed;
       } catch (error) {
         console.error('Error processing LaTeX:', error);
         return '<p>Error rendering content.</p>';
       }
     }
-    return content;
+    return '';
   }, [content, contentType]);
 
   return (
@@ -382,8 +385,8 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
                   </React.Fragment>
                 ))}
               </h1>
-              <TableOfContents content={contentType === 'markdown' ? content : ''} />
-              {contentType === 'markdown' ? (
+              <TableOfContents content={contentType === 'markdown' && typeof content === 'string' ? content : ''} />
+              {contentType === 'markdown' && typeof content === 'string' ? (
                 <ReactMarkdown
                   className="prose prose-lg md:prose-xl prose-invert text-gray-300 leading-relaxed max-w-none"
                   remarkPlugins={[remarkMath, remarkGfm]}
@@ -392,11 +395,16 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
                 >
                   {content}
                 </ReactMarkdown>
-              ) : (
+              ) : contentType === 'latex' ? (
                 <div 
                   className="prose prose-lg md:prose-xl prose-invert text-gray-300 leading-relaxed max-w-none"
                   dangerouslySetInnerHTML={{ __html: processedContent }} 
                 />
+              ) : (
+                // For JSX content
+                <div className="prose prose-lg md:prose-xl prose-invert text-gray-300 leading-relaxed max-w-none">
+                  {content}
+                </div>
               )}
             </article>
           </div>

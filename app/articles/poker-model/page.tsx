@@ -1,5 +1,5 @@
-import ArticlePage from '@/components/ArticlePage'
-import { Progress } from '@/components/ui/progress'
+import ArticlePage from '../../../components/ArticlePage'
+import { Progress } from '../../../components/ui/progress'
 import Link from 'next/link'
 
 export default function PokerModelPage() {

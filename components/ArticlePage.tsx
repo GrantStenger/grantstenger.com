@@ -14,6 +14,7 @@ import Image, { ImageProps } from 'next/image'
 import { Button } from './ui/button'
 import { ArrowUp } from 'lucide-react'
 import { ProgressBar } from './ProgressBar'
+import katex from 'katex'
 
 const TableOfContents: React.FC<{ content: string }> = React.memo(({ content }) => {
     const headings = useMemo(() => {
@@ -72,9 +73,10 @@ interface CodeProps extends React.HTMLAttributes<HTMLElement> {
 interface ArticlePageProps {
   title: string;
   content: string;
+  contentType?: 'markdown' | 'latex';
 }
 
-export default function ArticlePage({ title, content }: ArticlePageProps) {
+export default function ArticlePage({ title, content, contentType = 'markdown' }: ArticlePageProps) {
   const articleRef = useRef<HTMLElement>(null)
 
   const scrollToTop = () => {
@@ -147,6 +149,217 @@ export default function ArticlePage({ title, content }: ArticlePageProps) {
     },
   }), [])
 
+  const processedContent = useMemo(() => {
+    if (contentType === 'latex') {
+      try {
+        let processed = content
+          .replace(/\\documentclass.*?\\begin{document}/s, '') // Remove preamble
+          .replace(/\\end{document}.*$/, '') // Remove end
+          .replace(/\\maketitle/, '') // Remove title command
+          
+          // Convert sections with special styling
+          .replace(/\\section{(.*?)}/g, '<h2 class="text-2xl md:text-3xl font-bold mt-12 mb-6 text-white">$1</h2>')
+          .replace(/\\subsection{(.*?)}/g, '<h3 class="text-xl md:text-2xl font-semibold mt-8 mb-4 text-white">$1</h3>')
+          
+          // Handle math environments first
+          .replace(/\\begin{align\*}(.*?)\\end{align\*}/gs, 
+            (_, content) => {
+              const alignedContent = content
+                .trim()
+                .split('\n')
+                .map(line => line.trim())
+                .filter(line => line)
+                .join(' \\\\ ');
+              return katex.renderToString(alignedContent, {
+                displayMode: true,
+                throwOnError: false,
+                strict: false,
+                trust: true
+              });
+            })
+          
+          .replace(/\\begin{aligned}(.*?)\\end{aligned}/gs,
+            (_, content) => {
+              const alignedContent = content
+                .trim()
+                .split('\n')
+                .map(line => line.trim())
+                .filter(line => line)
+                .join(' \\\\ ');
+              return katex.renderToString(alignedContent, {
+                displayMode: true,
+                throwOnError: false,
+                strict: false,
+                trust: true
+              });
+            })
+          
+          // Handle paragraphs with math
+          .replace(/\\paragraph{([^}]*)}/, '<p class="font-semibold mt-4">$1</p>')
+          
+          // Handle display math
+          .replace(/\\\[([\s\S]*?)\\\]/g, (_, math) => 
+            katex.renderToString(math.trim(), {
+              displayMode: true,
+              throwOnError: false,
+              strict: false,
+              trust: true
+            })
+          )
+          
+          // Handle inline math
+          .replace(/\$([^$]+)\$/g, (_, math) => 
+            katex.renderToString(math.trim(), {
+              displayMode: false,
+              throwOnError: false,
+              strict: false,
+              trust: true
+            })
+          )
+          
+          // Handle special LaTeX commands before general text processing
+          .replace(/\\underbrace{([^}]*)}_{([^}]*)}/g, (_, content, under) =>
+            katex.renderToString(`\\underbrace{${content}}_{${under}}`, {
+              displayMode: false,
+              throwOnError: false,
+              strict: false,
+              trust: true
+            })
+          )
+          
+          // Handle more math operators
+          .replace(/\\Pr/g, '\\operatorname{Pr}')
+          .replace(/\\Big/g, '\\big')
+          .replace(/\\mid/g, '|')
+          
+          // Convert text formatting
+          .replace(/\\textbf{(.*?)}/g, '<strong>$1</strong>')
+          .replace(/\\textit{(.*?)}/g, '<em>$1</em>')
+          .replace(/\\emph{(.*?)}/g, '<em>$1</em>')
+          
+          // Convert environments with proper indentation and bullets
+          .replace(/\\begin{itemize}([\s\S]*?)\\end{itemize}/gs, 
+            function processItemize(match, content, offset, string, depth = 0) {
+              const items = content
+                .split('\\item')
+                .filter(item => item.trim())
+                .map(item => {
+                  // Process nested itemize environments recursively
+                  let processedItem = item.trim();
+                  if (processedItem.includes('\\begin{itemize}')) {
+                    processedItem = processedItem.replace(
+                      /\\begin{itemize}([\s\S]*?)\\end{itemize}/g,
+                      (m, c) => processItemize(m, c, 0, '', depth + 1)
+                    );
+                  }
+                  // Process any math within the item
+                  processedItem = processedItem.replace(/\$([^$]+)\$/g, (_, math) => 
+                    katex.renderToString(math.trim(), {
+                      displayMode: false,
+                      throwOnError: false,
+                      strict: false,
+                      trust: true
+                    })
+                  );
+                  
+                  // Different bullet styles and indentation for different depths
+                  const bulletStyle = depth === 0 
+                    ? "before:content-['•'] before:mr-2 before:absolute before:left-0" 
+                    : "before:content-['-'] before:mr-2 before:absolute before:left-8";
+                  
+                  // Increase left padding for nested items
+                  const indentClass = depth > 0 ? 'ml-16' : 'ml-0';
+                  
+                  return `<li class="mb-4 relative pl-6 ${indentClass} ${bulletStyle}">${processedItem}</li>`;
+                })
+                .join('');
+              
+              return `<ul class="list-none space-y-2">${items}</ul>`;
+            })
+          
+          .replace(/\\begin{enumerate}([\s\S]*?)\\end{enumerate}/gs, 
+            (_, content) => {
+              const items = content
+                .split('\\item')
+                .filter(item => item.trim())
+                .map((item, index) => {
+                  const processedItem = item
+                    .trim()
+                    .replace(/\$([^$]+)\$/g, (_, math) => 
+                      katex.renderToString(math.trim(), {
+                        displayMode: false,
+                        throwOnError: false,
+                        strict: false,
+                        trust: true
+                      })
+                    );
+                  return `<li class="mb-4">${processedItem}</li>`;
+                })
+                .join('');
+              return `<ol class="list-decimal pl-8 space-y-2">${items}</ol>`;
+            })
+          
+          // Handle bibliography
+          .replace(/\\begin{thebibliography}{.*?}([\s\S]*?)\\end{thebibliography}/g, 
+            (_, content) => {
+              const bibItems = content.split('\\bibitem');
+              return `
+                <h2 class="text-2xl md:text-3xl font-bold mt-12 mb-6 text-white">References</h2>
+                <div class="space-y-4">
+                  ${bibItems
+                    .slice(1)
+                    .map(item => {
+                      const cleanedItem = item
+                        .replace(/^{([^}]*)}/, '')
+                        .replace(/\\emph{([^}]*)}/g, '<em>$1</em>')
+                        .replace(/\n+/g, ' ')
+                        .trim();
+                      return `<p class="pl-8 -indent-8">${cleanedItem}</p>`;
+                    })
+                    .join('\n')}
+                </div>
+              `;
+            })
+          
+          // Handle footnotes
+          .replace(/\\footnote{([^}]*)}/g, 
+            (_, content) => `<sup class="text-sm">${content}</sup>`)
+          
+          // Handle LaTeX commands
+          .replace(/\\text{(.*?)}/g, '$1')
+          .replace(/\\quad/g, ' ')
+          .replace(/\\sim/g, '~')
+          .replace(/\\rightarrow/g, '→')
+          .replace(/\\leftarrow/g, '←')
+          .replace(/\\Rightarrow/g, '⇒')
+          .replace(/\\Leftarrow/g, '⇐')
+          .replace(/\\ldots/g, '...')
+          .replace(/\\cdots/g, '⋯')
+          .replace(/~+/g, ' ')
+          
+          // Clean up duplicate renderings
+          .replace(/([^>])\n\n+/g, '$1</p><p>')
+          .replace(/<\/p><p>(\s*<span class="katex-display">)/g, '$1')
+          .replace(/(<\/span>\s*)<p>/g, '$1')
+          
+          // Clean up paragraphs and spacing
+          .replace(/\n{3,}/g, '\n\n')
+          .replace(/\n\n+/g, '</p><p>')
+          .replace(/\\\\/, '<br>')
+          .replace(/^(?!<[hp])/gm, '<p>')
+          .replace(/(?<!>)\s*$/gm, '</p>')
+          .replace(/\s{2,}/g, ' ')
+          .replace(/\n{3,}/g, '\n\n');
+
+        return processed;
+      } catch (error) {
+        console.error('Error processing LaTeX:', error);
+        return '<p>Error rendering content.</p>';
+      }
+    }
+    return content;
+  }, [content, contentType]);
+
   return (
     <div className="flex flex-col min-h-screen bg-black text-white">
       <Header />
@@ -169,15 +382,22 @@ export default function ArticlePage({ title, content }: ArticlePageProps) {
                   </React.Fragment>
                 ))}
               </h1>
-              <TableOfContents content={content} />
-              <ReactMarkdown
-                className="prose prose-lg md:prose-xl prose-invert text-gray-300 leading-relaxed max-w-none"
-                remarkPlugins={[remarkMath, remarkGfm]}
-                rehypePlugins={[rehypeKatex]}
-                components={memoizedMarkdownComponents}
-              >
-                {content}
-              </ReactMarkdown>
+              <TableOfContents content={contentType === 'markdown' ? content : ''} />
+              {contentType === 'markdown' ? (
+                <ReactMarkdown
+                  className="prose prose-lg md:prose-xl prose-invert text-gray-300 leading-relaxed max-w-none"
+                  remarkPlugins={[remarkMath, remarkGfm]}
+                  rehypePlugins={[rehypeKatex]}
+                  components={memoizedMarkdownComponents}
+                >
+                  {content}
+                </ReactMarkdown>
+              ) : (
+                <div 
+                  className="prose prose-lg md:prose-xl prose-invert text-gray-300 leading-relaxed max-w-none"
+                  dangerouslySetInnerHTML={{ __html: processedContent }} 
+                />
+              )}
             </article>
           </div>
         </div>

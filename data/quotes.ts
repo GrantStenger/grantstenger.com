@@ -1,4 +1,4 @@
-export const aphorisms = [
+export const quotes = [
     {
         "title": "I've got a great ambition to die of exhaustion rather than boredom.",
         "author": "Thomas Carlyle"

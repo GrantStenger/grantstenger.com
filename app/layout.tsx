@@ -2,6 +2,7 @@ import './globals.css'
 import localFont from 'next/font/local'
 import type { Metadata } from 'next'
 import { Analytics } from "@vercel/analytics/react"
+import 'katex/dist/katex.min.css'
 
 const abcDiatype = localFont({
   src: [

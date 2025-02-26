@@ -14,5 +14,11 @@ export default function Article({ params }: { params: { slug: string } }) {
     return <div>Article not found</div>
   }
 
-  return <ArticlePage title={article.title} content={article.content} />
+  return (
+    <ArticlePage 
+      title={article.title} 
+      content={article.content} 
+      contentType={article.contentType as 'markdown' | 'latex'} 
+    />
+  )
 }

@@ -32,6 +32,10 @@ export const quotes = [
         "author": "Machiavelli"
     },
     {
+        "title": "Let's assume we know nothing, which is a reasonable approximation.",
+        "author": "David Kazhdan"
+    },
+    {
         "title": "I cannot remember the books I've read any more than the meals I have eaten; even so, they have made me.",
         "author": "Ralph Waldo Emerson"
     },
@@ -56,6 +60,10 @@ export const quotes = [
         "author": "Plutarch"
     },
     {
+        "title": "If people do not believe that mathematics is simple, it is only because they do not realize how complicated life is.",
+        "author": "John von Neumann"
+    },
+    {
         "title": "That which can be destroyed by the truth should be.",
         "author": "P. C. Hodgell"
     },
@@ -68,6 +76,10 @@ export const quotes = [
         "author": "Mark Twain"
     },
     {
+        "title": "The map is not the territory.",
+        "author": "Alfred Korzybski"
+    },
+    {
         "title": "Something burned inside me. I wanted to be different; I was determined to be unique. I was driven to think big and to dream big. Everyone else thought that I was crazy.",
         "author": "Arnold Schwarzenegger"
     },
@@ -78,6 +90,10 @@ export const quotes = [
     {
         "title": "I have no responsibility to live up to what others expect of me. That's their mistake, not my failing.",
         "author": "Richard Feynman"
+    },
+    {
+        "title": "Algebra is the offer made by the devil to the mathematician. The devil says: I will give you this powerful machine, it will answer any question you like. All you need to do is give me your soul: give up geometry and you will have this marvelous machine.",
+        "author": "Sir Michael Atiyah"
     },
     {
         "title": "The world is a very malleable place. If you know what you want, and you go for it with maximum energy and drive and passion, the world will often reconfigure itself around you much more quickly and easily than you would think.",
@@ -96,6 +112,10 @@ export const quotes = [
         "author": "Albert Einstein"
     },
     {
+        "title": "Good mathematicians see analogies. Great mathematicians see analogies between analogies.",
+        "author": "Stefan Banach"
+    },
+    {
         "title": "Learn as if you will live forever; live as if you will die tomorrow.",
         "author": "Unknown"
     },
@@ -108,6 +128,10 @@ export const quotes = [
         "author": "Dave Ramsey"
     },
     {
+        "title": "The introduction of the digit 0 or the group concept was general nonsense too, and mathematics was more or less stagnating for thousands of years because nobody was around to take such childish steps...",
+        "author": "Grothendieck"
+    },
+    {
         "title": "The surest way to be happy is to seek happiness for others.",
         "author": "Eleanor Roosevelt"
     },
@@ -118,6 +142,10 @@ export const quotes = [
     {
         "title": "The key to modern life is to be, in a word, unborable.",
         "author": "David Foster Wallace"
+    },
+    {
+        "title": "A traveller who refuses to pass over a bridge until he personally tests the soundness of every part of it is not likely to go far; something must be risked, even in mathematics.",
+        "author": "Horace Lamb"
     },
     {
         "title": "Talent hits a target no one else can hit. Genius hits a target no one else can see.",
@@ -160,6 +188,10 @@ export const quotes = [
         "author": "Voltaire"
     },
     {
+        "title": "God exists since mathematics is consistent, and the Devil exists since we cannot prove it.",
+        "author": "André Weil"
+    },
+    {
         "title": "First say to yourself what you would be; and then do what you have to do.",
         "author": "Epictetus"
     },
@@ -182,6 +214,10 @@ export const quotes = [
     {
         "title": "The truth is, we know so little about life, we don't really know what the good news is and what the bad news is.",
         "author": "Kurt Vonnegut"
+    },
+    {
+        "title": "In the broad light of day mathematicians check their equations and their proofs, leaving no stone unturned in their search for rigour. But, at night, under the full moon, they dream, they float among the stars and wonder at the miracle of the heavens. They are inspired. Without dreams there is no art, no mathematics, no life.",
+        "author": "Michael Atiyah"
     },
     {
         "title": "It's hard to do a really good job on anything you don't think about in the shower.",
@@ -232,6 +268,10 @@ export const quotes = [
         "author": "Felix Dennis"
     },
     {
+        "title": "I love to do research, I want to do research, I have to do research, and I hate to sit down and begin to do research—I always try to put it off just as long as I can. ... Isn't there something I can (must?) do first? Shouldn't I sharpen my pencils, perhaps? In fact I never use pencils, but pencil sharpening has / become the code phrase for anything that helps to postpone the pain of concentrated creative attention. It stands for reference searching in the library, systematizing old notes, or even preparing tomorrow's class lecture, with the excuse that once those things are out of the way I'll really be able to concentrate without interruption.",
+        "author": "Paul Halmos"
+    },
+    {
         "title": "When fishermen cannot go to sea, they repair nets.",
         "author": "Nabil Sabio Azadi"
     },
@@ -274,6 +314,10 @@ export const quotes = [
     {
         "title": "Anyone can attain my level, if he is as diligent as I have been for my entire life.",
         "author": "J.S. Bach"
+    },
+    {
+        "title": "If I have seen further it is by standing on the shoulders of Giants.",
+        "author": "Isaac Newton"
     },
     {
         "title": "How long are you going to wait before you demand the best for yourself?",
@@ -326,6 +370,10 @@ export const quotes = [
     {
         "title": "What man actually needs is not a tensionless state but rather the striving and struggling for a worthwhile goal, a freely chosen task.",
         "author": "Viktor Frankl"
+    },
+    {
+        "title": "That without a recognition of logical fictions, without a comparison of reality with the purely IMAGINED world of the absolute and immutable, without a constant counterfeiting of the world by means of numbers, man could not live.",
+        "author": "Nietzsche (Beyond Good and Evil)"
     },
     {
         "title": "Men in great place are thrice servants: servants of the sovereign or state; servants of fame; and servants of business. So as they have no freedom; neither in their persons, nor in their actions, nor in their times. It is a strange desire, to seek power and to lose liberty: or to seek power over others and to lose power over a man's self.",
@@ -386,6 +434,10 @@ export const quotes = [
     {
         "title": "Live as if you were living for the second time and had acted as wrongly the first time as you are about to act now.",
         "author": "Viktor E. Frankl"
+    },
+    {
+        "title": "And down under all those piles of stuff, the secret was written: We build our computers the way we build our cities -- over time, without a plan, on top of ruins.",
+        "author": "Ellen Ullman"
     },
     {
         "title": "The scientist does not study nature because it is useful to do so. He studies it because he takes pleasure in it, and he takes pleasure in it because it is beautiful. If nature were not beautiful it would not be worth knowing, and life would not be worth living.",
@@ -502,5 +554,5 @@ export const quotes = [
     {
         "title": "Whatever you are, be a great one.",
         "author": "Abraham Lincoln"
-    }
+    },
 ]

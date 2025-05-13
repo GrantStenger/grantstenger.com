@@ -18,7 +18,7 @@ export const essays = [
         "link": "https://bitcoin.org/bitcoin.pdf"
     },
     {
-        "title": "The Fable of the Dragon King",
+        "title": "The Fable of the Dragon-Tyrant",
         "author": "Nick Bostrom",
         "year": 2005,
         "link": "https://www.nickbostrom.com/fable/dragon.html"

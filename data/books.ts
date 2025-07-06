@@ -6,12 +6,6 @@ export const books = [
     link: "https://www.amazon.com/Road-Reality-Complete-Guide-Universe/dp/0679776311"
   },
   {
-    title: "Blood Meridian",
-    author: "Cormac McCarthy",
-    description: "A brutal, poetic novel set in the American West, exploring themes of violence and survival.",
-    link: "https://www.amazon.com/Blood-Meridian-Evening-Redness-West/dp/0679728759"
-  },
-  {
     title: "Accelerando",
     author: "Charles Stross",
     description: "A science fiction novel exploring the acceleration of technological development.",
@@ -30,18 +24,6 @@ export const books = [
     link: "https://www.amazon.com/Walden-Two-B-F-Skinner/dp/0872207781"
   },
   {
-    title: "The Antichrist",
-    author: "Friedrich Nietzsche",
-    description: "A critical examination of Christianity and its influence on Western culture.",
-    link: "https://www.amazon.com/Antichrist-Curse-Christianity-Dover-Philosophy/dp/0486433655"
-  },
-  {
-    title: "The Elephant in the Brain: Hidden Motives in Everyday Life",
-    author: "Kevin Simler and Robin Hanson",
-    description: "An exploration of the hidden motives that drive human behavior.",
-    link: "https://www.amazon.com/Elephant-Brain-Hidden-Motives-Everyday/dp/0190495995"
-  },
-  {
     title: "The Laws of Trading: A Trader's Guide to Better Decision-Making for Everyone",
     author: "Agustin Lebron",
     description: "A guide to improving decision-making in trading and beyond, based on principles from game theory and behavioral science.",
@@ -54,10 +36,22 @@ export const books = [
     link: "https://www.amazon.com/Candide-Dover-Thrift-Editions-Voltaire/dp/0486266893"
   },
   {
+    title: "Blood Meridian",
+    author: "Cormac McCarthy",
+    description: "A brutal, poetic novel set in the American West, exploring themes of violence and survival.",
+    link: "https://www.amazon.com/Blood-Meridian-Evening-Redness-West/dp/0679728759"
+  },
+  {
     title: "The Republic",
     author: "Plato",
     description: "A Socratic dialogue exploring justice, the ideal state, and the philosopher-king concept.",
     link: "https://www.amazon.com/Republic-Cambridge-Texts-History-Political/dp/052148443X"
+  },
+  {
+    title: "The Antichrist",
+    author: "Friedrich Nietzsche",
+    description: "A critical examination of Christianity and its influence on Western culture.",
+    link: "https://www.amazon.com/Antichrist-Curse-Christianity-Dover-Philosophy/dp/0486433655"
   },
   {
     title: "On the Origin of Species",
@@ -76,6 +70,18 @@ export const books = [
     author: "Claude E. Shannon",
     description: "A foundational text in information theory, exploring the mathematical basis of communication.",
     link: "https://www.amazon.com/Mathematical-Theory-Communication-Classic-Paperbacks/dp/0252725468"
+  },
+  {
+    title: "The Brothers Karamazov",
+    author: "Fyodor Dostoyevsky",
+    description: "A philosophical novel exploring morality, faith, and family dynamics in 19th-century Russia.",
+    link: "https://www.amazon.com/Brothers-Karamazov-Fyodor-Dostoevsky/dp/0374528373"
+  },
+  {
+    title: "The Elephant in the Brain: Hidden Motives in Everyday Life",
+    author: "Kevin Simler and Robin Hanson",
+    description: "An exploration of the hidden motives that drive human behavior.",
+    link: "https://www.amazon.com/Elephant-Brain-Hidden-Motives-Everyday/dp/0190495995"
   },
   {
     title: "How to Actually Change Your Mind",
@@ -124,12 +130,6 @@ export const books = [
     author: "Eliezer Yudkowsky",
     description: "A collection of essays on rationality and cognitive biases.",
     link: "https://www.amazon.com/Map-Territory-Less-Wrong-Sequence/dp/1939311233"
-  },
-  {
-    title: "The Brothers Karamazov",
-    author: "Fyodor Dostoyevsky",
-    description: "A philosophical novel exploring morality, faith, and family dynamics in 19th-century Russia.",
-    link: "https://www.amazon.com/Brothers-Karamazov-Fyodor-Dostoevsky/dp/0374528373"
   },
   {
     title: "The Intelligent Investor",

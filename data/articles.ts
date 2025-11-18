@@ -1840,5 +1840,29 @@ Thus, after transforming the cash-denominated model's optimal weights to the $A$
       tags: ["Mathematics", "Game Theory", "Poker"],
       contentType: "latex",
     },
+    {
+      title: "On Bartleby, the Scrivener",
+      description: "A reflection on Herman Melville's classic short story",
+      slug: "on-bartleby-the-scrivener",
+      author: "Grant Stenger (Aug 2023)",
+      content: `
+Melville’s 1853 short story [*Bartleby, the Scrivener*](https://moglen.law.columbia.edu/LCS/bartleby.pdf) is often treated as a kind of sacred text for a certain worldview: heroic passive resistance, the alienation of capitalism, the dehumanizing office environment, copywork as essentially machine labor unworthy of a human being, and so on. In this reading, Bartleby is a tragic saint bravely refusing to participate in a meaningless system. I wholeheartedly disagree.
+
+The basic story is simple. Bartleby is a copyist who, over time, produces less and less by repeatedly uttering his famous line: “I would prefer not to.” At first, he just prefers not to run errands. Then he prefers not to do certain kinds of copying. Eventually he prefers not to do any work at all. After that, he decides he doesn’t want to leave the office and remains there, unmoving, for weeks. The company owner finally moves his entire headquarters just to be rid of Bartleby, but Bartleby simply stays put in the old office even after they’ve left. The next tenant inherits Bartleby the squatter, fails to get him out, and has him arrested. In jail, Bartleby eventually also prefers not to eat, and dies of starvation.
+
+I’ve often seen this interpreted as an indictment of an unfair society. Why did Bartleby have to go to jail and die of starvation? The implication is that something deep in the structure of capitalism is to blame. But fundamentally, he didn’t have to. The narrator goes out of his way to help. He offers Bartleby a place to stay, even proposes that Bartleby could live in his own home, and tries to come up with alternative jobs or tasks Bartleby might enjoy. Bartleby refuses all of it. “I would prefer not to” is his answer to every attempt to rescue him.
+
+Two major points follow from this, a secondary and a primary. First, my secondary point: inaction is an action. There’s nothing special about “doing nothing” that should imbue the act with some kind of Godlike protection. Bartleby isn’t *not* making a choice to leave; he’s choosing to stay. He isn’t not choosing about food; he’s choosing not to eat. There is no special, morally privileged category of “opting out” that natural rights will protect for you. A refusal to move is still a move. A refusal to act is still a decision inside a causal world that doesn’t care how you narrate it to yourself.
+
+Now, a bridge between my secondary point and my primary one. Suppose there were no society at all and Bartleby were in raw nature. His choice not to leave his dwelling and then eventually not to eat would cause him to starve to death just the same. Before that, his well-being would likely be threatened by another animal. This is how the world naturally works. There is a certain amount of effort required to stay alive and well, or else death lurks nearby. The universe has no special rule that says, “If you lie perfectly still and prefer not to, you get a pass.”
+
+Which brings me to my primary point: Capitalism did not kill Bartleby; Nature did. Without society and capitalism, Bartleby would have had to build his shelter himself, hunt his own food, defend himself, and so on. Under capitalism, he is allowed to do the one or two narrow tasks he reasonably enjoys, which happen to be useful to others, and then trade his labor on those specialized tasks for a house, food, and everything else he needs. Capitalism doesn’t force us to work; Nature does. Capitalism lets us coordinate and trade with one another to help each other get the required amount of work done in a preferable way (think utils and preference orderings). You do something useful for me, I do something useful for you, and both of us are buffered from the raw teeth of the world.
+
+To summarize, Bartleby didn’t commit a heroic act of existential protest against the meaninglessness of modern capitalist life. He committed slow suicide by letting Nature overtake him, even though capitalism and the prosocial behavior of those around him tried to lift him up. Heroism is having strength and using it for good, not surrendering to pathology and calling it profound. It is absolutely childish to believe that one deserves to live indefinitely in a state of “preferring not to” while others are obligated to keep you alive. Society poured resources into nurturing Bartleby, and he rejected them, forsaking whatever gifts—natural or God-given—you think he had.
+
+Bartleby’s story is not one to be revered; it should be reviled. He is not a model of noble resistance to “the system.” He is a man who chose to stop participating in reality and died the entirely predictable death that follows from that choice. That may be tragic, but it is not heroic.
+
+      `
+    },
     // Add more articles as needed
   ];

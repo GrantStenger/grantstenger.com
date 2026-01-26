@@ -1865,7 +1865,7 @@ Bartleby’s story is not one to be revered; it should be reviled. He is not a m
       `
     },
     {
-      title: "The quant shop — AI lab convergence",
+      title: "Quant Funds and AI Labs Converge",
       description: "An analysis of the convergence between quantitative trading firms and AI research laboratories.",
       slug: "quant-ai-convergence",
       author: "Grant Stenger (2026)",

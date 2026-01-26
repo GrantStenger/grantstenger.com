@@ -11,8 +11,9 @@ export async function generateStaticParams() {
     }))
 }
 
-export default function Article({ params }: { params: { slug: string } }) {
-  const article = articles.find((a) => a.slug === params.slug)
+export default async function Article({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const article = articles.find((a) => a.slug === slug)
 
   if (!article) {
     return notFound()
@@ -24,10 +25,10 @@ export default function Article({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <ArticlePage 
-      title={article.title} 
-      content={article.content} 
-      contentType={article.contentType as 'markdown' | 'latex'} 
+    <ArticlePage
+      title={article.title}
+      content={article.content}
+      contentType={article.contentType as 'markdown' | 'latex'}
     />
   )
 }

@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-      domains: ['hackmd.io'],
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'hackmd.io',
+        },
+      ],
     },
     webpack: (config, { isServer }) => {
       config.module.rules.push({
@@ -10,6 +15,9 @@ const nextConfig = {
       });
       return config;
     },
+    // Use webpack for builds (needed for .tex file handling)
+    // Turbopack doesn't support raw-loader yet
+    turbopack: {},
   };
   
   export default nextConfig;

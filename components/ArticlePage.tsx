@@ -105,6 +105,14 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
     h3: ({ children, ...props }) => <h3 id={slugify(children?.toString() || '')} className="text-lg md:text-xl lg:text-2xl font-medium mt-8 mb-4 text-white" {...props}>{children}</h3>,
     p: ({ children, ...props }) => {
       const childrenArray = React.Children.toArray(children);
+
+      const hasImage = childrenArray.some(
+        child => React.isValidElement(child) && child.type === 'img'
+      );
+      if (hasImage) {
+        return <>{children}</>;
+      }
+
       const hasNonEmptyContent = childrenArray.some(child => {
         if (typeof child === 'string') {
           return child.trim() !== '';
@@ -118,12 +126,7 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
 
       return (
         <p className="mb-6 text-base md:text-lg last:mb-0" {...props}>
-          {childrenArray.map((child, index) => {
-            if (React.isValidElement(child) && child.type === 'img') {
-              return <React.Fragment key={index}>{child}</React.Fragment>;
-            }
-            return child;
-          })}
+          {children}
         </p>
       );
     },

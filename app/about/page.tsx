@@ -1,5 +1,11 @@
+import type { Metadata } from 'next'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
+
+export const metadata: Metadata = {
+    title: 'About — Grant Stenger',
+    description: 'About Grant Stenger, Founder & CEO of Kinetic.',
+}
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
     return (

@@ -22,6 +22,16 @@ function slugify(text: string): string {
     .replace(/^-|-$/g, '')
 }
 
+function extractText(children: React.ReactNode): string {
+  if (typeof children === 'string') return children
+  if (typeof children === 'number') return String(children)
+  if (Array.isArray(children)) return children.map(extractText).join('')
+  if (React.isValidElement(children) && children.props) {
+    return extractText(children.props.children)
+  }
+  return ''
+}
+
 const TableOfContents: React.FC<{ content: string }> = React.memo(({ content }) => {
     const headings = useMemo(() => {
       const lines = content.split('\n');
@@ -53,7 +63,7 @@ const TableOfContents: React.FC<{ content: string }> = React.memo(({ content }) 
         <ul className="space-y-2">
           {headings.map((heading, index) => {
             const level = heading.match(/^#+/)?.[0].length || 1
-            const text = heading.replace(/^#+\s/, '')
+            const text = heading.replace(/^#+\s/, '').replace(/[*_`]/g, '')
             return (
               <li key={index} style={{ paddingLeft: `${(level - 1) * 1}rem` }}>
                 <Link 
@@ -95,10 +105,10 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
   });
 
   const memoizedMarkdownComponents = useMemo<Components>(() => ({
-    h1: ({ children, ...props }) => <h1 id={slugify(children?.toString() || '')} className="text-2xl md:text-3xl lg:text-4xl font-bold mt-12 mb-6 text-white" {...props}>{children}</h1>,
-    h2: ({ children, ...props }) => <h2 id={slugify(children?.toString() || '')} className="text-xl md:text-2xl lg:text-3xl font-semibold mt-10 mb-5 text-white" {...props}>{children}</h2>,
-    h3: ({ children, ...props }) => <h3 id={slugify(children?.toString() || '')} className="text-lg md:text-xl lg:text-2xl font-medium mt-8 mb-4 text-white" {...props}>{children}</h3>,
-    p: ({ children, ...props }) => {
+    h1: ({ node, children, ...props }) => <h1 id={slugify(extractText(children))} className="text-2xl md:text-3xl lg:text-4xl font-bold mt-12 mb-6 text-white" {...props}>{children}</h1>,
+    h2: ({ node, children, ...props }) => <h2 id={slugify(extractText(children))} className="text-xl md:text-2xl lg:text-3xl font-semibold mt-10 mb-5 text-white" {...props}>{children}</h2>,
+    h3: ({ node, children, ...props }) => <h3 id={slugify(extractText(children))} className="text-lg md:text-xl lg:text-2xl font-medium mt-8 mb-4 text-white" {...props}>{children}</h3>,
+    p: ({ node, children, ...props }) => {
       const childrenArray = React.Children.toArray(children);
 
       const hasImage = childrenArray.some(
@@ -125,7 +135,7 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
         </p>
       );
     },
-    img: ({ src, alt, ...props }) => {
+    img: ({ node, src, alt, ...props }) => {
       if (typeof src !== 'string') {
         return null;
       }
@@ -141,11 +151,11 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
         </figure>
       );
     },
-    a: ({ children, ...props }) => <a className="text-gray-300 hover:text-white underline transition-colors duration-200" {...props}>{children}</a>,
-    pre: ({ children, ...props }) => (
+    a: ({ node, children, ...props }) => <a className="text-gray-300 hover:text-white underline transition-colors duration-200" {...props}>{children}</a>,
+    pre: ({ node, children, ...props }) => (
       <pre className="whitespace-pre-wrap break-words bg-[#1a1a1a] p-4 rounded-md mb-6" {...props}>{children}</pre>
     ),
-    code: ({ children, ...props }) => {
+    code: ({ node, children, ...props }) => {
       const isBlock = props.className?.startsWith('language-');
       if (isBlock) {
         return <code {...props}>{children}</code>
@@ -205,7 +215,7 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
             })
           
           // Handle paragraphs with math
-          .replace(/\\paragraph{([^}]*)}/, '<p class="font-semibold mt-4">$1</p>')
+          .replace(/\\paragraph{([^}]*)}/g, '<p class="font-semibold mt-4">$1</p>')
           
           // Handle display math
           .replace(/\\\[([\s\S]*?)\\\]/g, (_: string, math: string) => 

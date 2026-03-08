@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo, ReactNode } from 'react'
+import { useState, ReactNode } from 'react'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import { ContentCard } from './ContentCard'
@@ -23,24 +23,13 @@ interface ContentPageProps {
     items: ContentItem[];
     searchPlaceholder: string;
     baseUrl: string;
-    defaultAuthor?: string; // Add a default author prop
-    shuffle?: boolean; // Add shuffle prop
+    defaultAuthor?: string;
 }
 
-function shuffleArray<T>(array: T[]): T[] {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-}
-
-export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultAuthor, shuffle = false }: ContentPageProps) {
+export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultAuthor }: ContentPageProps) {
     const [searchQuery, setSearchQuery] = useState('')
-    const randomizedItems = useMemo(() => shuffle ? shuffleArray(items) : items, [items, shuffle])
 
-    const filteredItems = randomizedItems.filter(item =>
+    const filteredItems = items.filter(item =>
         item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (item.author || defaultAuthor || '').toLowerCase().includes(searchQuery.toLowerCase())
     )

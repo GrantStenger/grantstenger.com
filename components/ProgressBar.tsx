@@ -13,6 +13,10 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({ targetRef }) => {
     if (targetRef.current && progressRef.current) {
       const windowScrollTop = window.scrollY || document.documentElement.scrollTop
       const totalHeight = targetRef.current.scrollHeight - window.innerHeight
+      if (totalHeight <= 0) {
+        progressRef.current.style.transform = 'translateX(0%)'
+        return
+      }
       const scrolled = Math.min((windowScrollTop / totalHeight) * 100, 100)
       
       progressRef.current.style.transform = `translateX(${scrolled - 100}%)`

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, ReactNode } from 'react'
+import { useState, useMemo, ReactNode } from 'react'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import { ContentCard } from './ContentCard'
@@ -38,11 +38,7 @@ function shuffleArray<T>(array: T[]): T[] {
 
 export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultAuthor, shuffle = false }: ContentPageProps) {
     const [searchQuery, setSearchQuery] = useState('')
-    const [randomizedItems, setRandomizedItems] = useState<ContentItem[]>([])
-
-    useEffect(() => {
-        setRandomizedItems(shuffle ? shuffleArray(items) : items);
-    }, [items, shuffle]);
+    const randomizedItems = useMemo(() => shuffle ? shuffleArray(items) : items, [items, shuffle])
 
     const filteredItems = randomizedItems.filter(item =>
         item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||

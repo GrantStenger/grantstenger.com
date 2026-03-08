@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState, useEffect } from 'react'
 
 interface HeaderProps {
     className?: string;
@@ -11,18 +10,10 @@ interface HeaderProps {
 export function Header({ className = '' }: HeaderProps) {
     const pathname = usePathname()
     const isHomePage = pathname === '/'
-    const [isMounted, setIsMounted] = useState(false)
-
-    useEffect(() => {
-        setIsMounted(true)
-    }, [])
 
     const renderHeaderText = () => {
-        if (!isMounted) {
-            return <span className="invisible">GRANT STENGER</span>
-        }
         if (isHomePage) {
-            return <div className="invisible">GRANT STENGER</div>
+            return <span className="invisible">GRANT STENGER</span>
         }
         return (
             <Link href="/" className="text-white font-semibold">

@@ -28,20 +28,20 @@ const TableOfContents: React.FC<{ content: string }> = React.memo(({ content }) 
       const lines = content.split('\n');
       const headingRegex = /^#{1,3} .+$/;
       const codeBlockRegex = /^```/;
-      let isInCodeBlock = false;
-      
-      return lines.reduce((acc, line) => {
+      let inCodeBlock = false;
+      const result: string[] = [];
+
+      for (const line of lines) {
         if (codeBlockRegex.test(line)) {
-          isInCodeBlock = !isInCodeBlock;
-          return acc;
+          inCodeBlock = !inCodeBlock;
+          continue;
         }
-        
-        if (!isInCodeBlock && headingRegex.test(line)) {
-          acc.push(line);
+        if (!inCodeBlock && headingRegex.test(line)) {
+          result.push(line);
         }
-        
-        return acc;
-      }, [] as string[]);
+      }
+
+      return result;
     }, [content])
   
     if (headings.length === 0) {

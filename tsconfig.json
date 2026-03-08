@@ -24,13 +24,10 @@
         "./*"
       ],
       "@/components/*": [
-        "app/components/*"
+        "components/*"
       ],
       "@/data/*": [
-        "app/data/*"
-      ],
-      "@/lib/*": [
-        "app/lib/*"
+        "data/*"
       ]
     },
     "plugins": [

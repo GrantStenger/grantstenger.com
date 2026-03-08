@@ -1,193 +1,100 @@
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+    return (
+        <section className="mb-12">
+            <h2 className="text-2xl font-bold mb-6 text-white">{title}</h2>
+            {children}
+        </section>
+    )
+}
+
+function Role({ title, role, location, children }: { title: string; role: string; location: string; children?: React.ReactNode }) {
+    return (
+        <div className="mb-6">
+            <h3 className="text-lg font-semibold text-white">{title}</h3>
+            <p className="text-gray-400 text-sm">{role} &middot; {location}</p>
+            {children && <ul className="mt-2 space-y-1 text-gray-300 text-sm">{children}</ul>}
+        </div>
+    )
+}
+
 export default function About() {
     return (
-        <div className="flex flex-col min-h-screen bg-black text-white font-sans">
+        <div className="flex flex-col min-h-screen bg-black text-white">
             <Header />
 
-            <main className="flex-grow container mx-auto px-4 py-12">
-                <h1 className="text-5xl font-bold mb-12 text-center text-blue-400">About Me</h1>
+            <main className="flex-grow px-4 md:px-6 lg:px-12 py-12 max-w-3xl mx-auto w-full">
+                <h1 className="text-5xl font-bold mb-4 text-white">Grant Stenger</h1>
+                <p className="text-gray-400 mb-12 text-lg">
+                    {"Founder & CEO of Kinetic — a multi-chain dex aggregator supporting both fungible and non-fungible token trading. We raised $7.2m from Jump, Sequoia, SV Angel, Contrary, and others."}
+                </p>
 
-                <div className="bg-gray-900 border border-gray-700 rounded-lg mb-8">
-                    <div className="p-6">
-                        <h2 className="text-2xl font-bold mb-4 text-blue-400">Kinetic</h2>
-                        <p className="text-gray-300 mb-4">
-                            {"I'm Grant Stenger, the Founder & CEO of Kinetic."}
-                        </p>
-                        <ul className="list-disc list-inside text-gray-300 mb-4">
-                            <li>Kinetic is a multi-chain dex aggregator supporting both fungible and non-fungible token trading.</li>
-                            <li>We raised $7.2m from great partners including Jump, Sequoia, SV Angel, Contrary, GBV, K5, dao5, Soma, BoxGroup, and Lux.</li>
-                            <li>Built an elite team of world-class engineers from Stanford, MIT, Princeton, etc.</li>
-                        </ul>
-                        <p className="text-gray-300">
-                            Our mission at Kinetic is to create a more efficient, transparent, and accessible financial ecosystem for all.
-                        </p>
-                    </div>
-                </div>
+                <Section title="Experience">
+                    <Role title="Polychain" role="Quant Research" location="San Francisco">
+                        <li>Delta-neutral trading models for liquid crypto derivatives markets</li>
+                        <li>DeFi protocol research — whitepapers, founder calls, code reviews</li>
+                    </Role>
+                    <Role title="Jane Street" role="Quant Trading" location="New York City">
+                        <li>Equities-focused quant research</li>
+                        <li>Analysis of the price impact of large block trades reported on the TRF</li>
+                        <li>1st place winner of internal automated trading competition</li>
+                    </Role>
+                    <Role title="Midjourney" role="AI Research" location="San Francisco">
+                        <li>Tools for thought</li>
+                        <li>Psychometric embedding research</li>
+                    </Role>
+                    <Role title="QuantRes" role="Quant Research" location="Nassau, Bahamas">
+                        <li>Advanced time series modeling</li>
+                        <li>Equities ETF market making</li>
+                    </Role>
+                    <Role title="Numerai" role="Machine Learning Engineer" location="San Francisco">
+                        <li>High dimensional stats for meta-model improvements</li>
+                        <li>ML pipeline for detecting malicious users</li>
+                        <li>{"Fullstack work on Erasure's splash page (React + Node.js + GraphQL + Elixir)"}</li>
+                    </Role>
+                </Section>
 
-                <div className="grid gap-8 md:grid-cols-2">
-                    <div className="bg-gray-900 border border-gray-700 rounded-lg">
-                        <div className="p-6">
-                            <h2 className="text-2xl font-bold mb-4 text-blue-400">Experience</h2>
-                            <div className="space-y-6">
-                                <div>
-                                    <h3 className="text-xl font-semibold text-blue-300">Polychain</h3>
-                                    <p className="text-gray-400">Quant Research</p>
-                                    <p className="text-gray-500">San Francisco</p>
-                                    <ul className="list-disc list-inside text-gray-300 mt-2">
-                                        <li>Delta-neutral trading models for liquid crypto derivatives markets</li>
-                                        <li>DeFi protocol research –– whitepapers, founder calls, code reviews</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-semibold text-blue-300">Jane Street</h3>
-                                    <p className="text-gray-400">Quant Trading</p>
-                                    <p className="text-gray-500">New York City</p>
-                                    <ul className="list-disc list-inside text-gray-300 mt-2">
-                                        <li>Equities-focused quant research</li>
-                                        <li>Analysis of the price impact of large block trades reported on the TRF</li>
-                                        <li>1st place winner of internal automated trading competition</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-semibold text-blue-300">Midjourney</h3>
-                                    <p className="text-gray-400">AI Research</p>
-                                    <p className="text-gray-500">San Francisco</p>
-                                    <ul className="list-disc list-inside text-gray-300 mt-2">
-                                        <li>Tools for thought</li>
-                                        <li>Psychometric embedding research</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-semibold text-blue-300">QuantRes</h3>
-                                    <p className="text-gray-400">Quant Research</p>
-                                    <p className="text-gray-500">Nassau, Bahamas</p>
-                                    <ul className="list-disc list-inside text-gray-300 mt-2">
-                                        <li>Advanced time series modeling</li>
-                                        <li>Equities ETF market making</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-semibold text-blue-300">Numerai</h3>
-                                    <p className="text-gray-400">Machine Learning Engineer</p>
-                                    <p className="text-gray-500">San Francisco</p>
-                                    <ul className="list-disc list-inside text-gray-300 mt-2">
-                                        <li>High dimensional stats for meta-model improvements</li>
-                                        <li>ML pipeline for detecting malicious users</li>
-                                        <li>{"Fullstack work on Erasure's splash page (React + Node.js + GraphQL + Elixir)"}</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <Section title="Education">
+                    <Role title="University of Southern California" role="B.S. Applied Mathematics, B.S. Computer Science" location="Los Angeles, CA">
+                        <li>Full tuition merit scholarship</li>
+                        <li>Started PhD level computer science and math courses as a sophomore</li>
+                    </Role>
+                    <Role title="THINK Global School" role="High School" location="Hyderabad, Tanzania, Hiroshima">
+                        <li>{"Attended the world's first traveling high school, living and studying in multiple countries"}</li>
+                    </Role>
+                    <Role title="Head-Royce School" role="High School" location="Oakland, CA">
+                        <li>Berkeley Math Circle, Student Council (8 years), East Bay Fencers Gym, AwesomeMath, AoPS</li>
+                    </Role>
+                </Section>
 
-                    <div className="space-y-8">
-                        <div className="bg-gray-900 border border-gray-700 rounded-lg">
-                            <div className="p-6">
-                                <h2 className="text-2xl font-bold mb-4 text-blue-400">Education</h2>
-                                <div className="space-y-6">
-                                    <div>
-                                        <h3 className="text-xl font-semibold text-blue-300">University of Southern California</h3>
-                                        <p className="text-gray-400">B.S. Applied Mathematics, B.S. Computer Science</p>
-                                        <p className="text-gray-500">Los Angeles, CA</p>
-                                        <ul className="list-disc list-inside text-gray-300 mt-2">
-                                            <li>Full tuition merit scholarship</li>
-                                            <li>Started PhD level computer science and math courses as a sophomore</li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-semibold text-blue-300">THINK Global School</h3>
-                                        <p className="text-gray-400">High School</p>
-                                        <p className="text-gray-500">Hyderabad, Tanzania, Hiroshima</p>
-                                        <p className="text-gray-300 mt-2">
-                                            {"Attended the world's first traveling high school, living and studying in multiple countries"}
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-semibold text-blue-300">Head-Royce School</h3>
-                                        <p className="text-gray-400">High School</p>
-                                        <p className="text-gray-500">Oakland, CA</p>
-                                        <p className="text-gray-300 mt-2">
-                                            Berkeley Math Circle, Student Council (8 years), East Bay Fencers Gym, AwesomeMath, AoPS
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <Section title="Projects & Awards">
+                    <Role title="Stanford TreeHacks Winner: Attentional Super Resolution GAN" role="Best Computer Vision Prize" location="Feb. 2019">
+                        <li>{"Best Computer Vision Prize & IBM's Favorite Health Hack"}</li>
+                        <li>Enhancing low resolution video feeds in real time with a novel GAN architecture</li>
+                    </Role>
+                    <Role title="Silicon Valley Design Thinking Institute" role="Co-Founder" location="Jun. 2019 – July 2020">
+                        <li>Teaching design thinking and product development frameworks</li>
+                    </Role>
+                    <Role title="Optimization Research" role="Prof. John Carlsson Ph.D." location="Apr. 2019 – May 2020">
+                        <li>Asymptotic analysis of the multi-robot routing problem</li>
+                        <li>Upper bound on efficiency improvement combining robotic and truck delivery</li>
+                    </Role>
+                    <Role title="Ph.D. Courses" role="Youngest USC student in PhD-level CS" location="Aug. 2018 – May 2021">
+                        <li>Convex Optimization, Combinatorial Optimization, Stochastic Calculus and Mathematical Finance, Advanced Analysis of Algorithms</li>
+                    </Role>
+                    <Role title="Stamps Scholarship" role="Stamps Foundation" location="Apr. 2017">
+                        <li>{"USC's most competitive academic scholarship (5 awards per year)"}</li>
+                        <li>Full-tuition scholarship plus $20,000 enrichment fund</li>
+                    </Role>
+                </Section>
 
-                        <div className="bg-gray-900 border border-gray-700 rounded-lg">
-                            <div className="p-6">
-                                <h2 className="text-2xl font-bold mb-4 text-blue-400">{"Skills & Interests"}</h2>
-                                <p className="text-gray-300 mb-4">
-                                    I like Jupyter notebooks, primatology, poker theory, Coastal California, chess tactics, Speechify, and old books.
-                                </p>
-                                <p className="text-gray-300">
-                                    {"Fluent in english and python."}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="bg-gray-900 border border-gray-700 rounded-lg mt-8">
-                    <div className="p-6">
-                        <h2 className="text-2xl font-bold mb-4 text-blue-400">{"Projects & Awards"}</h2>
-                        <div className="space-y-6">
-                            <div>
-                                <h3 className="text-xl font-semibold text-blue-300">Stanford TreeHacks Winner: Attentional Super Resolution GAN</h3>
-                                <p className="text-gray-400">Feb. 2019</p>
-                                <ul className="list-disc list-inside text-gray-300 mt-2">
-                                    <li>{"Best Computer Vision Prize & IBM's Favorite Health Hack"}</li>
-                                    <li>Enhancing low resolution video feeds in real time with a novel GAN architecture</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-semibold text-blue-300">Silicon Valley Design Thinking Institute (Co-Founder)</h3>
-                                <p className="text-gray-400">{"Jun. 2019 – July 2020"}</p>
-                                <p className="text-gray-300 mt-2">
-                                    Teaching design thinking and product development frameworks.
-                                </p>
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-semibold text-blue-300">Optimization Research</h3>
-                                <p className="text-gray-400">Apr. 2019 – May 2020</p>
-                                <ul className="list-disc list-inside text-gray-300 mt-2">
-                                    <li>Asymptotic analysis of the multi-robot routing problem (Professor John Carlsson Ph.D.)</li>
-                                    <li>Provided an upper bound on the improvement in efficiency by combining unmanned robotic parcel distribution with traditional truck delivery</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-semibold text-blue-300">Ph.D. Courses</h3>
-                                <p className="text-gray-400">Aug. 2018 – May 2021</p>
-                                <p className="text-gray-300 mt-2">Youngest USC student to take Ph.D. level Computer Science courses</p>
-                                <ul className="list-disc list-inside text-gray-300 mt-2">
-                                    <li>Convex Optimization (CSCI 672)</li>
-                                    <li>Combinatorial Optimization (ISE 675)</li>
-                                    <li>Stochastic Calculus and Mathematical Finance (MATH 530)</li>
-                                    <li>Advanced Analysis of Algorithms (CSCI 670)</li>
-                                    <li>Others...</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-semibold text-blue-300">Stamps Scholarship</h3>
-                                <p className="text-gray-400">Stamps Foundation, Apr 2017</p>
-                                <p className="text-gray-300 mt-2">
-                                    {"USC's most competitive academic scholarship (5 awards per year)."}
-                                </p>
-                                <p className="text-gray-300 mt-2">Full-tuition scholarship plus access to a $20,000 enrichment fund over 4 years for study abroad, unpaid internships, summer research or other opportunities.</p>
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-semibold text-blue-300">Best Delegate</h3>
-                                <p className="text-gray-400">Model United Nations, Mar 2014</p>
-                                <ul className="list-disc list-inside text-gray-300 mt-2">
-                                    <li>Best Delegate at a Model United Nations conference in Hyderabad</li>
-                                    <li>Honorable Mention at Yale MUN in Seoul</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <section className="mb-12">
+                    <p className="text-gray-400">
+                        I like Jupyter notebooks, primatology, poker theory, Coastal California, chess tactics, Speechify, and old books. Fluent in english and python.
+                    </p>
+                </section>
             </main>
 
             <Footer />

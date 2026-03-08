@@ -98,7 +98,7 @@ export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultA
                                     author={item.author || defaultAuthor}
                                     year={item.year}
                                     href={href}
-                                    isExternal={!!item.link}
+                                    isExternal={!!(item.link || item.pdfUrl)}
                                     description={item.description}
                                 />
                             );

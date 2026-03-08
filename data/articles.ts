@@ -1837,7 +1837,6 @@ Thus, after transforming the cash-denominated model's optimal weights to the $A$
       author: "Grant Stenger (Feb 2025)",
       slug: "von_neumann_poker", 
       pdfUrl: "/writing/von_neumann_poker.pdf",
-      tags: ["Mathematics", "Game Theory", "Poker"],
       contentType: "latex",
     },
     {
@@ -1871,5 +1870,4 @@ Bartleby’s story is not one to be revered; it should be reviled. He is not a m
       author: "Grant Stenger (2026)",
       link: "https://www.ft.com/content/18313a5f-ae6e-44e9-a26a-4a81cd3190bf"
     },
-    // Add more articles as needed
   ];

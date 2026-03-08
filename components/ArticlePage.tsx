@@ -8,7 +8,6 @@ import type { Components } from 'react-markdown'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
-import 'katex/dist/katex.min.css'
 import Link from 'next/link'
 import Image, { ImageProps } from 'next/image'
 import { ProgressBar } from './ProgressBar'
@@ -72,10 +71,6 @@ const TableOfContents: React.FC<{ content: string }> = React.memo(({ content }) 
   })
   
 TableOfContents.displayName = 'TableOfContents'
-
-interface CodeProps extends React.HTMLAttributes<HTMLElement> {
-  inline?: boolean;
-}
 
 interface ArticlePageProps {
   title: string;
@@ -147,15 +142,15 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
       );
     },
     a: ({ children, ...props }) => <a className="text-gray-300 hover:text-white underline transition-colors duration-200" {...props}>{children}</a>,
-    code: ({ inline, className, children, ...props }: CodeProps) => {
-      if (inline) {
-        return <code className="bg-[#1a1a1a] px-1 py-0.5 rounded" {...props}>{children}</code>
+    pre: ({ children, ...props }) => (
+      <pre className="whitespace-pre-wrap break-words bg-[#1a1a1a] p-4 rounded-md mb-6" {...props}>{children}</pre>
+    ),
+    code: ({ children, ...props }) => {
+      const isBlock = props.className?.startsWith('language-');
+      if (isBlock) {
+        return <code {...props}>{children}</code>
       }
-      return (
-        <pre className="whitespace-pre-wrap break-words bg-[#1a1a1a] p-4 rounded-md mb-6">
-          <code {...props}>{children}</code>
-        </pre>
-      )
+      return <code className="bg-[#1a1a1a] px-1 py-0.5 rounded" {...props}>{children}</code>
     },
   }), [])
 
@@ -360,7 +355,7 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
           // Clean up paragraphs and spacing
           .replace(/\n{3,}/g, '\n\n')
           .replace(/\n\n+/g, '</p><p>')
-          .replace(/\\\\/, '<br>')
+          .replace(/\\\\/g, '<br>')
           .replace(/^(?!<[hp])/gm, '<p>')
           .replace(/(?<!>)\s*$/gm, '</p>')
           .replace(/\s{2,}/g, ' ')

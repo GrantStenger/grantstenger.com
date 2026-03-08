@@ -1,5 +1,20 @@
 export const articles = [
     {
+      title: "Quant Funds and AI Labs Converge",
+      description: "An analysis of the convergence between quantitative trading firms and AI research laboratories.",
+      slug: "quant-ai-convergence",
+      author: "Grant Stenger (Jan 2026)",
+      link: "https://www.ft.com/content/18313a5f-ae6e-44e9-a26a-4a81cd3190bf"
+    },
+    {
+      title: "Optimal Almgren-Chriss Execution with CRRA Preferences",
+      description: "Optimal execution in a linear-impact Almgren-Chriss model with CRRA utility and certainty-equivalent approximation",
+      author: "Grant Stenger (Dec 2024)",
+      slug: "optimal_execution",
+      pdfUrl: "/writing/optimal_execution.pdf",
+      contentType: "latex",
+    },
+    {
       title: "A Case for Cooperation: Dependence in the Prisoner's Dilemma",
       description: "An exploration of the famous game theory problem.",
       slug: "prisoners-dilemma",
@@ -829,28 +844,17 @@ For those who remain compelled by the original argument that, "still, if you kno
 `
     },
     {
-      title: "Optimizing Portfolio Weights for Maximum CRRA Utility: An Independent Binary Asset Model",
-      description: "We derive a closed form solution for the optimal portfolio weights which maximize an agent's CRRA utility over wealth.",
-      slug: "binary-asset-portfolio-optimization",
-      author: "Grant Stenger (April 2024)",
+      title: "Optimal Portfolio Weights Under CRRA Utility",
+      description: "Deriving optimal portfolio allocations under CRRA utility across binary, multi-asset, and risky numeraire frameworks.",
+      slug: "portfolio-optimization",
+      author: "Grant Stenger (March, April, Nov 2024)",
       content: `## Summary
 
-This article explores the optimization of portfolio weights to maximize a Constant Relative Risk Aversion (CRRA) utility function over an agent's wealth. We use classic stochastic calculus techniques to model price processes as Geometric Brownian Motion (GBM). We find our solution is, in fact, an extension of the famous Merton Share. 
+This series of essays explores the optimization of portfolio weights to maximize a Constant Relative Risk Aversion (CRRA) utility function over an agent's wealth. We use classic stochastic calculus techniques to model price processes as Geometric Brownian Motion (GBM). In Part I, we derive the optimal allocation between two risky assets and find our solution is an extension of the famous Merton Share. In Part II, we extend the analysis to three assets and then to an n-asset model. In Part III, we examine what happens when we change the numeraire from cash to a risky asset.
 
 ---
 
-## Caveats and Extensions
-
-The model we present above is a strong oversimplification of the investment environment we find ourselves in in real life. In future extensional work, I hope to generalize this model a bit to include some important aspects of practical investing life. 
-
-The primary simplification we make is the way we model price processes. In practice, we don't have access to nicely behaved independent GBM processes with known stationary parameters. In the wild, asset prices are fat-tailed, non-stationary, correlated (typically increasingly so at the worst times), and with unknown parameters. Investing also incurs a number of important costs like exchange fees, slippage through price impact, margin costs, and taxes. 
-
-We also note that our CRRA utility function is just an approximation of one's true utility over wealth$–$though in another essay sometime I might write a defense strengthening my support for constant relative risk aversion utility functions. If I have time I might extend this analysis to the more flexible hyperbolic absolute risk aversion (HARA) utility functions. 
-
-Another extension I hope to make is to generalize beyond the dual-asset model to a multi-asset framework. Similarly, I think we can relax our independence assumption by adding known stationary covariance between price processes. With these caveats and possible extensions in mind, we proceed to defining our model. 
-
-
----
+# Part I: The Binary Asset Model
 
 ## Model Definition
 Suppose we have a universe of two stocks, $A$ and $B$, modeled as independent GBM processes with parameters $\\mu_A$, $\\mu_B$, $\\sigma_A$, and $\\sigma_B$. We also define $\\lambda_A$ and $\\lambda_B$ to be our portfolio weights for assets $A$ and $B$, such that $\\lambda_A + \\lambda_B = 1$. Finally, we have a CRRA utility function over possible wealth states $W$ such that $U(W) = \\frac{W^{1-\\gamma} - 1}{1 - \\gamma}$ and $\\gamma$ is our relative risk aversion parameter. In what follows, we attempt to find the optimal portfolio weights $\\lambda$ which maximize the expected utility of our future wealth.
@@ -1022,37 +1026,13 @@ Notably, in the case where $B$ is a risk-free investment, implying that $\\sigma
 
 While all models are lossy, I take issue with the idea of a risk-free rate. In particular, the real returns on a nation's treasuries are sensitive to interest rate changes, inflation, and currency fluctuations. It also shouldn't be overlooked that big debt crises occur fairly regularly and nations do default. With this in mind, I think extending the dual-asset Merton Share model to two risky assets is an improvement toward realism.
 
-  `
-    }, {
-      title: "Category Creep",
-      description: "Using words wrong is bad.",
-      slug: "category-creep",
-      author: "Grant Stenger (Oct 2024)",
-      content: `
-*TL;DR: I've noticed a tendency to expand definitions too broadly, which dilutes their clarity and utility. I make the case that effective language, in my eyes, requires precise boundaries that slice concepts into hierarchical, mutually exclusive, and collectively exhaustive categories, preserving clear distinctions. By respecting these boundaries, we avoid what I call “category creep” and enhance language's ability to facilitate clear communication and thought.*
 
-At dinner last night, our conversation about religion unfolded into claims that in some sense capitalism is a religion, humanism is a religion, and so on—raising the question, *what actually is a religion?* Through the conversation, the group expanded into wider and wider interpretations of what could qualify as a religion: sports fandoms, the cult of Elon Musk, companies, and so on. By the end, it felt like we were calling everything a religion and had diluted the word into meaninglessness. I've seen this type of cognitive failure mode before, and I'd like a precise term for it.
 
-Take, for instance, the “Church of the Flying Spaghetti Monster”—which, though in the eyes of the tax code might be legally recognized as a religion, is generally understood to be not actually a “real religion” but rather a humorous, subversive riff on true religion. This suggests that it lies outside the conceptual boundary of “religion” in some crucial way, even if certain institutions recognize it as such.
+---
 
-Whenever debates arise around the definitions of words, I'm reminded of the classic question, “If a tree falls in a forest, does it make a sound?” People get remarkably heated about this, despite often actually agreeing about the true underlying reality. The word “sound” here is overloaded: we agree that the tree creates a sound qua “acoustic vibration in the air” but disagree on whether it produces a sound qua “auditory experience” if no one hears it. The disagreement isn't over base reality but over the shape and boundary of the word *sound* within concept-space. 
+# Part II: Extension to Three Assets
 
-Resolving the Church of the Flying Spaghetti Monster ambiguity, if we separate the concept *religion* into the more specific categories of “a U.S. tax code recognized legal entity” and “an authentic belief in and worship of a higher power”, nearly everyone would agree that the CoFSM is the former but not the latter, putting the debate to rest. Notably, this might not just be a case of “sign confusion” but potentially rather of “symbolic theft” wherein terms are intentionally appropriated, in this case either to delegitimize real religion or for financial gain.
-
-To illustrate why precise boundaries are essential, consider the value of dividing a space into mutually exclusive yet collectively exhaustive subspaces, like we did in childhood math problems. This type of structure—where each possibility is accounted for exactly once, without overlap—is useful across domains. For example, a zoologist benefits from a clear taxonomy, organizing the animal kingdom into distinct, hierarchical categories like order, family, genus, and species. Language, when used effectively, functions in much the same way by organizing concept-space into well-defined, non-overlapping boundaries, preserving clarity and avoiding category creep.
-
-I've noticed a cognitive failure mode where someone, swinging too freely through analogies, overly word-associates themselves into incorrect conclusions. This became clear to me while listening to a recent debate between Richard Dawkins and Jordan Peterson, wherein Dawkins accused Peterson of being “drunk on signs”. The common structure of this failure mode goes something like this: Thing 1 is like thing 2, thing 2 shares qualities with thing 3, and so the person concludes that thing 1 must also share properties with thing 3—or worse, that thing 1 *is* thing 3. In Peterson's case, he claimed that because a dragon is (the imagistic equivalent of) a predator, and because a lion is a (type of) predator, that therefore a lion is a dragon. The disagreement came from Peterson's interpretation of “is” as a loose conceptual equivalence, baffling Dawkins because a lion is not *actually* a dragon. The issue is that “is” here is overloaded, creating ambiguity by blurring metaphor with literal truth. Under Peterson's fuzzy analogistic logic, a lion is like a type of dragon in a figurative sense, but to Dawkins a lion isn't literally the same as a dragon. In this case, in my eyes, Peterson suffers from “category creep” as his overly-metaphorical reasoning flattens important distinctions, reducing “lion” and “dragon” to interchangeable terms. Words, after all, are conceptual boundaries—and when the boundaries get stretched too far, their overlaps reduce their usefulness as categorical distinctions. Though boundaries always have both an inside and an outside, when we think of words as conceptual boundaries, we often focus far more on describing what lies inside the boundary than what lies outside. While lions and dragons have similarities, lions do not fly, lions do not breathe fire, and lions are not mythological. Sometimes, it's just as helpful—if not essential—to clearly define what a word is not. 
-
-Overextending categories—like labeling sports fandoms as religions or lions as dragons—dilutes the specificity and utility of language. This in my eyes is a common and under-discussed cognitive failure mode. In the spirit of this discussion, a label we can assign to this sort of semantic overreach could be “**category creep**”. Ultimately, we as a culture continue to refine linguistic boundaries, and the ideal of pursuing hierarchical MECE categories through precise definitions would help facilitate more accurate communication and thought. 
-      `
-    }, {
-      title: "Optimizing Portfolio Weights for Maximum CRRA Utility: An Independent Three-Asset Model",
-      description: "Deriving the optimal portfolio weights for a three-asset risky model.",
-      slug: "three-asset-model",
-      author: "Grant Stenger (March 2024)",
-      content: `
-***Summary**: In the [previous essay](/writing/binary-asset-portfolio-optimization), we explored how to derive the optimal allocations under an independent binary asset model where the two stocks follow geometric Brownian motion processes. In this current essay we extend the analysis to three assets and then to an n-asset model.*
-
+In Part I, we derived the optimal allocations under an independent binary asset model where the two stocks follow geometric Brownian motion processes. We now extend the analysis to three assets and then to an n-asset model.
 
 **Model Definition**
 We have three assets $A$, $B$, and $C$ whose price processes follow GBM processeses with parameters $(\\mu_A, \\sigma_A)$, $(\\mu_B, \\sigma_B)$, and $(\\mu_C, \\sigma_C)$, respectively. We allocate our wealth $W$ between $A$, $B$, and $C$ in proportion $\\lambda_A$, $\\lambda_B$, and $\\lambda_C$, respectively, such that $\\lambda_A + \\lambda_B + \\lambda_C = 1$. We again maintain a Constant Relative Risk Aversion (CRRA) utility function $U(W) = \\frac{W^{1-\\gamma} - 1}{1 - \\gamma}$ where $W_t$ is our wealth at time $t$ and $\\gamma$ is our relative risk aversion parameter.
@@ -1667,15 +1647,12 @@ $$
     \\gamma \\sigma_C^2 (1 - \\lambda_B)
 }
 $$
-      `
-    },
-    {
-      title: "Beyond Cash: Extending Our Binary Asset Model Via Risky Numeraire",
-      description: "What if we denominate our wealth in terms of a risky asset?",
-      slug: "numeraire",
-      author: "Grant Stenger (Nov 2024)",
-      content: `
-In my previous essay, "[Optimizing Portfolio Weights for Maximum CRRA Utility: An Independent Binary Asset Model](/writing/binary-asset-portfolio-optimization)", I made the case that there may be no such thing as a risk-free asset. In the case of treasuries, the typical example of the risk-free asset, the holder is exposed to inflation risks, dollar fluctuations, interest rate changes, and other factors. Given this, I constructed a model for the optimal allocation between two risky assets. 
+
+---
+
+# Part III: Risky Numeraire
+
+In Part I, we made the case that there may be no such thing as a risk-free asset. In the case of treasuries, the typical example of the risk-free asset, the holder is exposed to inflation risks, dollar fluctuations, interest rate changes, and other factors. Given this, we constructed a model for the optimal allocation between two risky assets. 
 
 Every investor has their own basket of goods under which they estimate changes in their real purchasing power.[^1] This subjective basket is not exactly cash, which was the motivation for the first essay. But what if it were somehow a known tradable asset? Or even more simply, perhaps an investor wants to denominate their returns in ETH, SPY, or some known liquid asset. Does our previous analysis still hold if we change the currency units? In this essay, I examine the case where, instead of using cash as a base for both assets $A$ and $B$, we designate asset $A$ as the numeraire, expressing asset $B$ in terms of $A$.
 
@@ -1829,6 +1806,29 @@ Thus, after transforming the cash-denominated model's optimal weights to the $A$
 
 
 [^1]: I am skeptical of standard national CPI measures, as discussed in Chapter 5 of Keynes' *Treatise on Money*. I think exact CPI calculation seems like a fundamentally futile task, though it's nuanced so I haven't made up my mind yet.
+
+  `
+    }, {
+      title: "Category Creep",
+      description: "Using words wrong is bad.",
+      slug: "category-creep",
+      author: "Grant Stenger (Oct 2024)",
+      content: `
+*TL;DR: I've noticed a tendency to expand definitions too broadly, which dilutes their clarity and utility. I make the case that effective language, in my eyes, requires precise boundaries that slice concepts into hierarchical, mutually exclusive, and collectively exhaustive categories, preserving clear distinctions. By respecting these boundaries, we avoid what I call “category creep” and enhance language's ability to facilitate clear communication and thought.*
+
+At dinner last night, our conversation about religion unfolded into claims that in some sense capitalism is a religion, humanism is a religion, and so on—raising the question, *what actually is a religion?* Through the conversation, the group expanded into wider and wider interpretations of what could qualify as a religion: sports fandoms, the cult of Elon Musk, companies, and so on. By the end, it felt like we were calling everything a religion and had diluted the word into meaninglessness. I've seen this type of cognitive failure mode before, and I'd like a precise term for it.
+
+Take, for instance, the “Church of the Flying Spaghetti Monster”—which, though in the eyes of the tax code might be legally recognized as a religion, is generally understood to be not actually a “real religion” but rather a humorous, subversive riff on true religion. This suggests that it lies outside the conceptual boundary of “religion” in some crucial way, even if certain institutions recognize it as such.
+
+Whenever debates arise around the definitions of words, I'm reminded of the classic question, “If a tree falls in a forest, does it make a sound?” People get remarkably heated about this, despite often actually agreeing about the true underlying reality. The word “sound” here is overloaded: we agree that the tree creates a sound qua “acoustic vibration in the air” but disagree on whether it produces a sound qua “auditory experience” if no one hears it. The disagreement isn't over base reality but over the shape and boundary of the word *sound* within concept-space. 
+
+Resolving the Church of the Flying Spaghetti Monster ambiguity, if we separate the concept *religion* into the more specific categories of “a U.S. tax code recognized legal entity” and “an authentic belief in and worship of a higher power”, nearly everyone would agree that the CoFSM is the former but not the latter, putting the debate to rest. Notably, this might not just be a case of “sign confusion” but potentially rather of “symbolic theft” wherein terms are intentionally appropriated, in this case either to delegitimize real religion or for financial gain.
+
+To illustrate why precise boundaries are essential, consider the value of dividing a space into mutually exclusive yet collectively exhaustive subspaces, like we did in childhood math problems. This type of structure—where each possibility is accounted for exactly once, without overlap—is useful across domains. For example, a zoologist benefits from a clear taxonomy, organizing the animal kingdom into distinct, hierarchical categories like order, family, genus, and species. Language, when used effectively, functions in much the same way by organizing concept-space into well-defined, non-overlapping boundaries, preserving clarity and avoiding category creep.
+
+I've noticed a cognitive failure mode where someone, swinging too freely through analogies, overly word-associates themselves into incorrect conclusions. This became clear to me while listening to a recent debate between Richard Dawkins and Jordan Peterson, wherein Dawkins accused Peterson of being “drunk on signs”. The common structure of this failure mode goes something like this: Thing 1 is like thing 2, thing 2 shares qualities with thing 3, and so the person concludes that thing 1 must also share properties with thing 3—or worse, that thing 1 *is* thing 3. In Peterson's case, he claimed that because a dragon is (the imagistic equivalent of) a predator, and because a lion is a (type of) predator, that therefore a lion is a dragon. The disagreement came from Peterson's interpretation of “is” as a loose conceptual equivalence, baffling Dawkins because a lion is not *actually* a dragon. The issue is that “is” here is overloaded, creating ambiguity by blurring metaphor with literal truth. Under Peterson's fuzzy analogistic logic, a lion is like a type of dragon in a figurative sense, but to Dawkins a lion isn't literally the same as a dragon. In this case, in my eyes, Peterson suffers from “category creep” as his overly-metaphorical reasoning flattens important distinctions, reducing “lion” and “dragon” to interchangeable terms. Words, after all, are conceptual boundaries—and when the boundaries get stretched too far, their overlaps reduce their usefulness as categorical distinctions. Though boundaries always have both an inside and an outside, when we think of words as conceptual boundaries, we often focus far more on describing what lies inside the boundary than what lies outside. While lions and dragons have similarities, lions do not fly, lions do not breathe fire, and lions are not mythological. Sometimes, it's just as helpful—if not essential—to clearly define what a word is not. 
+
+Overextending categories—like labeling sports fandoms as religions or lions as dragons—dilutes the specificity and utility of language. This in my eyes is a common and under-discussed cognitive failure mode. In the spirit of this discussion, a label we can assign to this sort of semantic overreach could be “**category creep**”. Ultimately, we as a culture continue to refine linguistic boundaries, and the ideal of pursuing hierarchical MECE categories through precise definitions would help facilitate more accurate communication and thought. 
       `
     },
     {
@@ -1862,12 +1862,5 @@ To summarize, Bartleby didn’t commit a heroic act of existential protest again
 Bartleby’s story is not one to be revered; it should be reviled. He is not a model of noble resistance to “the system.” He is a man who chose to stop participating in reality and died the entirely predictable death that follows from that choice. That may be tragic, but it is not heroic.
 
       `
-    },
-    {
-      title: "Quant Funds and AI Labs Converge",
-      description: "An analysis of the convergence between quantitative trading firms and AI research laboratories.",
-      slug: "quant-ai-convergence",
-      author: "Grant Stenger (2026)",
-      link: "https://www.ft.com/content/18313a5f-ae6e-44e9-a26a-4a81cd3190bf"
     },
   ];

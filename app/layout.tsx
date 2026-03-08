@@ -12,49 +12,14 @@ const abcDiatype = localFont({
       style: 'normal',
     },
     {
-      path: '../public/fonts/abc-diatype-bold.otf',
-      weight: '700',
-      style: 'normal',
-    },
-    {
-      path: '../public/fonts/abc-diatype-italic.otf',
-      weight: '400',
-      style: 'italic',
-    },
-    {
-      path: '../public/fonts/abc-diatype-bold-italic.otf',
-      weight: '700',
-      style: 'italic',
-    },
-    {
-      path: '../public/fonts/abc-diatype-light.otf',
-      weight: '300',
-      style: 'normal',
-    },
-    {
-      path: '../public/fonts/abc-diatype-light-italic.otf',
-      weight: '300',
-      style: 'italic',
-    },
-    {
       path: '../public/fonts/abc-diatype-medium.otf',
       weight: '500',
       style: 'normal',
     },
     {
-      path: '../public/fonts/abc-diatype-medium-italic.otf',
-      weight: '500',
-      style: 'italic',
-    },
-    {
-      path: '../public/fonts/abc-diatype-thin.otf',
-      weight: '100',
+      path: '../public/fonts/abc-diatype-bold.otf',
+      weight: '700',
       style: 'normal',
-    },
-    {
-      path: '../public/fonts/abc-diatype-thin-italic.otf',
-      weight: '100',
-      style: 'italic',
     },
   ],
   variable: '--font-abc-diatype',

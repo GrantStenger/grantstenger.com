@@ -1,5 +1,5 @@
 import { ContentPage } from '../../components/ContentPage'
-import { essays } from '../../data/essays'
+import essays from '../../data/essays.json'
 
 export default function Essays() {
     return (

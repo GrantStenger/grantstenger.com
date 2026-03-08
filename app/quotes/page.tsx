@@ -1,5 +1,5 @@
 import { ContentPage } from '../../components/ContentPage'
-import { quotes } from '../../data/quotes'
+import quotes from '../../data/quotes.json'
 
 export default function Quotes() {
     return (

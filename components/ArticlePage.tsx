@@ -14,6 +14,15 @@ import Image, { ImageProps } from 'next/image'
 import { ProgressBar } from './ProgressBar'
 import katex from 'katex'
 
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '')
+}
+
 const TableOfContents: React.FC<{ content: string }> = React.memo(({ content }) => {
     const headings = useMemo(() => {
       const lines = content.split('\n');
@@ -49,7 +58,7 @@ const TableOfContents: React.FC<{ content: string }> = React.memo(({ content }) 
             return (
               <li key={index} style={{ paddingLeft: `${(level - 1) * 1}rem` }}>
                 <Link 
-                  href={`#${text.toLowerCase().replace(/\s/g, '-')}`} 
+                  href={`#${slugify(text)}`}
                   className="text-gray-400 hover:text-white transition-colors duration-200 text-sm md:text-base"
                 >
                   {text}
@@ -91,9 +100,9 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
   });
 
   const memoizedMarkdownComponents = useMemo<Components>(() => ({
-    h1: ({ children, ...props }) => <h1 id={children?.toString().toLowerCase().replace(/\s/g, '-')} className="text-2xl md:text-3xl lg:text-4xl font-bold mt-12 mb-6 text-white" {...props}>{children}</h1>,
-    h2: ({ children, ...props }) => <h2 id={children?.toString().toLowerCase().replace(/\s/g, '-')} className="text-xl md:text-2xl lg:text-3xl font-semibold mt-10 mb-5 text-white" {...props}>{children}</h2>,
-    h3: ({ children, ...props }) => <h3 id={children?.toString().toLowerCase().replace(/\s/g, '-')} className="text-lg md:text-xl lg:text-2xl font-medium mt-8 mb-4 text-white" {...props}>{children}</h3>,
+    h1: ({ children, ...props }) => <h1 id={slugify(children?.toString() || '')} className="text-2xl md:text-3xl lg:text-4xl font-bold mt-12 mb-6 text-white" {...props}>{children}</h1>,
+    h2: ({ children, ...props }) => <h2 id={slugify(children?.toString() || '')} className="text-xl md:text-2xl lg:text-3xl font-semibold mt-10 mb-5 text-white" {...props}>{children}</h2>,
+    h3: ({ children, ...props }) => <h3 id={slugify(children?.toString() || '')} className="text-lg md:text-xl lg:text-2xl font-medium mt-8 mb-4 text-white" {...props}>{children}</h3>,
     p: ({ children, ...props }) => {
       const childrenArray = React.Children.toArray(children);
       const hasNonEmptyContent = childrenArray.some(child => {

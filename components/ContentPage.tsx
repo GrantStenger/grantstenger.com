@@ -6,7 +6,6 @@ import { Footer } from './Footer'
 import { ContentCard } from './ContentCard'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Input } from './ui/input'  // Make sure this import is correct
 
 interface ContentItem {
     title: string;

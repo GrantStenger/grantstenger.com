@@ -768,12 +768,6 @@ export const essays = [
         "link": "https://qntm.org/mmacevedo"
     },
     {
-        "title": "Monadology",
-        "author": "Gottfried Leibniz",
-        "year": 1714,
-        "link": "https://www.earlymoderntexts.com/assets/pdfs/leibniz1714b.pdf"
-    },
-    {
         "title": "The Myth of Sisyphus",
         "author": "Albert Camus",
         "year": 1942,

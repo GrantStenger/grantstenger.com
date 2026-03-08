@@ -11,8 +11,6 @@ import remarkGfm from 'remark-gfm'
 import 'katex/dist/katex.min.css'
 import Link from 'next/link'
 import Image, { ImageProps } from 'next/image'
-import { Button } from './ui/button'
-import { ArrowUp } from 'lucide-react'
 import { ProgressBar } from './ProgressBar'
 import katex from 'katex'
 
@@ -49,7 +47,7 @@ const TableOfContents: React.FC<{ content: string }> = React.memo(({ content }) 
             const level = heading.match(/^#+/)?.[0].length || 1
             const text = heading.replace(/^#+\s/, '')
             return (
-              <li key={index} className={`pl-${(level - 1) * 4}`}>
+              <li key={index} style={{ paddingLeft: `${(level - 1) * 1}rem` }}>
                 <Link 
                   href={`#${text.toLowerCase().replace(/\s/g, '-')}`} 
                   className="text-gray-400 hover:text-white transition-colors duration-200 text-sm md:text-base"
@@ -411,12 +409,13 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
         </div>
       </main>
       <Footer />
-      <Button
+      <button
         className="fixed bottom-8 right-8 p-2 bg-white hover:bg-gray-200 text-black rounded-full shadow-lg transition-all duration-300 opacity-0 hover:opacity-100 focus:opacity-100"
         onClick={scrollToTop}
+        aria-label="Scroll to top"
       >
-        <ArrowUp size={24} />
-      </Button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+      </button>
     </div>
   )
 }

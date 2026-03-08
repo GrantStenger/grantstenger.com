@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Card, CardContent } from "components/ui/card"
 
 interface ContentCardProps {
     title: string;
@@ -16,8 +15,8 @@ export function ContentCard({ title, author, year, href, isExternal, description
         <>
             <div className="absolute inset-0 bg-gradient-to-r from-gray-600 to-[#141414] rounded-[9px] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
             <div className="relative p-[1px] rounded-[9px]">
-                <Card className="bg-black group-hover:bg-[#141414] border-none transition-colors duration-200 rounded-lg">
-                    <CardContent className="p-4 flex items-center justify-between">
+                <div className="bg-black group-hover:bg-[#141414] border-none transition-colors duration-200 rounded-lg">
+                    <div className="p-4 flex items-center justify-between">
                         <div className="flex-grow">
                             <h3 className="text-xl font-semibold text-white group-hover:text-gray-300 transition-colors duration-200">{title}</h3>
                             {(author || year) && (
@@ -39,16 +38,16 @@ export function ContentCard({ title, author, year, href, isExternal, description
                                 />
                             </div>
                         )}
-                    </CardContent>
-                </Card>
+                    </div>
+                </div>
             </div>
         </>
     );
 
     if (href) {
         return (
-            <Link 
-                href={href} 
+            <Link
+                href={href}
                 className="block group relative"
                 {...(isExternal ? {
                     target: "_blank",

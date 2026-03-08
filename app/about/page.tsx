@@ -1,17 +1,16 @@
-import { Card, CardContent } from "../../components/ui/card"
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 
 export default function About() {
     return (
-        <div className="flex flex-col min-h-screen bg-black text-white font-['Anonymous_Pro',_sans-serif]">
+        <div className="flex flex-col min-h-screen bg-black text-white font-sans">
             <Header />
 
             <main className="flex-grow container mx-auto px-4 py-12">
                 <h1 className="text-5xl font-bold mb-12 text-center text-blue-400">About Me</h1>
 
-                <Card className="bg-gray-900 border-gray-700 mb-8">
-                    <CardContent className="p-6">
+                <div className="bg-gray-900 border border-gray-700 rounded-lg mb-8">
+                    <div className="p-6">
                         <h2 className="text-2xl font-bold mb-4 text-blue-400">Kinetic</h2>
                         <p className="text-gray-300 mb-4">
                             {"I'm Grant Stenger, the Founder & CEO of Kinetic."}
@@ -24,12 +23,12 @@ export default function About() {
                         <p className="text-gray-300">
                             Our mission at Kinetic is to create a more efficient, transparent, and accessible financial ecosystem for all.
                         </p>
-                    </CardContent>
-                </Card>
+                    </div>
+                </div>
 
                 <div className="grid gap-8 md:grid-cols-2">
-                    <Card className="bg-gray-900 border-gray-700">
-                        <CardContent className="p-6">
+                    <div className="bg-gray-900 border border-gray-700 rounded-lg">
+                        <div className="p-6">
                             <h2 className="text-2xl font-bold mb-4 text-blue-400">Experience</h2>
                             <div className="space-y-6">
                                 <div>
@@ -80,12 +79,12 @@ export default function About() {
                                     </ul>
                                 </div>
                             </div>
-                        </CardContent>
-                    </Card>
+                        </div>
+                    </div>
 
                     <div className="space-y-8">
-                        <Card className="bg-gray-900 border-gray-700">
-                            <CardContent className="p-6">
+                        <div className="bg-gray-900 border border-gray-700 rounded-lg">
+                            <div className="p-6">
                                 <h2 className="text-2xl font-bold mb-4 text-blue-400">Education</h2>
                                 <div className="space-y-6">
                                     <div>
@@ -114,11 +113,11 @@ export default function About() {
                                         </p>
                                     </div>
                                 </div>
-                            </CardContent>
-                        </Card>
+                            </div>
+                        </div>
 
-                        <Card className="bg-gray-900 border-gray-700">
-                            <CardContent className="p-6">
+                        <div className="bg-gray-900 border border-gray-700 rounded-lg">
+                            <div className="p-6">
                                 <h2 className="text-2xl font-bold mb-4 text-blue-400">{"Skills & Interests"}</h2>
                                 <p className="text-gray-300 mb-4">
                                     I like Jupyter notebooks, primatology, poker theory, Coastal California, chess tactics, Speechify, and old books.
@@ -126,13 +125,13 @@ export default function About() {
                                 <p className="text-gray-300">
                                     {"Fluent in english and python."}
                                 </p>
-                            </CardContent>
-                        </Card>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <Card className="bg-gray-900 border-gray-700 mt-8">
-                    <CardContent className="p-6">
+                <div className="bg-gray-900 border border-gray-700 rounded-lg mt-8">
+                    <div className="p-6">
                         <h2 className="text-2xl font-bold mb-4 text-blue-400">{"Projects & Awards"}</h2>
                         <div className="space-y-6">
                             <div>
@@ -187,8 +186,8 @@ export default function About() {
                                 </ul>
                             </div>
                         </div>
-                    </CardContent>
-                </Card>
+                    </div>
+                </div>
             </main>
 
             <Footer />

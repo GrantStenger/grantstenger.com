@@ -84,7 +84,7 @@ Uses Next.js App Router:
 - **Framework:** Tailwind CSS 4.x
 - **Theme:** Dark theme (black background, white text)
 - **Custom Font:** ABC Diatype loaded as local font in app/layout.tsx
-- **UI Components:** Custom components in `components/ui/` built with Radix UI primitives
+- **UI Components:** Plain Tailwind CSS (no component library)
 
 ### Math Rendering
 
@@ -97,7 +97,7 @@ Uses KaTeX with React Markdown plugins:
 
 ## Key Technical Constraints
 
-1. **TypeScript Version:** Pinned to 4.5.5 for compatibility
+1. **TypeScript Version:** 5.9.x
 2. **Image Optimization:** Remote patterns configured for hackmd.io in next.config.mjs
 3. **Analytics:** Vercel Analytics integrated in layout.tsx
 4. **Static Generation:** Articles without pdfUrl are statically generated at build time

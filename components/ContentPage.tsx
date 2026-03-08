@@ -36,10 +36,10 @@ export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultA
 
     return (
         <div className="flex flex-col min-h-screen bg-black text-white">
-            <Header className="sticky top-0 z-10" />
+            <Header className="fixed top-0 left-0 right-0 z-10" />
 
-            <div className="flex-grow flex flex-col lg:flex-row">
-                <div className="lg:w-1/3 xl:w-1/4 px-6 lg:px-12 py-4 lg:fixed lg:top-24 lg:bottom-0 lg:left-0 lg:overflow-y-auto">
+            <div className="flex-grow flex flex-col lg:flex-row pt-16 md:pt-20">
+                <div className="lg:w-1/3 xl:w-1/4 px-6 lg:px-12 py-4 lg:fixed lg:top-20 lg:bottom-0 lg:left-0 lg:overflow-y-auto">
                     <h1 className="text-5xl lg:text-6xl font-bold mb-8">{title}</h1>
                     <div className="relative w-full max-w-sm">
                         <div className="absolute inset-0 bg-gradient-to-r from-gray-600 to-[#141414] rounded-md"></div>

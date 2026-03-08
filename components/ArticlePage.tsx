@@ -394,14 +394,15 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
               </h1>
               <TableOfContents content={contentType === 'markdown' && typeof content === 'string' ? content : ''} />
               {contentType === 'markdown' && typeof content === 'string' ? (
-                <ReactMarkdown
-                  className="prose prose-lg md:prose-xl prose-invert text-gray-300 leading-relaxed max-w-none"
-                  remarkPlugins={[remarkMath, remarkGfm]}
-                  rehypePlugins={[rehypeKatex]}
-                  components={memoizedMarkdownComponents}
-                >
-                  {content}
-                </ReactMarkdown>
+                <div className="prose prose-lg md:prose-xl prose-invert text-gray-300 leading-relaxed max-w-none">
+                  <ReactMarkdown
+                    remarkPlugins={[remarkMath, remarkGfm]}
+                    rehypePlugins={[rehypeKatex]}
+                    components={memoizedMarkdownComponents}
+                  >
+                    {content}
+                  </ReactMarkdown>
+                </div>
               ) : contentType === 'latex' ? (
                 <div 
                   className="prose prose-lg md:prose-xl prose-invert text-gray-300 leading-relaxed max-w-none"

@@ -57,7 +57,7 @@
     "title": "Portfolio Choice and the Kelly Criterion",
     "author": "Edward O. Thorp",
     "year": 1975,
-    "link": "https://www.jstor.org/stable/2634827"
+    "link": "https://gwern.net/doc/statistics/decision/1975-thorp.pdf"
   },
   {
     "title": "Of Miracles",
@@ -271,7 +271,7 @@
   },
   {
     "title": "That Which is Seen, and That Which is Not Seen",
-    "author": "Frédéric Bastiat",
+    "author": "Fr\u00e9d\u00e9ric Bastiat",
     "year": 1850,
     "link": "http://bastiat.org/en/twisatwins.html"
   },
@@ -415,7 +415,7 @@
   },
   {
     "title": "Considering a Big Change? Go for It, Says Evidence From 20,000 Coin Flips",
-    "author": "Alexia Fernández Campbell",
+    "author": "Alexia Fern\u00e1ndez Campbell",
     "year": 2016,
     "link": "https://www.theatlantic.com/business/archive/2016/08/big-change-evidence-20000-coin-flips/494958/"
   },
@@ -1092,6 +1092,12 @@
     "link": "https://www.residentadvisor.net/features/3829"
   },
   {
+    "title": "Fast Computation of the Median by Successive Binning",
+    "author": "Ryan J. Tibshirani",
+    "year": 2008,
+    "link": "https://www.stat.cmu.edu/~ryantibs/papers/median.pdf"
+  },
+  {
     "title": "Membership NFTs",
     "author": "Natalia Murillo",
     "year": 2022,
@@ -1117,7 +1123,7 @@
   },
   {
     "title": "More Dakka",
-    "author": "​​Zvi Mowshowitz",
+    "author": "\u200b\u200bZvi Mowshowitz",
     "year": 2017,
     "link": "https://thezvi.wordpress.com/2017/12/02/more-dakka/"
   },
@@ -1150,6 +1156,12 @@
     "author": "Scott Alexander",
     "year": 2014,
     "link": "https://slatestarcodex.com/2014/06/15/fish-now-by-prescription/"
+  },
+  {
+    "title": "On Optimal Myopic Portfolio Policies, with and without Serial Correlation of Yields",
+    "author": "N. H. Hakansson",
+    "year": 1971,
+    "link": "https://www.jstor.org/stable/2352221"
   },
   {
     "title": "Do I have too much faith in science?",
@@ -1302,10 +1314,22 @@
     "link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1537082"
   },
   {
+    "title": "Evidence on the Growth-Optimum Model",
+    "author": "R. Roll",
+    "year": 1973,
+    "link": "https://www.anderson.ucla.edu/documents/areas/fac/finance/1973-2.pdf"
+  },
+  {
     "title": "First Principles Interviewing",
     "author": "Will Robbins",
     "year": 2020,
     "link": "https://willrobbins.org/first-principles-interviewing/"
+  },
+  {
+    "title": "Criteria for Choice among Risky Ventures",
+    "author": "H. A. Latan\u00e9",
+    "year": 1959,
+    "link": "https://gwern.net/doc/statistics/decision/1959-latane.pdf"
   },
   {
     "title": "Consciousness and the Brain",
@@ -1374,6 +1398,12 @@
     "link": "https://ir.aboutamazon.com/annual-reports-proxies-and-shareholder-letters/shareholder-letters/1997/default.aspx"
   },
   {
+    "title": "Optimal Investment and Consumption Strategies under Risk for a Class of Utility Functions",
+    "author": "N. H. Hakansson",
+    "year": 1970,
+    "link": "http://www.hakansson.com/nils/papers/optimal69.pdf"
+  },
+  {
     "title": "MEV and me",
     "author": "Charlie Noyes",
     "year": 2021,
@@ -1429,7 +1459,7 @@
   },
   {
     "title": "Sense and Reference",
-    "author": "​​Gottlob Frege",
+    "author": "\u200b\u200bGottlob Frege",
     "year": 1892,
     "link": "https://www.jstor.org/stable/2251430"
   },
@@ -1462,6 +1492,12 @@
     "author": "samczsun",
     "year": 2019,
     "link": "https://samczsun.com/taking-undercollateralized-loans-for-fun-and-for-profit/"
+  },
+  {
+    "title": "Optimal Gambling Systems for Favorable Games",
+    "author": "L. Breiman",
+    "year": 1961,
+    "link": "http://www-stat.wharton.upenn.edu/~steele/Resources/FTSResources/KellyBreiman/Breiman61.pdf"
   },
   {
     "title": "On the Hypotheses which lie at the Bases of Geometry",
@@ -1704,7 +1740,7 @@
     "link": "https://astralcodexten.substack.com/p/motivated-reasoning-as-mis-applied"
   },
   {
-    "title": "Move on – this isn't true here",
+    "title": "Move on \u2013 this isn't true here",
     "author": "Tyler Cowen",
     "year": 2008,
     "link": "https://marginalrevolution.com/marginalrevolution/2008/09/move-on-this-is.html"
@@ -1777,7 +1813,7 @@
   },
   {
     "title": "Kenneth Arrow's Contribution to Economics",
-    "author": "Carl Christian von Weizsäcker",
+    "author": "Carl Christian von Weizs\u00e4cker",
     "year": 1972,
     "link": "https://www.jstor.org/stable/40748790"
   },
@@ -1878,7 +1914,7 @@
     "link": "https://medium.com/@savneet/why-fintech-is-the-worst-c9e2f0f1d9e1"
   },
   {
-    "title": "Yes … I Read the Whitepaper",
+    "title": "Yes \u2026 I Read the Whitepaper",
     "author": "Arthur Hayes",
     "year": 2021,
     "link": "https://cryptohayes.medium.com/yes-i-read-the-whitepaper-59cfa2ea9c2c"
@@ -1890,7 +1926,7 @@
     "link": "https://projects.csail.mit.edu/gsb/old-archive/gsb-archive/gsb2000-02-11.html"
   },
   {
-    "title": "​​Principles of Panarchism: The philosophy of political coexistence",
+    "title": "\u200b\u200bPrinciples of Panarchism: The philosophy of political coexistence",
     "author": "Adam Knott",
     "year": 2009,
     "link": "https://panarchy.org/knott/principles.html"
@@ -1914,7 +1950,7 @@
     "link": "https://www.lesswrong.com/posts/4ARaTpNX62uaL86j6/the-martial-art-of-rationality"
   },
   {
-    "title": "Impending Bitcoin ETF…Buy The Rumor, Buy The News",
+    "title": "Impending Bitcoin ETF\u2026Buy The Rumor, Buy The News",
     "author": "Dan Morehead and Jeff Lewis",
     "year": 2023,
     "link": "https://panteracapital.com/blockchain-letter/impending-bitcoin-etf-buy-the-rumor-buy-the-news/"
@@ -1992,7 +2028,7 @@
     "link": "https://a16z.com/2010/10/25/the-right-kind-of-ambition/"
   },
   {
-    "title": "10 Types of Odd Friendships You’re Probably Part Of",
+    "title": "10 Types of Odd Friendships You\u2019re Probably Part Of",
     "author": "Tim Urban",
     "year": 2014,
     "link": "https://waitbutwhy.com/2014/12/10-types-odd-friendships-youre-probably-part.html"
@@ -2186,12 +2222,12 @@
   {
     "title": "Optimal Gambling Systems for Favorable Games",
     "author": "E. O. Thorp",
-    "year": 1961,
+    "year": 1969,
     "link": "https://www.jstor.org/stable/1402118"
   },
   {
     "title": "Lunarpunk and the Dark Side of the Cycle",
-    "author": "Rachel-Rose O’Leary",
+    "author": "Rachel-Rose O\u2019Leary",
     "year": 2022,
     "link": "https://www.egirlcapital.com/writings/107533289"
   },
@@ -2239,12 +2275,12 @@
   },
   {
     "title": "Praying for Rain",
-    "author": "José-Antonio Espín-Sánchez, Salvador Gil-Guirado, Nicholas Ryan",
+    "author": "Jos\u00e9-Antonio Esp\u00edn-S\u00e1nchez, Salvador Gil-Guirado, Nicholas Ryan",
     "year": 2023,
     "link": "https://www.nber.org/system/files/working_papers/w31411/w31411.pdf"
   },
   {
-    "title": "Crypto’s Business Model is Familiar. What Isn’t is Who Benefits",
+    "title": "Crypto\u2019s Business Model is Familiar. What Isn\u2019t is Who Benefits",
     "author": "Jesse Walden",
     "year": 2020,
     "link": "https://future.com/crypto-business-model/"
@@ -2316,7 +2352,7 @@
     "link": "https://www.lesswrong.com/posts/X3HpE8tMXz4m4w6Rz/the-simple-truth"
   },
   {
-    "title": "What’s going on here, with this human?",
+    "title": "What\u2019s going on here, with this human?",
     "author": "Graham Duncan",
     "year": 2021,
     "link": "https://grahamduncan.blog/whats-going-on-here/"
@@ -2532,7 +2568,7 @@
     "link": "https://www.paradigm.xyz/2022/04/zk-hardware"
   },
   {
-    "title": "What You’ll Wish You’d Known",
+    "title": "What You\u2019ll Wish You\u2019d Known",
     "author": "Paul Graham",
     "year": 2005,
     "link": "http://www.paulgraham.com/hs.html"
@@ -2544,7 +2580,7 @@
     "link": "https://matt.aimonetti.net/posts/2016-09-when-to-a-hire-a-vp-of-engineering/"
   },
   {
-    "title": "Burned Out Tech CEO → Warehouse Associate",
+    "title": "Burned Out Tech CEO \u2192 Warehouse Associate",
     "author": "Jason Shen",
     "year": 2022,
     "link": "https://www.jasonshen.com/120/"
@@ -2574,7 +2610,7 @@
     "link": "https://nakamotoinstitute.org/bitcoin-and-me/"
   },
   {
-    "title": "NFTs 101 – Why NFTs are a generational innovation",
+    "title": "NFTs 101 \u2013 Why NFTs are a generational innovation",
     "author": "Ben Yu",
     "year": 2021,
     "link": "https://medium.com/coinmonks/nfts-101-why-nfts-are-a-generational-innovation-4626ae803e3b"
@@ -2604,7 +2640,7 @@
     "link": "https://www.artima.com/weblogs/viewpost.jsp?thread=24807"
   },
   {
-    "title": "Political Authority (Autorité Politique)",
+    "title": "Political Authority (Autorit\u00e9 Politique)",
     "author": "Denis Diderot",
     "year": 1751,
     "link": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2732/Diderot_EncyclopedicLiberty1642_LF.pdf"

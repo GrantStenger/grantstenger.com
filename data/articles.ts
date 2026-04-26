@@ -983,6 +983,1338 @@ $$
 
 Thus, after transforming the cash-denominated model's optimal weights to the $A$-denominated model's optimal weights, we see that we've derived the famous Merton share.
 
+---
+
+# Part IV: Extension to n Assets
+
+In Part I, we solved the binary asset case. In Part II, we tried to move from two assets to three assets. The three-asset case is useful because it reveals something important: the algebra gets messy very quickly if we try to expand everything by hand.
+
+At two assets, it is perfectly reasonable to eliminate one weight by writing $\\lambda_B = 1 - \\lambda_A$. At three assets, it is still possible to eliminate one weight by writing $\\lambda_C = 1 - \\lambda_A - \\lambda_B$, though the expression becomes more cumbersome. But at $n$ assets, this approach becomes a bit masochistic.
+
+There is also a subtle but important calculus point here. Once we write $\\lambda_C = 1 - \\lambda_A - \\lambda_B$, the remaining variables $\\lambda_A$ and $\\lambda_B$ are independent coordinates for the constrained portfolio surface. So when we differentiate with respect to $\\lambda_A$, we hold $\\lambda_B$ fixed. We do not need to include a term like $\\frac{d\\lambda_B}{d\\lambda_A}$.
+
+Rather than trying to manage all of this by hand, the cleanest way forward is to use a Lagrange multiplier. This lets us impose the full-investment constraint directly and gives a formula that scales naturally from two assets to three assets to $n$ assets.
+
+---
+
+## Model Definition
+
+Suppose we have a universe of $n$ risky assets indexed by $i \\in \\{1,2,\\ldots,n\\}$. Each asset price follows an independent GBM process:
+
+$$
+\\frac{dS_{i,t}}{S_{i,t}} = \\mu_i \\, dt + \\sigma_i \\, dN_{i,t},
+$$
+
+where $\\mu_i$ is the drift of asset $i$, $\\sigma_i$ is the volatility of asset $i$, and $N_{i,t}$ is a Wiener process for asset $i$.
+
+We assume the Brownian shocks are independent across assets, so
+
+$$
+E[dN_{i,t}dN_{j,t}] =
+\\begin{cases}
+dt, & i=j, \\\\
+0, & i \\neq j.
+\\end{cases}
+$$
+
+Let $\\lambda_i$ denote the portfolio weight on asset $i$. As before, our portfolio weights must sum to one:
+
+$$
+\\sum_{i=1}^{n} \\lambda_i = 1.
+$$
+
+We again use CRRA utility:
+
+$$
+U(W) = \\frac{W^{1-\\gamma} - 1}{1-\\gamma},
+$$
+
+where $\\gamma$ is our relative risk aversion parameter.
+
+Our goal is to solve
+
+$$
+\\underset{\\lambda_1,\\ldots,\\lambda_n}{\\max} \\, E[U(W_{t+dt})],
+$$
+
+subject to
+
+$$
+\\sum_{i=1}^{n} \\lambda_i = 1.
+$$
+
+---
+
+## Wealth Dynamics
+
+The wealth process evolves according to the chosen portfolio weights:
+
+$$
+dW_t = W_t \\sum_{i=1}^{n} \\lambda_i \\frac{dS_{i,t}}{S_{i,t}}.
+$$
+
+Substituting in each asset's GBM process gives
+
+$$
+dW_t = W_t \\sum_{i=1}^{n} \\lambda_i (\\mu_i \\, dt + \\sigma_i \\, dN_{i,t}).
+$$
+
+Equivalently,
+
+$$
+\\frac{dW_t}{W_t} =
+\\sum_{i=1}^{n} \\lambda_i \\mu_i \\, dt
++
+\\sum_{i=1}^{n} \\lambda_i \\sigma_i \\, dN_{i,t}.
+$$
+
+Now define
+
+$$
+x =
+\\sum_{i=1}^{n} \\lambda_i (\\mu_i \\, dt + \\sigma_i \\, dN_{i,t}).
+$$
+
+Then
+
+$$
+W_{t+dt} = W_t(1+x).
+$$
+
+So expected utility becomes
+
+$$
+E[U(W_{t+dt})]
+=
+E\\left[
+\\frac{W_t^{1-\\gamma}(1+x)^{1-\\gamma}-1}{1-\\gamma}
+\\right].
+$$
+
+Since $W_t$ is known at time $t$, we can pull $W_t^{1-\\gamma}$ out of the expectation:
+
+$$
+E[U(W_{t+dt})]
+=
+\\frac{
+W_t^{1-\\gamma}E[(1+x)^{1-\\gamma}]-1
+}{
+1-\\gamma
+}.
+$$
+
+---
+
+## Taylor Expanding Expected Utility
+
+As before, we use a second-order Taylor expansion:
+
+$$
+E[(1+x)^{1-\\gamma}]
+\\approx
+1
++
+(1-\\gamma)E[x]
++
+\\frac{(1-\\gamma)(-\\gamma)}{2}E[x^2].
+$$
+
+First, we compute $E[x]$:
+
+$$
+E[x]
+=
+E\\left[
+\\sum_{i=1}^{n} \\lambda_i (\\mu_i \\, dt + \\sigma_i \\, dN_{i,t})
+\\right].
+$$
+
+Since $E[dN_{i,t}]=0$, this reduces to
+
+$$
+E[x]
+=
+\\left(
+\\sum_{i=1}^{n} \\lambda_i \\mu_i
+\\right)dt.
+$$
+
+Now we compute $E[x^2]$:
+
+$$
+E[x^2]
+=
+E\\left[
+\\left(
+\\sum_{i=1}^{n} \\lambda_i (\\mu_i \\, dt + \\sigma_i \\, dN_{i,t})
+\\right)^2
+\\right].
+$$
+
+The $dt^2$ terms disappear. The $dt \\, dN_{i,t}$ terms disappear in expectation. And since the assets are independent, the cross terms $dN_{i,t}dN_{j,t}$ vanish for $i \\neq j$.
+
+Thus, only the own-variance terms remain:
+
+$$
+E[x^2]
+=
+\\left(
+\\sum_{i=1}^{n} \\lambda_i^2 \\sigma_i^2
+\\right)dt.
+$$
+
+Substituting these terms back into the Taylor expansion gives
+
+$$
+E[(1+x)^{1-\\gamma}]
+\\approx
+1
++
+(1-\\gamma)
+\\left(
+\\sum_{i=1}^{n} \\lambda_i \\mu_i
+\\right)dt
+-
+\\frac{\\gamma(1-\\gamma)}{2}
+\\left(
+\\sum_{i=1}^{n} \\lambda_i^2 \\sigma_i^2
+\\right)dt.
+$$
+
+So expected utility is approximately
+
+$$
+E[U(W_{t+dt})]
+\\approx
+\\frac{
+W_t^{1-\\gamma}
+\\left[
+1
++
+(1-\\gamma)
+\\left(
+\\sum_{i=1}^{n} \\lambda_i \\mu_i
+\\right)dt
+-
+\\frac{\\gamma(1-\\gamma)}{2}
+\\left(
+\\sum_{i=1}^{n} \\lambda_i^2 \\sigma_i^2
+\\right)dt
+\\right]
+-1
+}{
+1-\\gamma
+}.
+$$
+
+The terms $W_t$, $\\gamma$, and $dt$ are fixed with respect to our portfolio weights. Therefore, maximizing expected utility is equivalent to maximizing the simpler quadratic objective
+
+$$
+\\sum_{i=1}^{n} \\lambda_i \\mu_i
+-
+\\frac{\\gamma}{2}
+\\sum_{i=1}^{n} \\lambda_i^2 \\sigma_i^2,
+$$
+
+subject to
+
+$$
+\\sum_{i=1}^{n} \\lambda_i = 1.
+$$
+
+This is nice. The whole expected utility problem has collapsed into a tradeoff between portfolio drift and portfolio variance.
+
+---
+
+## Solving the n-Asset Problem with a Lagrange Multiplier
+
+We now solve
+
+$$
+\\underset{\\lambda_1,\\ldots,\\lambda_n}{\\max}
+\\left[
+\\sum_{i=1}^{n} \\lambda_i \\mu_i
+-
+\\frac{\\gamma}{2}
+\\sum_{i=1}^{n} \\lambda_i^2 \\sigma_i^2
+\\right],
+$$
+
+subject to
+
+$$
+\\sum_{i=1}^{n} \\lambda_i = 1.
+$$
+
+Define the Lagrangian:
+
+$$
+\\mathcal{L}
+=
+\\sum_{i=1}^{n} \\lambda_i \\mu_i
+-
+\\frac{\\gamma}{2}
+\\sum_{i=1}^{n} \\lambda_i^2 \\sigma_i^2
+-
+\\nu
+\\left(
+\\sum_{i=1}^{n} \\lambda_i - 1
+\\right),
+$$
+
+where $\\nu$ is the Lagrange multiplier on the full-investment constraint.
+
+Taking the derivative with respect to $\\lambda_i$ gives
+
+$$
+\\frac{\\partial \\mathcal{L}}{\\partial \\lambda_i}
+=
+\\mu_i
+-
+\\gamma \\lambda_i \\sigma_i^2
+-
+\\nu.
+$$
+
+Setting the first-order condition equal to zero:
+
+$$
+\\mu_i
+-
+\\gamma \\lambda_i \\sigma_i^2
+-
+\\nu
+=
+0.
+$$
+
+Rearranging,
+
+$$
+\\gamma \\lambda_i \\sigma_i^2
+=
+\\mu_i - \\nu.
+$$
+
+Therefore,
+
+$$
+\\lambda_i
+=
+\\frac{\\mu_i - \\nu}{\\gamma \\sigma_i^2}.
+$$
+
+This already tells us a lot. The optimal weight on asset $i$ is increasing in its drift $\\mu_i$ and decreasing in its variance $\\sigma_i^2$. This is exactly what we would hope to see.
+
+Now we use the constraint that the weights sum to one:
+
+$$
+\\sum_{i=1}^{n} \\lambda_i = 1.
+$$
+
+Substituting in our expression for $\\lambda_i$,
+
+$$
+\\sum_{i=1}^{n}
+\\frac{\\mu_i - \\nu}{\\gamma \\sigma_i^2}
+=
+1.
+$$
+
+Multiplying both sides by $\\gamma$,
+
+$$
+\\sum_{i=1}^{n}
+\\frac{\\mu_i - \\nu}{\\sigma_i^2}
+=
+\\gamma.
+$$
+
+Expanding,
+
+$$
+\\sum_{i=1}^{n}
+\\frac{\\mu_i}{\\sigma_i^2}
+-
+\\nu
+\\sum_{i=1}^{n}
+\\frac{1}{\\sigma_i^2}
+=
+\\gamma.
+$$
+
+Solving for $\\nu$ gives
+
+$$
+\\nu
+=
+\\frac{
+\\sum_{i=1}^{n} \\frac{\\mu_i}{\\sigma_i^2}
+-
+\\gamma
+}{
+\\sum_{i=1}^{n} \\frac{1}{\\sigma_i^2}
+}.
+$$
+
+Thus, the optimal allocation to asset $i$ is
+
+$$
+\\lambda_i^*
+=
+\\frac{\\mu_i - \\nu}{\\gamma \\sigma_i^2},
+$$
+
+where
+
+$$
+\\nu
+=
+\\frac{
+\\sum_{j=1}^{n} \\frac{\\mu_j}{\\sigma_j^2}
+-
+\\gamma
+}{
+\\sum_{j=1}^{n} \\frac{1}{\\sigma_j^2}
+}.
+$$
+
+This is the clean $n$-asset solution for independent risky assets.
+
+---
+
+## Sanity Check: Recovering the Two-Asset Formula
+
+It is worth checking that this formula recovers our original binary asset result.
+
+For two assets, the solution gives
+
+$$
+\\lambda_A^*
+=
+\\frac{\\mu_A - \\nu}{\\gamma \\sigma_A^2},
+\\quad
+\\lambda_B^*
+=
+\\frac{\\mu_B - \\nu}{\\gamma \\sigma_B^2},
+$$
+
+where
+
+$$
+\\nu
+=
+\\frac{
+\\frac{\\mu_A}{\\sigma_A^2}
++
+\\frac{\\mu_B}{\\sigma_B^2}
+-
+\\gamma
+}{
+\\frac{1}{\\sigma_A^2}
++
+\\frac{1}{\\sigma_B^2}
+}.
+$$
+
+After simplifying, this gives
+
+$$
+\\lambda_A^*
+=
+\\frac{
+\\mu_A - \\mu_B + \\gamma \\sigma_B^2
+}{
+\\gamma(\\sigma_A^2 + \\sigma_B^2)
+},
+$$
+
+and
+
+$$
+\\lambda_B^*
+=
+\\frac{
+\\mu_B - \\mu_A + \\gamma \\sigma_A^2
+}{
+\\gamma(\\sigma_A^2 + \\sigma_B^2)
+}.
+$$
+
+This is exactly the result from Part I.
+
+---
+
+## Sanity Check: The Correct Three-Asset Formula
+
+The same formula also gives a clean three-asset result. For assets $A$, $B$, and $C$, we get
+
+$$
+\\lambda_A^*
+=
+\\frac{
+\\sigma_C^2(\\mu_A-\\mu_B)
++
+\\sigma_B^2(\\mu_A-\\mu_C)
++
+\\gamma \\sigma_B^2 \\sigma_C^2
+}{
+\\gamma(
+\\sigma_A^2\\sigma_B^2
++
+\\sigma_A^2\\sigma_C^2
++
+\\sigma_B^2\\sigma_C^2
+)
+},
+$$
+
+$$
+\\lambda_B^*
+=
+\\frac{
+\\sigma_C^2(\\mu_B-\\mu_A)
++
+\\sigma_A^2(\\mu_B-\\mu_C)
++
+\\gamma \\sigma_A^2 \\sigma_C^2
+}{
+\\gamma(
+\\sigma_A^2\\sigma_B^2
++
+\\sigma_A^2\\sigma_C^2
++
+\\sigma_B^2\\sigma_C^2
+)
+},
+$$
+
+and
+
+$$
+\\lambda_C^*
+=
+\\frac{
+\\sigma_B^2(\\mu_C-\\mu_A)
++
+\\sigma_A^2(\\mu_C-\\mu_B)
++
+\\gamma \\sigma_A^2 \\sigma_B^2
+}{
+\\gamma(
+\\sigma_A^2\\sigma_B^2
++
+\\sigma_A^2\\sigma_C^2
++
+\\sigma_B^2\\sigma_C^2
+)
+}.
+$$
+
+These weights sum to one. They also have a nice interpretation: each asset receives a baseline allocation determined by the other assets' variances, plus a tilt based on its return advantage over the other assets.
+
+If all three assets have the same expected return, so $\\mu_A = \\mu_B = \\mu_C$, then all of the return-difference terms disappear and we get
+
+$$
+\\lambda_A^*
+=
+\\frac{
+\\sigma_B^2\\sigma_C^2
+}{
+\\sigma_A^2\\sigma_B^2
++
+\\sigma_A^2\\sigma_C^2
++
+\\sigma_B^2\\sigma_C^2
+},
+$$
+
+$$
+\\lambda_B^*
+=
+\\frac{
+\\sigma_A^2\\sigma_C^2
+}{
+\\sigma_A^2\\sigma_B^2
++
+\\sigma_A^2\\sigma_C^2
++
+\\sigma_B^2\\sigma_C^2
+},
+$$
+
+and
+
+$$
+\\lambda_C^*
+=
+\\frac{
+\\sigma_A^2\\sigma_B^2
+}{
+\\sigma_A^2\\sigma_B^2
++
+\\sigma_A^2\\sigma_C^2
++
+\\sigma_B^2\\sigma_C^2
+}.
+$$
+
+This is exactly the inverse-variance allocation. When all assets have the same drift, the only remaining problem is how to allocate across risk, and the lower-variance assets receive larger weights.
+
+---
+
+## Fully Scalar n-Asset Formula
+
+We can also write the $n$-asset solution as a single scalar expression. Let
+
+$$
+q_i = \\sigma_i^2.
+$$
+
+Then the optimal weight on asset $i$ is
+
+$$
+\\lambda_i^*
+=
+\\frac{
+\\gamma \\prod_{k \\neq i} q_k
++
+\\sum_{j \\neq i}
+(\\mu_i-\\mu_j)
+\\prod_{k \\neq i,j} q_k
+}{
+\\gamma
+\\sum_{j=1}^{n}
+\\prod_{k \\neq j} q_k
+}.
+$$
+
+Substituting $q_i=\\sigma_i^2$, this becomes
+
+$$
+\\lambda_i^*
+=
+\\frac{
+\\gamma \\prod_{k \\neq i} \\sigma_k^2
++
+\\sum_{j \\neq i}
+(\\mu_i-\\mu_j)
+\\prod_{k \\neq i,j} \\sigma_k^2
+}{
+\\gamma
+\\sum_{j=1}^{n}
+\\prod_{k \\neq j} \\sigma_k^2
+}.
+$$
+
+The convention here is that an empty product equals $1$. This matters in the two-asset case, where the term $\\prod_{k \\neq i,j} \\sigma_k^2$ has no elements.
+
+This scalar expression is useful because it shows the direct generalization of the two-asset and three-asset formulas. But it is not the form I would actually use computationally. For computation and interpretation, the Lagrange multiplier form is cleaner.
+
+---
+
+## Interpreting the Independent n-Asset Solution
+
+We can rewrite the solution in a way that makes the intuition clearer.
+
+Define
+
+$$
+H = \\sum_{j=1}^{n} \\frac{1}{\\sigma_j^2}.
+$$
+
+Now define the inverse-variance-weighted average drift:
+
+$$
+\\bar{\\mu}_{\\sigma^{-2}}
+=
+\\frac{
+\\sum_{j=1}^{n} \\frac{\\mu_j}{\\sigma_j^2}
+}{
+\\sum_{j=1}^{n} \\frac{1}{\\sigma_j^2}
+}
+=
+\\frac{
+\\sum_{j=1}^{n} \\frac{\\mu_j}{\\sigma_j^2}
+}{
+H
+}.
+$$
+
+Since
+
+$$
+\\nu
+=
+\\bar{\\mu}_{\\sigma^{-2}}
+-
+\\frac{\\gamma}{H},
+$$
+
+we can rewrite the optimal weight as
+
+$$
+\\lambda_i^*
+=
+\\frac{
+\\mu_i
+-
+\\bar{\\mu}_{\\sigma^{-2}}
++
+\\frac{\\gamma}{H}
+}{
+\\gamma \\sigma_i^2
+}.
+$$
+
+Splitting this into two terms gives
+
+$$
+\\lambda_i^*
+=
+\\frac{\\frac{1}{\\sigma_i^2}}{\\sum_{j=1}^{n} \\frac{1}{\\sigma_j^2}}
++
+\\frac{
+\\mu_i - \\bar{\\mu}_{\\sigma^{-2}}
+}{
+\\gamma \\sigma_i^2
+}.
+$$
+
+This is maybe the most intuitive version of the independent asset result.
+
+The first term,
+
+$$
+\\frac{\\frac{1}{\\sigma_i^2}}{\\sum_{j=1}^{n} \\frac{1}{\\sigma_j^2}},
+$$
+
+is the inverse-variance allocation. It is the portfolio we get if expected returns are all equal and we only care about minimizing variance subject to being fully invested.
+
+The second term,
+
+$$
+\\frac{
+\\mu_i - \\bar{\\mu}_{\\sigma^{-2}}
+}{
+\\gamma \\sigma_i^2
+},
+$$
+
+is the speculative tilt. Assets with drifts above the inverse-variance-weighted average drift receive larger allocations. Assets with drifts below that average receive smaller allocations.
+
+As $\\gamma$ increases, the speculative tilt shrinks. In the limit as $\\gamma \\to \\infty$, the investor becomes infinitely risk averse and the portfolio approaches the inverse-variance allocation. As $\\gamma$ decreases, the investor becomes more willing to tilt toward assets with higher expected returns.
+
+This is a satisfying result. The model says that a risk-averse investor starts with an inverse-variance portfolio and then tilts toward assets that have better expected returns relative to that baseline.
+
+---
+
+# Part V: Matrix Form and Correlated Assets
+
+The independent asset model is mathematically convenient, but it is obviously a simplification. In real markets, assets are correlated. Stocks move together. Bonds and equities can become correlated in crises. Crypto assets often behave like one giant risk factor wearing different ticker symbols.
+
+So the next natural extension is to replace the independent variance term
+
+$$
+\\sum_{i=1}^{n} \\lambda_i^2 \\sigma_i^2
+$$
+
+with a full covariance matrix.
+
+Before doing that, it helps to rewrite the independent case in matrix form.
+
+---
+
+## Matrix Form of the Independent Asset Case
+
+Let
+
+$$
+\\lambda =
+\\begin{bmatrix}
+\\lambda_1 \\\\
+\\lambda_2 \\\\
+\\vdots \\\\
+\\lambda_n
+\\end{bmatrix},
+\\quad
+\\mu =
+\\begin{bmatrix}
+\\mu_1 \\\\
+\\mu_2 \\\\
+\\vdots \\\\
+\\mu_n
+\\end{bmatrix},
+\\quad
+\\mathbf{1} =
+\\begin{bmatrix}
+1 \\\\
+1 \\\\
+\\vdots \\\\
+1
+\\end{bmatrix}.
+$$
+
+For independent assets, define the diagonal covariance matrix
+
+$$
+D =
+\\begin{bmatrix}
+\\sigma_1^2 & 0 & \\cdots & 0 \\\\
+0 & \\sigma_2^2 & \\cdots & 0 \\\\
+\\vdots & \\vdots & \\ddots & \\vdots \\\\
+0 & 0 & \\cdots & \\sigma_n^2
+\\end{bmatrix}.
+$$
+
+The objective function becomes
+
+$$
+\\lambda^\\top \\mu
+-
+\\frac{\\gamma}{2}
+\\lambda^\\top D \\lambda,
+$$
+
+subject to
+
+$$
+\\mathbf{1}^\\top \\lambda = 1.
+$$
+
+The Lagrangian is
+
+$$
+\\mathcal{L}
+=
+\\lambda^\\top \\mu
+-
+\\frac{\\gamma}{2}
+\\lambda^\\top D\\lambda
+-
+\\nu(\\mathbf{1}^\\top \\lambda - 1).
+$$
+
+Taking the derivative with respect to $\\lambda$ gives
+
+$$
+\\mu - \\gamma D\\lambda - \\nu \\mathbf{1} = 0.
+$$
+
+Therefore,
+
+$$
+\\gamma D\\lambda = \\mu - \\nu \\mathbf{1},
+$$
+
+and so
+
+$$
+\\lambda
+=
+\\frac{1}{\\gamma}
+D^{-1}
+(\\mu - \\nu \\mathbf{1}).
+$$
+
+Now impose the full-investment constraint:
+
+$$
+\\mathbf{1}^\\top \\lambda = 1.
+$$
+
+Substituting in the expression for $\\lambda$,
+
+$$
+\\mathbf{1}^\\top
+\\frac{1}{\\gamma}
+D^{-1}
+(\\mu - \\nu \\mathbf{1})
+=
+1.
+$$
+
+Multiplying through by $\\gamma$,
+
+$$
+\\mathbf{1}^\\top D^{-1}\\mu
+-
+\\nu \\mathbf{1}^\\top D^{-1}\\mathbf{1}
+=
+\\gamma.
+$$
+
+Solving for $\\nu$ gives
+
+$$
+\\nu
+=
+\\frac{
+\\mathbf{1}^\\top D^{-1}\\mu - \\gamma
+}{
+\\mathbf{1}^\\top D^{-1}\\mathbf{1}
+}.
+$$
+
+Thus, in matrix form, the independent asset solution is
+
+$$
+\\lambda^*
+=
+\\frac{1}{\\gamma}
+D^{-1}
+(\\mu - \\nu \\mathbf{1}),
+$$
+
+where
+
+$$
+\\nu
+=
+\\frac{
+\\mathbf{1}^\\top D^{-1}\\mu - \\gamma
+}{
+\\mathbf{1}^\\top D^{-1}\\mathbf{1}
+}.
+$$
+
+This is the same result as before. The only difference is that the notation is cleaner.
+
+---
+
+## The Correlated Asset Case
+
+Now suppose the assets are correlated. Instead of assuming
+
+$$
+E[dN_{i,t}dN_{j,t}] = 0
+\\quad \\text{for} \\quad i \\neq j,
+$$
+
+we allow
+
+$$
+E[dN_{i,t}dN_{j,t}] = \\rho_{ij}dt.
+$$
+
+The covariance between the instantaneous returns of assets $i$ and $j$ is then
+
+$$
+\\Sigma_{ij} = \\rho_{ij}\\sigma_i\\sigma_j.
+$$
+
+So the covariance matrix is
+
+$$
+\\Sigma =
+\\begin{bmatrix}
+\\sigma_1^2 & \\rho_{12}\\sigma_1\\sigma_2 & \\cdots & \\rho_{1n}\\sigma_1\\sigma_n \\\\
+\\rho_{21}\\sigma_2\\sigma_1 & \\sigma_2^2 & \\cdots & \\rho_{2n}\\sigma_2\\sigma_n \\\\
+\\vdots & \\vdots & \\ddots & \\vdots \\\\
+\\rho_{n1}\\sigma_n\\sigma_1 & \\rho_{n2}\\sigma_n\\sigma_2 & \\cdots & \\sigma_n^2
+\\end{bmatrix}.
+$$
+
+The expected return term remains
+
+$$
+\\lambda^\\top \\mu.
+$$
+
+But the variance term is no longer
+
+$$
+\\sum_{i=1}^{n} \\lambda_i^2 \\sigma_i^2.
+$$
+
+Instead, portfolio variance is
+
+$$
+\\lambda^\\top \\Sigma \\lambda.
+$$
+
+Therefore, the optimization problem becomes
+
+$$
+\\underset{\\lambda}{\\max}
+\\left[
+\\lambda^\\top \\mu
+-
+\\frac{\\gamma}{2}
+\\lambda^\\top \\Sigma \\lambda
+\\right],
+$$
+
+subject to
+
+$$
+\\mathbf{1}^\\top \\lambda = 1.
+$$
+
+The Lagrangian is
+
+$$
+\\mathcal{L}
+=
+\\lambda^\\top \\mu
+-
+\\frac{\\gamma}{2}
+\\lambda^\\top \\Sigma\\lambda
+-
+\\nu(\\mathbf{1}^\\top \\lambda - 1).
+$$
+
+The first-order condition is
+
+$$
+\\mu - \\gamma \\Sigma\\lambda - \\nu \\mathbf{1} = 0.
+$$
+
+Rearranging,
+
+$$
+\\gamma \\Sigma\\lambda = \\mu - \\nu \\mathbf{1}.
+$$
+
+Assuming $\\Sigma$ is invertible,
+
+$$
+\\lambda
+=
+\\frac{1}{\\gamma}
+\\Sigma^{-1}
+(\\mu - \\nu \\mathbf{1}).
+$$
+
+Now impose the full-investment constraint:
+
+$$
+\\mathbf{1}^\\top
+\\frac{1}{\\gamma}
+\\Sigma^{-1}
+(\\mu - \\nu \\mathbf{1})
+=
+1.
+$$
+
+Multiplying through by $\\gamma$,
+
+$$
+\\mathbf{1}^\\top \\Sigma^{-1}\\mu
+-
+\\nu \\mathbf{1}^\\top \\Sigma^{-1}\\mathbf{1}
+=
+\\gamma.
+$$
+
+Solving for $\\nu$,
+
+$$
+\\nu
+=
+\\frac{
+\\mathbf{1}^\\top \\Sigma^{-1}\\mu - \\gamma
+}{
+\\mathbf{1}^\\top \\Sigma^{-1}\\mathbf{1}
+}.
+$$
+
+Thus, the optimal portfolio under correlated risky assets is
+
+$$
+\\lambda^*
+=
+\\frac{1}{\\gamma}
+\\Sigma^{-1}
+(\\mu - \\nu \\mathbf{1}),
+$$
+
+where
+
+$$
+\\nu
+=
+\\frac{
+\\mathbf{1}^\\top \\Sigma^{-1}\\mu - \\gamma
+}{
+\\mathbf{1}^\\top \\Sigma^{-1}\\mathbf{1}
+}.
+$$
+
+This is the general solution. The independent asset model is just the special case where $\\Sigma$ is diagonal.
+
+---
+
+## Minimum-Variance Portfolio Plus a Speculative Tilt
+
+We can also decompose the correlated asset solution into two pieces.
+
+The first piece is the global minimum-variance portfolio:
+
+$$
+\\lambda_{MV}
+=
+\\frac{
+\\Sigma^{-1}\\mathbf{1}
+}{
+\\mathbf{1}^\\top \\Sigma^{-1}\\mathbf{1}
+}.
+$$
+
+The second piece is a return-seeking tilt:
+
+$$
+\\frac{1}{\\gamma}
+\\left[
+\\Sigma^{-1}\\mu
+-
+\\frac{
+\\mathbf{1}^\\top \\Sigma^{-1}\\mu
+}{
+\\mathbf{1}^\\top \\Sigma^{-1}\\mathbf{1}
+}
+\\Sigma^{-1}\\mathbf{1}
+\\right].
+$$
+
+Putting them together,
+
+$$
+\\lambda^*
+=
+\\frac{
+\\Sigma^{-1}\\mathbf{1}
+}{
+\\mathbf{1}^\\top \\Sigma^{-1}\\mathbf{1}
+}
++
+\\frac{1}{\\gamma}
+\\left[
+\\Sigma^{-1}\\mu
+-
+\\frac{
+\\mathbf{1}^\\top \\Sigma^{-1}\\mu
+}{
+\\mathbf{1}^\\top \\Sigma^{-1}\\mathbf{1}
+}
+\\Sigma^{-1}\\mathbf{1}
+\\right].
+$$
+
+This is a very useful way to understand the model.
+
+The first term is the allocation we would choose if we only cared about minimizing variance while remaining fully invested. It does not use expected returns at all. It only uses the covariance matrix.
+
+The second term is the speculative component. It tilts the portfolio toward assets that have attractive expected returns relative to the covariance structure of the asset universe.
+
+As $\\gamma \\to \\infty$, the speculative term disappears and we converge to the global minimum-variance portfolio. As $\\gamma$ gets smaller, the speculative term becomes larger.
+
+This is the exact same intuition as the independent asset case, except the meaning of risk is richer. We no longer penalize each asset only by its own variance. We penalize it by how it contributes to total portfolio variance.
+
+That distinction matters. A high-volatility asset can still receive a meaningful allocation if it diversifies the rest of the portfolio. Conversely, a seemingly safe asset can receive a smaller allocation if it is highly correlated with everything else we already own.
+
+---
+
+# Part VI: What the Formula Is Really Saying
+
+At this point, we have a compact solution for the optimal allocation across $n$ risky assets:
+
+$$
+\\lambda^*
+=
+\\frac{1}{\\gamma}
+\\Sigma^{-1}
+(\\mu - \\nu \\mathbf{1}),
+$$
+
+where
+
+$$
+\\nu
+=
+\\frac{
+\\mathbf{1}^\\top \\Sigma^{-1}\\mu - \\gamma
+}{
+\\mathbf{1}^\\top \\Sigma^{-1}\\mathbf{1}
+}.
+$$
+
+This is a pretty small formula given how much it contains.
+
+The model says that optimal portfolio choice depends on three things:
+
+1. expected returns, encoded by $\\mu$;
+2. the covariance structure of returns, encoded by $\\Sigma$;
+3. relative risk aversion, encoded by $\\gamma$.
+
+The role of $\\gamma$ is especially clear. Higher $\\gamma$ means we care more about variance and less about expected return. Lower $\\gamma$ means we are more willing to tolerate variance in pursuit of expected return.
+
+But the formula also tells us something subtler. In a fully invested risky-asset-only portfolio, we are not deciding how much risky exposure to hold relative to cash. We are deciding how to distribute risky exposure across assets. This is why the solution naturally contains a minimum-variance portfolio.
+
+When there is no risk-free asset, the investor must hold something. If expected returns are all equal, then the entire problem collapses into choosing the lowest-variance way to remain fully invested. In the independent asset case, that means inverse-variance weighting. In the correlated asset case, that means the global minimum-variance portfolio.
+
+Expected returns then create tilts away from that baseline.
+
+This is also why the risky-numeraire result from Part III is so clean. When we denominate everything in terms of asset $A$, the asset $A/A$ has no price movement relative to itself. It becomes the reference point. The only risky decision left in the two-asset $A$-denominated world is how much of $B/A$ to hold. That is why the formula collapses back to the familiar Merton-style share:
+
+$$
+\\lambda_{B/A}
+=
+\\frac{
+\\mu_{B/A}
+}{
+\\gamma \\sigma_{B/A}^2
+}.
+$$
+
+The cash-denominated risky/risky problem and the risky-numeraire problem are not contradictory. They are just different ways of representing the same underlying portfolio choice.
+
+---
+
+## The Shadow Return Interpretation of $\\nu$
+
+The Lagrange multiplier $\\nu$ is also worth interpreting. From the first-order condition,
+
+$$
+\\mu_i - \\gamma \\lambda_i \\sigma_i^2 - \\nu = 0
+$$
+
+in the independent case. Rearranging,
+
+$$
+\\mu_i - \\nu = \\gamma \\lambda_i \\sigma_i^2.
+$$
+
+So $\\nu$ acts like a return threshold created by the full-investment constraint. Assets with expected returns above $\\nu$ tend to receive larger weights, scaled by their variance. Assets with expected returns below $\\nu$ tend to receive smaller weights or even negative weights if shorting is allowed.
+
+This is similar in spirit to the role played by a risk-free rate in the classic Merton Share. But here, $\\nu$ is not an externally given risk-free rate. It is determined endogenously by the asset universe, the covariance structure, and the fact that the portfolio weights must sum to one.
+
+That is a nice conceptual payoff. If there is no risk-free asset in the model, the optimization still creates a benchmark return internally.
+
+---
+
+## What Happens If We Ban Shorting?
+
+The formulas above allow shorting and leverage in the sense that individual weights can be negative or greater than one, as long as the weights sum to one. This is standard in the clean mathematical version of the problem, but it may not be what we want in practice.
+
+If we impose constraints like
+
+$$
+\\lambda_i \\geq 0
+$$
+
+for all $i$, or
+
+$$
+0 \\leq \\lambda_i \\leq 1,
+$$
+
+then the closed-form solution may no longer apply directly. The unconstrained optimum might tell us to short an asset with a bad risk-adjusted expected return. If shorting is not allowed, that asset's weight gets pushed to zero and the optimization has to be solved with inequality constraints.
+
+In that case, the right mathematical object is a constrained quadratic program. Conceptually, though, the logic remains similar. We are still balancing expected return against variance, but some assets may hit boundary constraints and drop out of the active portfolio.
+
+This is another reason I like deriving the unconstrained solution first. It gives the clean benchmark. Then constraints can be layered on top.
+
+---
+
+## Limitations
+
+The obvious weakness of this whole setup is that the inputs are doing enormous work.
+
+The formulas look precise, but the quantities $\\mu$ and $\\Sigma$ are not handed to us by nature. We have to estimate them. And estimating expected returns is notoriously difficult. Small changes in $\\mu$ can lead to large changes in optimal weights, especially when $\\gamma$ is low.
+
+The covariance matrix is usually easier to estimate than expected returns, but it is still unstable. Correlations change. Volatilities change. Assets that looked diversifying in normal times can suddenly become highly correlated in a crisis.
+
+There is also the GBM assumption. GBM is analytically convenient, but real return distributions have jumps, fat tails, volatility clustering, changing regimes, and all sorts of other unpleasant features. The model is useful, but it is not reality.
+
+Still, I think the exercise is valuable. It shows the basic structure of the problem in its cleanest form. If we know our beliefs about expected returns, covariances, and risk aversion, then the optimal portfolio has a simple shape:
+
+$$
+\\text{minimum-variance baseline}
++
+\\text{return-seeking tilt}.
+$$
+
+That is the main lesson.
+
+---
+
+## Conclusion
+
+We began with the two-risky-asset version of the Merton-style allocation problem. We then moved to three assets, changed the numeraire, and finally generalized the model to $n$ risky assets.
+
+For independent assets, the optimal allocation to asset $i$ is
+
+$$
+\\lambda_i^*
+=
+\\frac{\\mu_i - \\nu}{\\gamma \\sigma_i^2},
+$$
+
+where
+
+$$
+\\nu
+=
+\\frac{
+\\sum_{j=1}^{n} \\frac{\\mu_j}{\\sigma_j^2}
+-
+\\gamma
+}{
+\\sum_{j=1}^{n} \\frac{1}{\\sigma_j^2}
+}.
+$$
+
+For correlated assets, the optimal portfolio is
+
+$$
+\\lambda^*
+=
+\\frac{1}{\\gamma}
+\\Sigma^{-1}
+(\\mu - \\nu \\mathbf{1}),
+$$
+
+where
+
+$$
+\\nu
+=
+\\frac{
+\\mathbf{1}^\\top \\Sigma^{-1}\\mu - \\gamma
+}{
+\\mathbf{1}^\\top \\Sigma^{-1}\\mathbf{1}
+}.
+$$
+
+Equivalently,
+
+$$
+\\lambda^*
+=
+\\frac{
+\\Sigma^{-1}\\mathbf{1}
+}{
+\\mathbf{1}^\\top \\Sigma^{-1}\\mathbf{1}
+}
++
+\\frac{1}{\\gamma}
+\\left[
+\\Sigma^{-1}\\mu
+-
+\\frac{
+\\mathbf{1}^\\top \\Sigma^{-1}\\mu
+}{
+\\mathbf{1}^\\top \\Sigma^{-1}\\mathbf{1}
+}
+\\Sigma^{-1}\\mathbf{1}
+\\right].
+$$
+
+This final expression is my favorite version of the result. The first term is the minimum-variance portfolio. The second term is the speculative tilt. Risk aversion determines how much of that tilt we are willing to take.
+
+So, in the end, the optimal risky-asset portfolio under CRRA utility has a surprisingly intuitive structure: start with the lowest-risk way to be fully invested, then tilt toward assets whose expected returns justify their contribution to portfolio risk.
+
 
 [^1]: I am skeptical of standard national CPI measures, as discussed in Chapter 5 of Keynes' *Treatise on Money*. I think exact CPI calculation seems like a fundamentally futile task, though it's nuanced so I haven't made up my mind yet.
 

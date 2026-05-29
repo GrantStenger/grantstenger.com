@@ -18,6 +18,14 @@ const nextConfig = {
     // Use webpack for builds (needed for .tex file handling)
     // Turbopack doesn't support raw-loader yet
     turbopack: {},
+    async rewrites() {
+      return [
+        {
+          source: '/supa',
+          destination: '/writing/SUPA_AMM.pdf',
+        },
+      ];
+    },
   };
   
   export default nextConfig;

@@ -7,6 +7,14 @@ export const articles = [
       link: "https://www.ft.com/content/18313a5f-ae6e-44e9-a26a-4a81cd3190bf"
     },
     {
+      title: "SUPA: Solana Uniform-Price Auctions for CPMMs",
+      description: "A batch-clearing generalization of the constant-product market maker that neutralizes intra-slot MEV by clearing trades at a uniform price.",
+      slug: "supa",
+      author: "Grant Stenger, Martin Lindsey, Edwin Suresh, Keith Warter, Agam Gambhir (Oct 2025)",
+      pdfUrl: "/supa",
+      contentType: "latex",
+    },
+    {
       title: "Optimal Almgren-Chriss Execution with CRRA Preferences",
       description: "Optimal execution in a linear-impact Almgren-Chriss model with CRRA utility and certainty-equivalent approximation",
       author: "Grant Stenger (Dec 2024)",

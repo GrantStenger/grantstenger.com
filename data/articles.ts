@@ -3,7 +3,7 @@ export const articles = [
       title: "Quant Funds and AI Labs Converge",
       description: "An analysis of the convergence between quantitative trading firms and AI research laboratories.",
       slug: "quant-ai-convergence",
-      author: "Grant Stenger (Jan 2026)",
+      author: "Grant Stenger and Rich Dewey (Jan 2026)",
       link: "https://www.ft.com/content/18313a5f-ae6e-44e9-a26a-4a81cd3190bf"
     },
     {

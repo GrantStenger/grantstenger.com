@@ -24,6 +24,10 @@ const nextConfig = {
           source: '/supa',
           destination: '/writing/SUPA_AMM.pdf',
         },
+        {
+          source: '/local-minima',
+          destination: '/writing/Local_Minima_Are_Rare_in_High_Dimensions.pdf',
+        },
       ];
     },
   };

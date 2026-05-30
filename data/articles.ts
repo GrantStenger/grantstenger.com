@@ -31,6 +31,14 @@ export const articles = [
       contentType: "latex",
     },
     {
+      title: "Why Local Minima Are Rare in High-Dimensional Landscapes",
+      description: "A note on Hessians, saddles, and Morse critical points: why nondegenerate local minima are exponentially rare among the critical points of high-dimensional random landscapes.",
+      slug: "local-minima",
+      author: "Grant Stenger (May 2025)",
+      pdfUrl: "/local-minima",
+      contentType: "latex",
+    },
+    {
       title: "Optimal Portfolio Weights Under CRRA Utility",
       description: "Deriving optimal portfolio allocations under CRRA utility across binary, multi-asset, and risky numeraire frameworks.",
       slug: "portfolio-optimization",

@@ -12,7 +12,7 @@ export const coaseanEssayStyles = String.raw`@import url("https://fonts.googleap
     --accent:#933420;
     --accent-deep:#6f2615;
     --rule:#d8cfbd;
-    --measure:39rem;
+    --measure:42rem;
   }
   .coaseanEssay *{box-sizing:border-box;}
   .coaseanEssay{

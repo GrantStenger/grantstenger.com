@@ -29,11 +29,11 @@ export function Header({ className = '' }: HeaderProps) {
                 {renderHeaderText()}
                 <div className="flex items-center">
                     <div className="flex space-x-4 md:space-x-6 mr-4 md:mr-6 lg:mr-12">
+                        <Link href="/writing" className="text-gray-400 hover:text-white transition-colors duration-200 underline text-sm md:text-base">MY WRITING</Link>
                         <Link href="/books" className="text-gray-400 hover:text-white transition-colors duration-200 underline text-sm md:text-base">BOOKS</Link>
                         <Link href="/essays" className="text-gray-400 hover:text-white transition-colors duration-200 underline text-sm md:text-base">ESSAYS</Link>
                         <Link href="/quotes" className="text-gray-400 hover:text-white transition-colors duration-200 underline text-sm md:text-base">QUOTES</Link>
                         <Link href="/tweets" className="text-gray-400 hover:text-white transition-colors duration-200 underline text-sm md:text-base">TWEETS</Link>
-                        <Link href="/writing" className="text-gray-400 hover:text-white transition-colors duration-200 underline text-sm md:text-base">MY WRITING</Link>
                     </div>
                     <div className="flex space-x-2 md:space-x-4">
                         <SocialLink href="https://twitter.com/GrantStenger" icon={<TwitterIcon />} label="Twitter" />

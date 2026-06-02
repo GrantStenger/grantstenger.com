@@ -16,8 +16,6 @@ export default function Tweets() {
             <Header className="fixed top-0 left-0 right-0 z-10" />
 
             <main className="flex-grow pt-24 md:pt-28 px-4 pb-16">
-                <h1 className="text-5xl lg:text-6xl font-bold mb-10 text-center">BEST TWEETS</h1>
-
                 <div data-theme="dark" className="mx-auto flex max-w-[550px] flex-col items-center gap-4">
                     {tweets.map((entry) => (
                         <div key={entry.id} className="w-full [&_.react-tweet-theme]:my-0">

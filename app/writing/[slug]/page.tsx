@@ -14,9 +14,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 export async function generateStaticParams() {
-  // Only generate params for non-PDF articles
+  // Only generate params for articles rendered by this Markdown/LaTeX route.
   return articles
-    .filter(article => !article.pdfUrl && !article.link)
+    .filter(article => !article.pdfUrl && !article.link && article.content)
     .map((article) => ({
       slug: article.slug,
     }))
@@ -30,8 +30,8 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
     return notFound()
   }
 
-  // Don't try to handle PDF or external-link articles in this route
-  if (article.pdfUrl || article.link) {
+  // Don't try to handle PDFs, external links, or special static routes here.
+  if (article.pdfUrl || article.link || !article.content) {
     return notFound()
   }
 
@@ -39,7 +39,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
     <ArticlePage
       title={article.title}
       content={article.content}
-      contentType={article.contentType as 'markdown' | 'latex'}
+      contentType={article.contentType === 'latex' ? 'latex' : 'markdown'}
     />
   )
 }

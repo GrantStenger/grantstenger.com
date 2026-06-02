@@ -1,5 +1,11 @@
 export const articles = [
     {
+      title: "The Coasean Singularity",
+      description: "Why a collapse in the cost of making almost anything tradable produces not thousands of markets but trillions.",
+      slug: "the-coasean-singularity",
+      author: "Grant Stenger (June 2026)",
+    },
+    {
       title: "Quant Funds and AI Labs Converge",
       description: "An analysis of the convergence between quantitative trading firms and AI research laboratories.",
       slug: "quant-ai-convergence",

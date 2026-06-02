@@ -5,7 +5,7 @@ const baseUrl = 'https://www.grantstenger.com'
 
 // Slugs that have their own bespoke route under /writing rather than being
 // rendered by the generic [slug] page or living as an external link/PDF.
-const customWritingRoutes = ['the-coasean-singularity']
+const customWritingRoutes = ['trillions-of-markets']
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = ['', '/about', '/writing', '/books', '/essays', '/quotes', '/tweets']

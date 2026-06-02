@@ -18,6 +18,15 @@ const nextConfig = {
     // Use webpack for builds (needed for .tex file handling)
     // Turbopack doesn't support raw-loader yet
     turbopack: {},
+    async redirects() {
+      return [
+        {
+          source: '/writing/the-coasean-singularity',
+          destination: '/writing/trillions-of-markets',
+          permanent: true,
+        },
+      ];
+    },
     async rewrites() {
       return [
         {

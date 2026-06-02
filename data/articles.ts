@@ -1,8 +1,8 @@
 export const articles = [
     {
-      title: "The Coasean Singularity",
+      title: "Trillions of Markets",
       description: "Why a collapse in the cost of making almost anything tradable produces not thousands of markets but trillions.",
-      slug: "the-coasean-singularity",
+      slug: "trillions-of-markets",
       author: "Grant Stenger (June 2026)",
     },
     {

@@ -147,7 +147,12 @@ export const coaseanEssayStyles = String.raw`@import url("https://fonts.googleap
     position:absolute;left:0;top:.95rem;
     font-family:"Fraunces",serif;font-weight:600;color:var(--accent);font-size:1rem;letter-spacing:.05em;
   }
-  .coaseanEssay ol.papers .pt{font-family:"Fraunces",serif;font-weight:500;color:var(--ink);font-style:italic;}
+  .coaseanEssay ol.papers .pt,
+  .coaseanEssay ol.papers a.pt:visited{
+    font-family:"Fraunces",serif;font-weight:500;color:var(--ink);font-style:italic;
+    border-bottom-color:rgba(29,25,22,.28);
+  }
+  .coaseanEssay ol.papers a.pt:hover{color:var(--ink);border-bottom-color:var(--ink);}
   .coaseanEssay ol.papers .pd{color:var(--ink-faint);}
   .coaseanEssay .colophon{
     font-family:"Fraunces",serif;font-size:.85rem;color:var(--ink-faint);letter-spacing:.04em;

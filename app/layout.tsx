@@ -26,6 +26,7 @@ const abcDiatype = localFont({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.grantstenger.com'),
   title: 'Grant Stenger',
   description: 'Personal website of Grant Stenger, Founder & CEO of Kinetic',
   icons: {

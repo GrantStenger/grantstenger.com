@@ -1,0 +1,17 @@
+[
+  {
+    "id": "2060812385342963713",
+    "text": "Local minima are rare in high dimensions because a strict local minimum has to curve upward in every direction, so all Hessian eigenvalues must be positive.\n\nIn a D-dimensional toy model where eigenvalue signs are independent, that’s a 2^(-D) event. In GOE-like random matrix models, positive definiteness is even rarer, roughly exp(-cD^2).\n\nSo as dimension grows, random critical points are much more likely to be saddles than minima. This is one reason high-dimensional optimization is often a saddle-escape problem, not a bad-local-minimum problem.\n\nWrote up some of the math here: grantstenger.com/local-minima",
+    "date": "May 30, 2026"
+  },
+  {
+    "id": "2060855465760719250",
+    "text": "The Penrose triangle is a useful intuition pump for a nontrivial Čech cohomology class: each local patch looks coherent but the patches can't be glued into a consistent global object. The obstruction appears only around the loop as an accumulated contradiction in depth ordering.",
+    "date": "May 30, 2026"
+  },
+  {
+    "id": "2060113153724227784",
+    "text": "Jane Street reportedly grew net trading revenue from ~$10B in 2023 to ~$20B in ’24 to ~$40B in ’25. With reported net margins around 65%, a ~15x multiple implies a ~$400B public-market value. Mega-cap territory, growing fast, one of the most incredible businesses of all time.",
+    "date": "May 28, 2026"
+  }
+]

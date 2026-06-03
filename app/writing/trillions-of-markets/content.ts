@@ -181,7 +181,7 @@ export const coaseanEssayStyles = String.raw`@import url("https://fonts.googleap
 
 export const coaseanEssayHtml = String.raw`<header class="masthead">
   <p class="kicker">Essay · June 2026</p>
-  <h1>Trillions<br>of Markets</h1>
+  <h1 aria-label="Trillions of Markets">Trillions<br aria-hidden="true"> of Markets</h1>
   <p class="dek">Why a collapse in the cost of making almost anything tradable produces not thousands of markets but trillions — and what that does to the people inside them.</p>
   <p class="byline"><a href="https://www.grantstenger.com/">Grant Stenger</a> <span>&nbsp;·&nbsp; June 2026</span></p>
 </header>

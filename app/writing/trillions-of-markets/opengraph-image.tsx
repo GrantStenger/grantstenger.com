@@ -46,9 +46,9 @@ export default async function Image() {
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'space-between',
+          justifyContent: 'flex-start',
           background: PAPER,
-          padding: '80px 90px',
+          padding: '76px 90px',
           fontFamily: titleFont,
         }}
       >
@@ -64,13 +64,13 @@ export default async function Image() {
           Essay · June 2026
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', marginTop: 40 }}>
           <div
             style={{
               display: 'flex',
               flexDirection: 'column',
-              fontSize: 132,
-              lineHeight: 1.0,
+              fontSize: 128,
+              lineHeight: 1.08,
               color: INK,
               fontWeight: 500,
               letterSpacing: -2,
@@ -81,9 +81,9 @@ export default async function Image() {
           </div>
           <div
             style={{
-              marginTop: 34,
-              fontSize: 34,
-              lineHeight: 1.35,
+              marginTop: 30,
+              fontSize: 33,
+              lineHeight: 1.32,
               color: INK_SOFT,
               fontStyle: 'italic',
               maxWidth: 880,
@@ -98,6 +98,7 @@ export default async function Image() {
           style={{
             display: 'flex',
             alignItems: 'center',
+            marginTop: 'auto',
             borderTop: `2px solid ${RULE}`,
             paddingTop: 26,
             fontSize: 30,

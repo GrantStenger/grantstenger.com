@@ -21,11 +21,11 @@ export const articles = [
       contentType: "latex",
     },
     {
-      title: "Optimal Almgren-Chriss Execution with CRRA Preferences",
-      description: "Optimal execution in a linear-impact Almgren-Chriss model with CRRA utility and certainty-equivalent approximation",
+      title: "An Arrow–Pratt Foundation for Almgren–Chriss Execution",
+      description: "Deriving the Almgren-Chriss execution-risk coefficient from Arrow-Pratt curvature of terminal-wealth utility: local utility, exact GBM variance kernels, and wealth-scaled risk aversion.",
       author: "Grant Stenger (Dec 2024)",
-      slug: "optimal_execution",
-      pdfUrl: "/writing/optimal_execution.pdf",
+      slug: "arrow-pratt-almgren-chriss",
+      pdfUrl: "/writing/arrow_pratt_almgren_chriss.pdf",
       contentType: "latex",
     },
     {

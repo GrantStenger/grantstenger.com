@@ -25,6 +25,11 @@ const nextConfig = {
           destination: '/writing/trillions-of-markets',
           permanent: true,
         },
+        {
+          source: '/writing/optimal_execution.pdf',
+          destination: '/writing/arrow_pratt_almgren_chriss.pdf',
+          permanent: true,
+        },
       ];
     },
     async rewrites() {

@@ -215,7 +215,7 @@ export function AudioPlayer({ src }: { src: string }) {
       </div>
 
       <div style={{ flexShrink: 0, fontSize: '0.8rem', color: '#857a6c', fontVariantNumeric: 'tabular-nums' }}>
-        {fmt(duration ? duration - current : 0)}
+        {fmt(duration ? (duration - current) / SPEEDS[speedIdx] : 0)}
       </div>
     </div>
   )

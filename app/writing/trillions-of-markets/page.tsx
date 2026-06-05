@@ -1,6 +1,18 @@
 import type { Metadata } from 'next'
+import fs from 'node:fs'
+import path from 'node:path'
 import { ScrollProgress } from './ScrollProgress'
+import { AudioPlayer } from './AudioPlayer'
 import { coaseanEssayHtml, coaseanEssayStyles } from './content'
+
+// Show the audio player only once a narration file is dropped into
+// public/writing/. Until then the player renders nothing, so this is safe to
+// ship ahead of the audio. Replace the filename when you add the MP3.
+const AUDIO_FILE = 'trillions-of-markets.mp3'
+const audioExists = fs.existsSync(
+  path.join(process.cwd(), 'public', 'writing', AUDIO_FILE),
+)
+const audioSrc = `/writing/${AUDIO_FILE}`
 
 const title = 'Trillions of Markets'
 const description =
@@ -37,6 +49,7 @@ export default function TrillionsOfMarketsPage() {
         <ScrollProgress />
         <div dangerouslySetInnerHTML={{ __html: coaseanEssayHtml }} />
       </article>
+      {audioExists && <AudioPlayer src={audioSrc} />}
     </>
   )
 }

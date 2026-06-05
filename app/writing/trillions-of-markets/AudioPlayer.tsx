@@ -9,6 +9,13 @@ function fmt(s: number): string {
   return `${m}:${sec.toString().padStart(2, '0')}`
 }
 
+const SPEEDS = [1, 1.25, 1.5, 1.75, 2, 2.5, 3]
+
+// Render 1.5 as "1.5x" but 1 as "1x" (no trailing ".0").
+function fmtSpeed(rate: number): string {
+  return `${Number.isInteger(rate) ? rate : rate.toString()}x`
+}
+
 // Floating "Listen" pill for the audio narration. Lives in the React tree
 // (not the injected essay HTML) so it survives essay re-ports. Styled to match
 // the essay's warm-paper palette.
@@ -17,12 +24,16 @@ export function AudioPlayer({ src }: { src: string }) {
   const [playing, setPlaying] = useState(false)
   const [current, setCurrent] = useState(0)
   const [duration, setDuration] = useState(0)
+  const [speedIdx, setSpeedIdx] = useState(0)
 
   useEffect(() => {
     const a = audioRef.current
     if (!a) return
     const onTime = () => setCurrent(a.currentTime)
-    const onMeta = () => setDuration(a.duration)
+    const onMeta = () => {
+      setDuration(a.duration)
+      a.playbackRate = SPEEDS[speedIdx] // keep chosen rate across (re)loads
+    }
     const onEnd = () => setPlaying(false)
     a.addEventListener('timeupdate', onTime)
     a.addEventListener('loadedmetadata', onMeta)
@@ -51,6 +62,12 @@ export function AudioPlayer({ src }: { src: string }) {
     if (!a || !duration) return
     const rect = e.currentTarget.getBoundingClientRect()
     a.currentTime = ((e.clientX - rect.left) / rect.width) * duration
+  }
+
+  const cycleSpeed = () => {
+    const next = (speedIdx + 1) % SPEEDS.length
+    setSpeedIdx(next)
+    if (audioRef.current) audioRef.current.playbackRate = SPEEDS[next]
   }
 
   const pct = duration ? (current / duration) * 100 : 0
@@ -107,16 +124,38 @@ export function AudioPlayer({ src }: { src: string }) {
       </button>
 
       <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', gap: '0.3rem', minWidth: 0 }}>
-        <div
-          style={{
-            fontSize: '0.78rem',
-            letterSpacing: '0.16em',
-            textTransform: 'uppercase',
-            color: '#933420',
-            fontWeight: 600,
-          }}
-        >
-          Listen
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div
+            style={{
+              fontSize: '0.78rem',
+              letterSpacing: '0.16em',
+              textTransform: 'uppercase',
+              color: '#933420',
+              fontWeight: 600,
+            }}
+          >
+            Listen
+          </div>
+          <button
+            onClick={cycleSpeed}
+            aria-label={`Playback speed ${fmtSpeed(SPEEDS[speedIdx])}, tap to change`}
+            style={{
+              flexShrink: 0,
+              border: '1px solid #d8cfbd',
+              background: '#efe9dc',
+              color: '#933420',
+              fontFamily: '"Fraunces", Georgia, serif',
+              fontWeight: 600,
+              fontSize: '0.74rem',
+              lineHeight: 1,
+              padding: '0.2rem 0.5rem',
+              borderRadius: '999px',
+              cursor: 'pointer',
+              fontVariantNumeric: 'tabular-nums',
+            }}
+          >
+            {fmtSpeed(SPEEDS[speedIdx])}
+          </button>
         </div>
         <div
           onClick={seek}

@@ -10,6 +10,7 @@ function fmt(s: number): string {
 }
 
 const SPEEDS = [1, 1.25, 1.5, 1.75, 2, 2.5, 3]
+const DEFAULT_SPEED_IDX = 2 // 1.5x
 
 // Render 1.5 as "1.5x" but 1 as "1x" (no trailing ".0").
 function fmtSpeed(rate: number): string {
@@ -24,17 +25,32 @@ export function AudioPlayer({ src }: { src: string }) {
   const [playing, setPlaying] = useState(false)
   const [current, setCurrent] = useState(0)
   const [duration, setDuration] = useState(0)
-  const [speedIdx, setSpeedIdx] = useState(0)
+  const [speedIdx, setSpeedIdx] = useState(DEFAULT_SPEED_IDX)
+  const speedIdxRef = useRef(DEFAULT_SPEED_IDX)
+  speedIdxRef.current = speedIdx
 
   useEffect(() => {
     const a = audioRef.current
     if (!a) return
+
+    const applyRate = () => {
+      a.playbackRate = SPEEDS[speedIdxRef.current] // persist chosen rate across (re)loads
+    }
     const onTime = () => setCurrent(a.currentTime)
     const onMeta = () => {
       setDuration(a.duration)
-      a.playbackRate = SPEEDS[speedIdx] // keep chosen rate across (re)loads
+      applyRate()
     }
     const onEnd = () => setPlaying(false)
+
+    // metadata may already be loaded before this effect runs (preload="metadata"),
+    // in which case loadedmetadata won't fire again — seed state from the element.
+    if (a.readyState >= 1 && isFinite(a.duration)) {
+      setDuration(a.duration)
+      setCurrent(a.currentTime)
+      applyRate()
+    }
+
     a.addEventListener('timeupdate', onTime)
     a.addEventListener('loadedmetadata', onMeta)
     a.addEventListener('ended', onEnd)
@@ -159,25 +175,42 @@ export function AudioPlayer({ src }: { src: string }) {
         </div>
         <div
           onClick={seek}
+          role="slider"
+          aria-label="Seek"
+          aria-valuemin={0}
+          aria-valuemax={Math.round(duration)}
+          aria-valuenow={Math.round(current)}
           style={{
-            height: '4px',
-            borderRadius: '999px',
-            background: '#e3dccb',
+            // Tall, transparent hit area so the thin bar is easy to click/seek.
+            display: 'flex',
+            alignItems: 'center',
+            height: '14px',
+            margin: '-5px 0',
             cursor: 'pointer',
-            position: 'relative',
           }}
         >
           <div
             style={{
-              position: 'absolute',
-              left: 0,
-              top: 0,
-              bottom: 0,
-              width: `${pct}%`,
-              background: '#933420',
+              position: 'relative',
+              width: '100%',
+              height: '4px',
               borderRadius: '999px',
+              background: '#e3dccb',
+              pointerEvents: 'none',
             }}
-          />
+          >
+            <div
+              style={{
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                bottom: 0,
+                width: `${pct}%`,
+                background: '#933420',
+                borderRadius: '999px',
+              }}
+            />
+          </div>
         </div>
       </div>
 

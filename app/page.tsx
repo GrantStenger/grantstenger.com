@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 
@@ -21,14 +20,7 @@ export default function Home() {
           </h1>
           <h2 className="text-2xl mb-6 text-white">
             <span className="opacity-80">Founder & CEO of </span>
-            <Link
-              href="https://www.kinetic.xyz/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-white transition-colors duration-200"
-            >
-              Kinetic
-            </Link>
+            <span>Kinetic</span>
           </h2>
         </div>
       </main>

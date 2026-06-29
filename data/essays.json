@@ -1,11 +1,5 @@
 [
   {
-    "title": "Social Cache Busting",
-    "author": "Curiositry",
-    "year": 2026,
-    "link": "https://www.autodidacts.io/social-cache-busting/"
-  },
-  {
     "title": "The Problem of Social Costs",
     "author": "Ronald Coase",
     "year": 1984,
@@ -946,6 +940,12 @@
     "author": "Mark S. Granovetter",
     "year": 1973,
     "link": "https://www.jstor.org/stable/2776392"
+  },
+  {
+    "title": "Social Cache Busting",
+    "author": "Curiositry",
+    "year": 2026,
+    "link": "https://www.autodidacts.io/social-cache-busting/"
   },
   {
     "title": "The Unreasonable Effectiveness of Data",

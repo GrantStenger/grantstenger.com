@@ -1,16 +1,24 @@
 export const articles = [
     {
-      title: "Trillions of Markets",
-      description: "Why a collapse in the cost of making almost anything tradable produces not thousands of markets but trillions.",
-      slug: "trillions-of-markets",
-      author: "Grant Stenger (June 2026)",
-    },
-    {
       title: "Quant Funds and AI Labs Converge",
       description: "An analysis of the convergence between quantitative trading firms and AI research laboratories.",
       slug: "quant-ai-convergence",
       author: "Grant Stenger and Rich Dewey (Jan 2026)",
       link: "https://www.ft.com/content/18313a5f-ae6e-44e9-a26a-4a81cd3190bf"
+    },
+    {
+      title: "Why Local Minima Are Rare in High-Dimensional Landscapes",
+      description: "A note on Hessians, saddles, and Morse critical points: why nondegenerate local minima are exponentially rare among the critical points of high-dimensional random landscapes.",
+      slug: "local-minima",
+      author: "Grant Stenger (May 2025)",
+      pdfUrl: "/local-minima",
+      contentType: "latex",
+    },
+    {
+      title: "Trillions of Markets",
+      description: "Why a collapse in the cost of making almost anything tradable produces not thousands of markets but trillions.",
+      slug: "trillions-of-markets",
+      author: "Grant Stenger (June 2026)",
     },
     {
       title: "SUPA: Solana Uniform-Price Auctions for CPMMs",
@@ -34,14 +42,6 @@ export const articles = [
       slug: "prisoners-dilemma",
       author: "Grant Stenger (Sept 2024)",
       pdfUrl: "/writing/The_Case_for_Cooperation.pdf",
-      contentType: "latex",
-    },
-    {
-      title: "Why Local Minima Are Rare in High-Dimensional Landscapes",
-      description: "A note on Hessians, saddles, and Morse critical points: why nondegenerate local minima are exponentially rare among the critical points of high-dimensional random landscapes.",
-      slug: "local-minima",
-      author: "Grant Stenger (May 2025)",
-      pdfUrl: "/local-minima",
       contentType: "latex",
     },
     {

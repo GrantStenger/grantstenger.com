@@ -12,7 +12,7 @@ const articleItems = articles.map(({ content, ...rest }) => rest)
 export default function Writing() {
     return (
         <ContentPage
-            title="MY WRITING"
+            title="WRITING"
             items={articleItems}
             searchPlaceholder="Search articles..."
             baseUrl="/writing"

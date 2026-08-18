@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 export default function Tweets() {
     return (
         <div className="flex flex-col min-h-screen bg-black text-white">
-            <Header className="fixed top-0 left-0 right-0 z-10" />
+            <Header className="fixed top-0 left-0 right-0 z-10 border-b border-gray-900 md:border-b-0" />
 
-            <main className="flex-grow pt-24 md:pt-28 px-4 pb-16">
+            <main className="flex-grow px-4 pb-16 pt-32 md:pt-28">
                 <div data-theme="dark" className="mx-auto flex max-w-[550px] flex-col items-center gap-4">
                     {tweets.map((entry) => (
                         <div key={entry.id} className="w-full [&_.react-tweet-theme]:my-0">

@@ -58,8 +58,8 @@ const TableOfContents: React.FC<{ content: string }> = React.memo(({ content }) 
     }
   
     return (
-      <nav className="toc mb-12 p-6 bg-[#141414] rounded-lg">
-        <h2 className="text-2xl font-bold mb-4 text-white">Table of Contents</h2>
+      <nav className="toc mb-12 rounded-lg bg-[#141414] p-4 sm:p-6">
+        <h2 className="mb-4 text-xl font-bold text-white sm:text-2xl">Table of Contents</h2>
         <ul className="space-y-2">
           {headings.map((heading, index) => {
             const level = heading.match(/^#+/)?.[0].length || 1
@@ -382,11 +382,11 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
     <div className="flex flex-col min-h-screen bg-black text-white">
       <Header />
       <ProgressBar targetRef={articleRef} />
-      <main className="flex-grow px-4 py-16">
+      <main className="flex-grow px-3 py-10 sm:px-4 sm:py-16">
         <div className="relative max-w-[60rem] mx-auto">
           <div className="absolute inset-0 bg-gradient-to-r from-gray-600 to-[#141414] rounded-lg"></div>
           <div className="relative p-[1px] rounded-lg">
-            <article ref={articleRef} className="p-8 bg-[#141414] rounded-lg">
+            <article ref={articleRef} className="rounded-lg bg-[#141414] p-5 sm:p-8">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-white leading-tight">
                 {title.split(': ').map((part, index) => (
                   <React.Fragment key={index}>
@@ -428,7 +428,7 @@ export default function ArticlePage({ title, content, contentType = 'markdown' }
       </main>
       <Footer />
       <button
-        className="fixed bottom-8 right-8 p-2 bg-white hover:bg-gray-200 text-black rounded-full shadow-lg transition-all duration-300 opacity-0 hover:opacity-100 focus:opacity-100"
+        className="fixed bottom-4 right-4 rounded-full bg-white p-2 text-black opacity-70 shadow-lg transition-all duration-300 hover:bg-gray-200 hover:opacity-100 focus:opacity-100 md:bottom-8 md:right-8 md:opacity-0"
         onClick={scrollToTop}
         aria-label="Scroll to top"
       >

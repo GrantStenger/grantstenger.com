@@ -13,7 +13,12 @@ export function Header({ className = '' }: HeaderProps) {
 
     const renderHeaderText = () => {
         if (isHomePage) {
-            return <span className="invisible">GRANT STENGER</span>
+            return (
+                <span aria-hidden="true" className="invisible">
+                    <span className="hidden md:inline">GRANT STENGER</span>
+                    <span className="md:hidden">GS</span>
+                </span>
+            )
         }
         return (
             <Link href="/" className="text-white font-semibold">
@@ -24,25 +29,52 @@ export function Header({ className = '' }: HeaderProps) {
     }
 
     return (
-        <header className={`py-4 md:py-6 bg-black text-white ${className}`}>
-            <nav className="flex justify-between items-center px-4 md:px-6 lg:px-12">
-                {renderHeaderText()}
-                <div className="flex items-center">
-                    <div className="flex space-x-4 md:space-x-6 mr-4 md:mr-6 lg:mr-12">
-                        <Link href="/writing" className="text-gray-400 hover:text-white transition-colors duration-200 underline text-sm md:text-base">WRITING</Link>
-                        <Link href="/books" className="text-gray-400 hover:text-white transition-colors duration-200 underline text-sm md:text-base">BOOKS</Link>
-                        <Link href="/essays" className="text-gray-400 hover:text-white transition-colors duration-200 underline text-sm md:text-base">ESSAYS</Link>
-                        <Link href="/quotes" className="text-gray-400 hover:text-white transition-colors duration-200 underline text-sm md:text-base">QUOTES</Link>
+        <header className={`bg-black py-3 text-white md:py-6 ${className}`}>
+            <nav className="px-4 md:flex md:items-center md:justify-between md:px-6 lg:px-12">
+                <div className="flex items-center justify-between">
+                    {renderHeaderText()}
+                    <div className="-mr-2 flex items-center gap-1 md:hidden">
+                        <SocialLinks />
                     </div>
-                    <div className="flex space-x-2 md:space-x-4">
-                        <SocialLink href="https://twitter.com/GrantStenger" icon={<TwitterIcon />} label="Twitter" />
-                        <SocialLink href="https://github.com/GrantStenger" icon={<GitHubIcon />} label="GitHub" />
-                        <SocialLink href="https://www.instagram.com/grant.stenger/" icon={<InstagramIcon />} label="Instagram" />
-                        <SocialLink href="https://www.linkedin.com/in/grant-stenger/" icon={<LinkedInIcon />} label="LinkedIn" />
+                </div>
+                <div className="mt-1 flex items-center md:mt-0">
+                    <div className="flex w-full items-center justify-between md:mr-6 md:w-auto md:gap-6 lg:mr-12">
+                        <NavLink href="/writing" pathname={pathname}>WRITING</NavLink>
+                        <NavLink href="/books" pathname={pathname}>BOOKS</NavLink>
+                        <NavLink href="/essays" pathname={pathname}>ESSAYS</NavLink>
+                        <NavLink href="/quotes" pathname={pathname}>QUOTES</NavLink>
+                    </div>
+                    <div className="hidden items-center gap-4 md:flex">
+                        <SocialLinks />
                     </div>
                 </div>
             </nav>
         </header>
+    )
+}
+
+function NavLink({ href, pathname, children }: { href: string; pathname: string; children: React.ReactNode }) {
+    const isActive = pathname === href || pathname.startsWith(`${href}/`)
+
+    return (
+        <Link
+            href={href}
+            aria-current={isActive ? 'page' : undefined}
+            className={`${isActive ? 'text-white' : 'text-gray-400'} py-2 text-xs underline transition-colors duration-200 hover:text-white sm:text-sm md:py-0 md:text-base`}
+        >
+            {children}
+        </Link>
+    )
+}
+
+function SocialLinks() {
+    return (
+        <>
+            <SocialLink href="https://twitter.com/GrantStenger" icon={<TwitterIcon />} label="Twitter" />
+            <SocialLink href="https://github.com/GrantStenger" icon={<GitHubIcon />} label="GitHub" />
+            <SocialLink href="https://www.instagram.com/grant.stenger/" icon={<InstagramIcon />} label="Instagram" />
+            <SocialLink href="https://www.linkedin.com/in/grant-stenger/" icon={<LinkedInIcon />} label="LinkedIn" />
+        </>
     )
 }
 
@@ -58,7 +90,7 @@ function SocialLink({ href, icon, label }: SocialLinkProps) {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#9CA3AF] hover:text-white transition-colors duration-200"
+            className="p-2 text-[#9CA3AF] transition-colors duration-200 hover:text-white md:p-0"
         >
             {icon}
             <span className="sr-only">{label}</span>

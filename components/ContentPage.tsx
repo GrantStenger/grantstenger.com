@@ -36,11 +36,11 @@ export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultA
 
     return (
         <div className="flex flex-col min-h-screen bg-black text-white">
-            <Header className="fixed top-0 left-0 right-0 z-10" />
+            <Header className="fixed top-0 left-0 right-0 z-10 border-b border-gray-900 md:border-b-0" />
 
-            <div className="flex-grow flex flex-col lg:flex-row pt-16 md:pt-20">
-                <div className="lg:w-1/3 xl:w-1/4 px-6 lg:px-12 py-4 lg:fixed lg:top-20 lg:bottom-0 lg:left-0 lg:overflow-y-auto">
-                    <h1 className="text-5xl lg:text-6xl font-bold mb-8">{title}</h1>
+            <div className="flex-grow flex flex-col pt-28 md:pt-20 lg:flex-row">
+                <div className="px-4 py-6 sm:px-6 lg:fixed lg:top-20 lg:bottom-0 lg:left-0 lg:w-1/3 lg:overflow-y-auto lg:px-12 lg:py-4 xl:w-1/4">
+                    <h1 className="mb-8 text-4xl font-bold sm:text-5xl lg:text-6xl">{title}</h1>
                     <div className="relative w-full max-w-sm">
                         <div className="absolute inset-0 bg-gradient-to-r from-gray-600 to-[#141414] rounded-md"></div>
                         <div className="relative p-[1px] rounded-md">
@@ -63,7 +63,7 @@ export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultA
                         </div>
                     </div>
                 </div>
-                <main className="lg:w-2/3 xl:w-3/4 lg:ml-[33.333%] xl:ml-[25%] px-6 lg:px-12 py-4">
+                <main className="px-4 py-4 sm:px-6 lg:ml-[33.333%] lg:w-2/3 lg:px-12 xl:ml-[25%] xl:w-3/4">
                     <div className="space-y-4">
                         {filteredItems.map((item, index) => {
                             // Determine the correct href for the item

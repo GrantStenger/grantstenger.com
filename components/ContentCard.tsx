@@ -6,11 +6,11 @@ interface ContentCardProps {
     author?: string;
     year?: number;
     href?: string;
-    isExternal?: boolean;
+    openInNewTab?: boolean;
     description?: string;
 }
 
-export function ContentCard({ title, author, year, href, isExternal, description }: ContentCardProps) {
+export function ContentCard({ title, author, year, href, openInNewTab, description }: ContentCardProps) {
     const content = (
         <>
             <div className="absolute inset-0 bg-gradient-to-r from-gray-600 to-[#141414] rounded-[9px] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
@@ -49,7 +49,7 @@ export function ContentCard({ title, author, year, href, isExternal, description
             <Link
                 href={href}
                 className="block group relative"
-                {...(isExternal ? {
+                {...(openInNewTab ? {
                     target: "_blank",
                     rel: "noopener noreferrer"
                 } : {})}

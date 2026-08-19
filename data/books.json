@@ -24,12 +24,6 @@
     "link": "https://www.amazon.com/Walden-Two-B-F-Skinner/dp/0872207781"
   },
   {
-    "title": "The Laws of Trading: A Trader's Guide to Better Decision-Making for Everyone",
-    "author": "Agustin Lebron",
-    "description": "A guide to improving decision-making in trading and beyond, based on principles from game theory and behavioral science.",
-    "link": "https://www.amazon.com/Laws-Trading-Decision-Making-Everyone-Finance/dp/1119574213"
-  },
-  {
     "title": "Candide",
     "author": "Voltaire",
     "description": "A satirical novel that critiques optimism and explores the absurdities of the human condition.",
@@ -100,6 +94,12 @@
     "author": "Marcos Lopez De Prado",
     "description": "A book on applying machine learning techniques to financial markets and trading.",
     "link": "https://www.amazon.com/Advances-Financial-Machine-Learning-Prado/dp/1119482089"
+  },
+  {
+    "title": "The Laws of Trading: A Trader's Guide to Better Decision-Making for Everyone",
+    "author": "Agustin Lebron",
+    "description": "A guide to improving decision-making in trading and beyond, based on principles from game theory and behavioral science.",
+    "link": "https://www.amazon.com/Laws-Trading-Decision-Making-Everyone-Finance/dp/1119574213"
   },
   {
     "title": "Influence: The Psychology of Persuasion",

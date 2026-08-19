@@ -24,9 +24,10 @@ interface ContentPageProps {
     searchPlaceholder: string;
     baseUrl: string;
     defaultAuthor?: string;
+    openLinksInNewTab?: boolean;
 }
 
-export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultAuthor }: ContentPageProps) {
+export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultAuthor, openLinksInNewTab = false }: ContentPageProps) {
     const [searchQuery, setSearchQuery] = useState('')
 
     const filteredItems = items.filter(item =>
@@ -87,7 +88,7 @@ export function ContentPage({ title, items, searchPlaceholder, baseUrl, defaultA
                                     author={item.author || defaultAuthor}
                                     year={item.year}
                                     href={href}
-                                    isExternal={!!(item.link || item.pdfUrl)}
+                                    openInNewTab={openLinksInNewTab || !!(item.link || item.pdfUrl)}
                                     description={item.description}
                                 />
                             );

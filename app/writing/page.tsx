@@ -17,6 +17,7 @@ export default function Writing() {
             searchPlaceholder="Search articles..."
             baseUrl="/writing"
             defaultAuthor="Grant Stenger"
+            openLinksInNewTab
         />
     )
 }

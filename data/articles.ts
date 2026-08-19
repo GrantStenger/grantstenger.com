@@ -21,11 +21,11 @@ export const articles = [
       author: "Grant Stenger (June 2026)",
     },
     {
-      title: "SUPA: Solana Uniform-Price Auctions for CPMMs",
-      description: "A batch-clearing generalization of the constant-product market maker that neutralizes intra-slot MEV by clearing trades at a uniform price.",
-      slug: "supa",
-      author: "Grant Stenger, Martin Lindsey, Edwin Suresh, Keith Warter, Agam Gambhir (Oct 2025)",
-      pdfUrl: "/supa",
+      title: "The Rational Hodge Conjecture for All Powers of Cyclic Cubic Fourfolds",
+      description: "Proving that every rational Hodge class on every self-power of a smooth cyclic cubic fourfold is algebraic.",
+      slug: "cm-endomorphism-cubic-powers",
+      author: "Grant Stenger (Aug 2026)",
+      pdfUrl: "/writing/cm_endomorphism_cubic_powers.pdf",
       contentType: "latex",
     },
     {
@@ -34,6 +34,14 @@ export const articles = [
       author: "Grant Stenger (Dec 2024)",
       slug: "arrow-pratt-almgren-chriss",
       pdfUrl: "/writing/arrow_pratt_almgren_chriss.pdf",
+      contentType: "latex",
+    },
+    {
+      title: "SUPA: Solana Uniform-Price Auctions for CPMMs",
+      description: "A batch-clearing generalization of the constant-product market maker that neutralizes intra-slot MEV by clearing trades at a uniform price.",
+      slug: "supa",
+      author: "Grant Stenger, Martin Lindsey, Edwin Suresh, Keith Warter, Agam Gambhir (Oct 2025)",
+      pdfUrl: "/supa",
       contentType: "latex",
     },
     {

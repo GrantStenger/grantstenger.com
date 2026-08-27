@@ -21,14 +21,6 @@ export const articles = [
       author: "Grant Stenger (June 2026)",
     },
     {
-      title: "The Rational Hodge Conjecture for All Powers of Cyclic Cubic Fourfolds",
-      description: "Proving that every rational Hodge class on every self-power of a smooth cyclic cubic fourfold is algebraic.",
-      slug: "cm-endomorphism-cubic-powers",
-      author: "Grant Stenger (Aug 2026)",
-      pdfUrl: "/writing/cm_endomorphism_cubic_powers.pdf",
-      contentType: "latex",
-    },
-    {
       title: "An Arrow–Pratt Foundation for Almgren–Chriss Execution",
       description: "Deriving the Almgren-Chriss execution-risk coefficient from Arrow-Pratt curvature of terminal-wealth utility: local utility, exact GBM variance kernels, and wealth-scaled risk aversion.",
       author: "Grant Stenger (Dec 2024)",
